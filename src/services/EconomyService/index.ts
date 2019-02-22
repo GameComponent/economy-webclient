@@ -2,7 +2,7 @@ import {
   EconomyServiceApi,
   EconomyServiceApiFactory,
   Configuration,
-} from '@/../vendor/economy-client-ts';
+} from '@/../vendor/economy-client';
 
 declare module 'vue/types/vue' {
   interface Vue {
