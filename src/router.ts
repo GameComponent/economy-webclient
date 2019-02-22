@@ -50,12 +50,17 @@ export default new Router({
         {
           path: 'currency',
           name: 'dashboard-currency',
-          component: () => import(/* webpackChunkName: "item" */ './views/Dashboard/Currency/index.vue'),
+          component: () => import(/* webpackChunkName: "currency" */ './views/Dashboard/Currency/index.vue'),
         },
+        {
+          path: 'item/new',
+          name: 'dashboard-currency-new',
+          component: () => import(/* webpackChunkName: "currency" */ './views/Dashboard/Currency/New/index.vue'),
+        },         
         {
           path: 'player/:id',
           name: 'dashboard-player-detail',
-          component: () => import(/* webpackChunkName: "item" */ './views/Dashboard/Player/Detail/index.vue'),
+          component: () => import(/* webpackChunkName: "player" */ './views/Dashboard/Player/Detail/index.vue'),
         },
       ],
     },

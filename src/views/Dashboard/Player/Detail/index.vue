@@ -12,11 +12,11 @@ import { Component, Vue } from 'vue-property-decorator';
 
 @Component
 export default class Player extends Vue {
-  player = null;
+  public player = null;
 
-  mounted() {
+  public mounted() {
     fetch(`http://localhost:8888/v1/player/${this.$route.params.id}`)
-      .then(res => res.json())
+      .then((res) => res.json())
       .then((data) => {
         this.player = data;
       });

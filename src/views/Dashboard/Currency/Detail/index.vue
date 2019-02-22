@@ -9,10 +9,10 @@ import { Component, Vue } from 'vue-property-decorator';
 
 @Component
 export default class CurrencyDetail extends Vue {
-  currency = null;
+  public currency = null;
 
-  mounted() {
-
+  public mounted() {
+    alert('currency detail mounted');
   }
 }
 </script>

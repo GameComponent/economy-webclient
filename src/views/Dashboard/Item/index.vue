@@ -44,13 +44,12 @@ import { Component, Vue } from 'vue-property-decorator';
 
 @Component
 export default class Item extends Vue {
-  items = [];
+  public items = [];
 
-  mounted() {
-    fetch('http://localhost:8888/v1/items')
-      .then(res => res.json())
-      .then((data) => {
-        this.items = data.items;
+  public mounted() {
+    this.$economyService.listItems()
+      .then(({ items }) => {
+        this.items = items;
       });
   }
 }
