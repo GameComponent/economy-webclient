@@ -4,6 +4,8 @@ import router from './router';
 import store from './store/index';
 import { EconomyServicePlugin } from '@/services/EconomyService';
 
+import GcButtonLink from './components/GcButtonLink.vue';
+
 Vue.config.productionTip = false;
 
 new Vue({
@@ -13,3 +15,5 @@ new Vue({
 }).$mount('#app');
 
 Vue.use(EconomyServicePlugin);
+
+Vue.component('gc-button-link', GcButtonLink);

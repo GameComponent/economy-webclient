@@ -11,7 +11,10 @@
   transition: all .6s ease-in-out;
   z-index: 2; /* Needs to sit above the hamburger menu icon */
   background-color: #fff;
-  border-left: 5px solid #7A33D6;
+  border-left: 5px solid #38c172;
+  border-right: 1px solid #eee;
+  min-height: 12 * 60px;
+
 }
 
 .sidenav.active {
@@ -19,6 +22,7 @@
 }
 
 .sidebar__top {
+  flex: 0 0 60px;
   height: 60px;
   line-height: 60px;
   width: 100%;
@@ -42,16 +46,65 @@
 
 .sidenav__list {
   padding: 0;
+  margin: 0;
   list-style-type: none;
+  flex: 1;
+}
+
+.sidenav__list--bottom {
+  flex: 1;
+  // position: absolute;
+  // bottom: 0;
 }
 
 .sidenav__list-item {
   text-align: left;
-  padding: 20px 20px 20px 40px;
+  height: 60px;
+  line-height: 60px;
+}
+
+.sidenav__list-item:hover.sidebar__list-item--disabled {
+  background-color: transparent;
+  cursor: pointer;
+}
+.sidenav__list-item.sidebar__list-item--disabled a {
+  color: #A8EEEB;
+  fill: #A8EEEB;
+}
+
+.sidenav__list-item.sidebar__list-item--disabled a:hover {
+  color: #A8EEEB;
+  fill: #A8EEEB;
+}
+
+.sidenav__list-item a {
+  padding-left: 40px;
+  display: block;
+  text-decoration: none;
+  font-weight: 600;
+  color: #1B655E;
+  fill: #1B655E;
+}
+
+.sidenav__list-item a svg {
+  // vertical-align: middle;
+  transform: translateY(5px);
+  margin-right: 20px;
+}
+
+.sidenav__list-item a.router-link-active {
+  color: #187741;
+  fill: #187741;
+}
+
+.sidenav__list-item a:hover {
+  color: #187741;
+  fill: #187741;
+  transition: .1s;
 }
 
 .sidenav__list-item:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(238, 145, 145, 0.2);
   cursor: pointer;
 }
 
@@ -71,7 +124,10 @@
 <template>
   <aside class="sidenav">
     <div class="sidebar__top">
-      <span class="sidebar__top-title">Inventory Service</span>
+      <span class="sidebar__top-title">
+
+        Economy Service
+      </span>
     </div>
     <div class="sidenav__close-icon">
       <i class="fas fa-times sidenav__brand-close"></i>
@@ -79,34 +135,105 @@
     <ul class="sidenav__list">
       <li class="sidenav__list-item">
         <router-link :to="{ name: 'dashboard-home' }">
-          Dashboard
+          <icon-home/>
+          <span>Dashboard</span>
         </router-link>
       </li>
       <li class="sidenav__list-item">
         <router-link :to="{ name: 'dashboard-item' }">
-          Items
+          <icon-star />
+          <span>Items</span>
         </router-link>
       </li>
       <li class="sidenav__list-item">
         <router-link :to="{ name: 'dashboard-currency' }">
-          Currencies
+          <icon-currency-dollar />
+          <span>Currencies</span>
         </router-link>
       </li>
       <li class="sidenav__list-item">
         <router-link :to="{ name: 'dashboard-player' }">
-          Players
+          <icon-user />
+          <span>Players</span>
         </router-link>
       </li>
       <li class="sidenav__list-item">
+        <router-link :to="{ name: 'dashboard-storage' }">
+          <icon-briefcase />
+          <span>Storages</span>
+        </router-link>
+      </li>
+      <li class="sidenav__list-item sidebar__list-item--disabled">
+        <a href="https://google.com">
+          <icon-store />
+          <span>Stores</span>
+        </a>
+      </li>
+      <li class="sidenav__list-item sidebar__list-item--disabled">
+        <a href="https://google.com">
+          <icon-building />
+          <span>Exchange</span>
+        </a>
+      </li>
+      <li class="sidenav__list-item sidebar__list-item--disabled">
+        <a href="https://google.com">
+          <icon-puzzle />
+          <span>Crafting</span>
+        </a>
+      </li>
+    </ul>
+
+    <ul class="sidenav__list sidenav__list--bottom">
+      <li class="sidenav__list-item sidebar__list-item--disabled">
         <router-link :to="{ name: 'dashboard-iam' }">
-          IAM
+          <icon-group />
+          <span>IAM</span>
         </router-link>
       </li>
       <li class="sidenav__list-item">
-        <router-link :to="{ name: 'dashboard-documentation' }">
-          Documentation
-        </router-link>
+        <a href="https://google.com">
+          <icon-information />
+          <span>Documentation</span>
+        </a>
+      </li>
+      <li class="sidenav__list-item">
+        <a href="https://google.com">
+          <icon-cog />
+          <span>Settings</span>
+        </a>
       </li>
     </ul>
   </aside>
 </template>
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import IconHome from '@/assets/icons/icon-home.svg';
+import IconStar from '@/assets/icons/icon-star.svg';
+import IconBriefcase from '@/assets/icons/icon-briefcase.svg';
+import IconUser from '@/assets/icons/icon-user.svg';
+import IconCurrencyDollar from '@/assets/icons/icon-currency-dollar.svg';
+import IconInformation from '@/assets/icons/icon-information.svg';
+import IconGroup from '@/assets/icons/icon-group.svg';
+import IconCog from '@/assets/icons/icon-cog.svg';
+import IconStore from '@/assets/icons/icon-store.svg';
+import IconBuilding from '@/assets/icons/icon-building.svg';
+import IconPuzzle from '@/assets/icons/icon-puzzle.svg';
+
+@Component({
+  components: {
+    IconHome,
+    IconStar,
+    IconBriefcase,
+    IconUser,
+    IconCurrencyDollar,
+    IconInformation ,
+    IconGroup,
+    IconCog,
+    IconStore,
+    IconBuilding,
+    IconPuzzle,
+  },
+})
+export default class DashboardNavigation extends Vue {};
+</script>

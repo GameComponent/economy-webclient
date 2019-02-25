@@ -3,7 +3,21 @@
     <h1 style="margin-top: 0;">Create new currency</h1>
 
     <div>
-      <input type="text" v-model="currency.name">
+      <table>
+        <tr>
+          <td>Name</td>
+          <td>
+            <input type="text" v-model="currency.name">
+          </td>
+        </tr>
+        <tr>
+          <td>Shortname</td>
+          <td>
+            <input type="text" v-model="currency.shortName">
+          </td>
+        </tr>
+      </table>
+
     </div>
 
     <div>
@@ -21,6 +35,8 @@ import { Component, Vue } from 'vue-property-decorator';
 export default class CreateCurrency extends Vue {
   public currency = {
     name: '',
+    shortName: '',
+    symbol: '',
   };
 
   public handleClickCreateCurrency(): void {

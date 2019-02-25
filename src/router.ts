@@ -45,7 +45,7 @@ export default new Router({
         {
           path: 'item/:id',
           name: 'dashboard-item-detail',
-          component: () => import(/* webpackChunkName: "item" */ './views/Dashboard/Item/index.vue'),
+          component: () => import(/* webpackChunkName: "item" */ './views/Dashboard/Item/Detail/index.vue'),
         },
         {
           path: 'currency',
@@ -53,14 +53,44 @@ export default new Router({
           component: () => import(/* webpackChunkName: "currency" */ './views/Dashboard/Currency/index.vue'),
         },
         {
-          path: 'item/new',
+          path: 'currency/new',
           name: 'dashboard-currency-new',
           component: () => import(/* webpackChunkName: "currency" */ './views/Dashboard/Currency/New/index.vue'),
-        },         
+        },
+        {
+          path: 'currency/:id',
+          name: 'dashboard-currency-detail',
+          component: () => import(/* webpackChunkName: "currency" */ './views/Dashboard/Currency/Detail/index.vue'),
+        },
+        {
+          path: 'player',
+          name: 'dashboard-player',
+          component: () => import(/* webpackChunkName: "player" */ './views/Dashboard/Player/index.vue'),
+        },
         {
           path: 'player/:id',
           name: 'dashboard-player-detail',
           component: () => import(/* webpackChunkName: "player" */ './views/Dashboard/Player/Detail/index.vue'),
+        },
+        {
+          path: 'storage',
+          name: 'dashboard-storage',
+          component: () => import(/* webpackChunkName: "storage" */ './views/Dashboard/Storage/index.vue'),
+        },
+        {
+          path: 'storage/new',
+          name: 'dashboard-storage-new',
+          component: () => import(/* webpackChunkName: "storage" */ './views/Dashboard/Storage/New/index.vue'),
+        },
+        {
+          path: 'storage/:id',
+          name: 'dashboard-storage-detail',
+          component: () => import(/* webpackChunkName: "storage" */ './views/Dashboard/Storage/Detail/index.vue'),
+        },
+        {
+          path: 'iam',
+          name: 'dashboard-iam',
+          component: () => import(/* webpackChunkName: "iam" */ './views/Dashboard/IAM/index.vue'),
         },
       ],
     },

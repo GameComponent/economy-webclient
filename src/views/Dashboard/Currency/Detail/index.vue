@@ -1,6 +1,7 @@
 <template>
   <div style="padding: 3rem;">
-    <h1 style="margin-top: 0;">Currencies</h1>
+    <h1 style="margin-top: 0;">Currency</h1>
+    <pre>{{ JSON.stringify(currency, null, 2) }}</pre>
   </div>
 </template>
 
@@ -12,7 +13,10 @@ export default class CurrencyDetail extends Vue {
   public currency = null;
 
   public mounted() {
-    alert('currency detail mounted');
+    this.$economyService.getCurrency(this.$route.params.id)
+      .then(({ currency }) => {
+        this.currency = currency;
+      });
   }
 }
 </script>

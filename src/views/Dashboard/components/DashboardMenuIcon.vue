@@ -13,7 +13,7 @@
 }
 
 .menu-icon__circle {
-  background-color: #6E1FD3;
+  background-color: #38c172;
   color: white;
   width: 40px;
   height: 40px;
