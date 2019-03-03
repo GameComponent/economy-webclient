@@ -40,7 +40,7 @@ export interface FetchAPI {
 }
 
 /**
- *
+ *  
  * @export
  * @interface FetchArgs
  */
@@ -50,7 +50,7 @@ export interface FetchArgs {
 }
 
 /**
- *
+ * 
  * @export
  * @class BaseAPI
  */
@@ -66,7 +66,7 @@ export class BaseAPI {
 };
 
 /**
- *
+ * 
  * @export
  * @class RequiredError
  * @extends {Error}
@@ -79,31 +79,31 @@ export class RequiredError extends Error {
 }
 
 /**
- *
+ * 
  * @export
  * @interface V1CreateCurrencyRequest
  */
 export interface V1CreateCurrencyRequest {
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1CreateCurrencyRequest
      */
     api?: string;
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1CreateCurrencyRequest
      */
     name?: string;
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1CreateCurrencyRequest
      */
     shortName?: string;
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1CreateCurrencyRequest
      */
@@ -111,19 +111,19 @@ export interface V1CreateCurrencyRequest {
 }
 
 /**
- *
+ * 
  * @export
  * @interface V1CreateCurrencyResponse
  */
 export interface V1CreateCurrencyResponse {
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1CreateCurrencyResponse
      */
     api?: string;
     /**
-     *
+     * 
      * @type {V1Currency}
      * @memberof V1CreateCurrencyResponse
      */
@@ -131,19 +131,19 @@ export interface V1CreateCurrencyResponse {
 }
 
 /**
- *
+ * 
  * @export
  * @interface V1CreateItemRequest
  */
 export interface V1CreateItemRequest {
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1CreateItemRequest
      */
     api?: string;
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1CreateItemRequest
      */
@@ -151,19 +151,19 @@ export interface V1CreateItemRequest {
 }
 
 /**
- *
+ * 
  * @export
  * @interface V1CreateItemResponse
  */
 export interface V1CreateItemResponse {
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1CreateItemResponse
      */
     api?: string;
     /**
-     *
+     * 
      * @type {V1Item}
      * @memberof V1CreateItemResponse
      */
@@ -171,25 +171,25 @@ export interface V1CreateItemResponse {
 }
 
 /**
- *
+ * 
  * @export
  * @interface V1CreateStorageRequest
  */
 export interface V1CreateStorageRequest {
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1CreateStorageRequest
      */
     api?: string;
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1CreateStorageRequest
      */
     playerId?: string;
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1CreateStorageRequest
      */
@@ -197,19 +197,19 @@ export interface V1CreateStorageRequest {
 }
 
 /**
- *
+ * 
  * @export
  * @interface V1CreateStorageResponse
  */
 export interface V1CreateStorageResponse {
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1CreateStorageResponse
      */
     api?: string;
     /**
-     *
+     * 
      * @type {V1Storage}
      * @memberof V1CreateStorageResponse
      */
@@ -217,43 +217,43 @@ export interface V1CreateStorageResponse {
 }
 
 /**
- *
+ * 
  * @export
  * @interface V1Currency
  */
 export interface V1Currency {
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1Currency
      */
     id?: string;
     /**
-     *
+     * 
      * @type {Date}
      * @memberof V1Currency
      */
     createdAt?: Date;
     /**
-     *
+     * 
      * @type {Date}
      * @memberof V1Currency
      */
     updatedAt?: Date;
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1Currency
      */
     name?: string;
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1Currency
      */
     shortName?: string;
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1Currency
      */
@@ -261,19 +261,19 @@ export interface V1Currency {
 }
 
 /**
- *
+ * 
  * @export
  * @interface V1GetCurrencyResponse
  */
 export interface V1GetCurrencyResponse {
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1GetCurrencyResponse
      */
     api?: string;
     /**
-     *
+     * 
      * @type {V1Currency}
      * @memberof V1GetCurrencyResponse
      */
@@ -281,19 +281,19 @@ export interface V1GetCurrencyResponse {
 }
 
 /**
- *
+ * 
  * @export
  * @interface V1GetItemResponse
  */
 export interface V1GetItemResponse {
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1GetItemResponse
      */
     api?: string;
     /**
-     *
+     * 
      * @type {V1Item}
      * @memberof V1GetItemResponse
      */
@@ -301,19 +301,19 @@ export interface V1GetItemResponse {
 }
 
 /**
- *
+ * 
  * @export
  * @interface V1GetPlayerResponse
  */
 export interface V1GetPlayerResponse {
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1GetPlayerResponse
      */
     api?: string;
     /**
-     *
+     * 
      * @type {V1Player}
      * @memberof V1GetPlayerResponse
      */
@@ -321,19 +321,19 @@ export interface V1GetPlayerResponse {
 }
 
 /**
- *
+ * 
  * @export
  * @interface V1GetStorageResponse
  */
 export interface V1GetStorageResponse {
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1GetStorageResponse
      */
     api?: string;
     /**
-     *
+     * 
      * @type {V1Storage}
      * @memberof V1GetStorageResponse
      */
@@ -341,31 +341,31 @@ export interface V1GetStorageResponse {
 }
 
 /**
- *
+ * 
  * @export
  * @interface V1GiveCurrencyRequest
  */
 export interface V1GiveCurrencyRequest {
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1GiveCurrencyRequest
      */
     api?: string;
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1GiveCurrencyRequest
      */
     storageId?: string;
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1GiveCurrencyRequest
      */
     currencyId?: string;
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1GiveCurrencyRequest
      */
@@ -373,19 +373,19 @@ export interface V1GiveCurrencyRequest {
 }
 
 /**
- *
+ * 
  * @export
  * @interface V1GiveCurrencyResponse
  */
 export interface V1GiveCurrencyResponse {
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1GiveCurrencyResponse
      */
     api?: string;
     /**
-     *
+     * 
      * @type {V1StorageCurrency}
      * @memberof V1GiveCurrencyResponse
      */
@@ -393,25 +393,25 @@ export interface V1GiveCurrencyResponse {
 }
 
 /**
- *
+ * 
  * @export
  * @interface V1GiveItemRequest
  */
 export interface V1GiveItemRequest {
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1GiveItemRequest
      */
     api?: string;
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1GiveItemRequest
      */
     storageId?: string;
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1GiveItemRequest
      */
@@ -419,25 +419,25 @@ export interface V1GiveItemRequest {
 }
 
 /**
- *
+ * 
  * @export
  * @interface V1GiveItemResponse
  */
 export interface V1GiveItemResponse {
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1GiveItemResponse
      */
     api?: string;
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1GiveItemResponse
      */
     storageId?: string;
     /**
-     *
+     * 
      * @type {V1StorageItem}
      * @memberof V1GiveItemResponse
      */
@@ -445,31 +445,31 @@ export interface V1GiveItemResponse {
 }
 
 /**
- *
+ * 
  * @export
  * @interface V1Item
  */
 export interface V1Item {
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1Item
      */
     id?: string;
     /**
-     *
+     * 
      * @type {Date}
      * @memberof V1Item
      */
     createdAt?: Date;
     /**
-     *
+     * 
      * @type {Date}
      * @memberof V1Item
      */
     updatedAt?: Date;
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1Item
      */
@@ -477,57 +477,63 @@ export interface V1Item {
 }
 
 /**
- *
+ * 
  * @export
  * @interface V1ListCurrencyResponse
  */
 export interface V1ListCurrencyResponse {
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1ListCurrencyResponse
      */
     api?: string;
     /**
-     *
+     * 
      * @type {Array<V1Currency>}
      * @memberof V1ListCurrencyResponse
      */
     currencies?: Array<V1Currency>;
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1ListCurrencyResponse
      */
     nextPageToken?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof V1ListCurrencyResponse
+     */
+    totalSize?: number;
 }
 
 /**
- *
+ * 
  * @export
  * @interface V1ListItemResponse
  */
 export interface V1ListItemResponse {
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1ListItemResponse
      */
     api?: string;
     /**
-     *
+     * 
      * @type {Array<V1Item>}
      * @memberof V1ListItemResponse
      */
     items?: Array<V1Item>;
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1ListItemResponse
      */
     nextPageToken?: string;
     /**
-     *
+     * 
      * @type {number}
      * @memberof V1ListItemResponse
      */
@@ -535,31 +541,31 @@ export interface V1ListItemResponse {
 }
 
 /**
- *
+ * 
  * @export
  * @interface V1ListPlayerResponse
  */
 export interface V1ListPlayerResponse {
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1ListPlayerResponse
      */
     api?: string;
     /**
-     *
+     * 
      * @type {Array<V1Player>}
      * @memberof V1ListPlayerResponse
      */
     players?: Array<V1Player>;
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1ListPlayerResponse
      */
     nextPageToken?: string;
     /**
-     *
+     * 
      * @type {number}
      * @memberof V1ListPlayerResponse
      */
@@ -567,63 +573,95 @@ export interface V1ListPlayerResponse {
 }
 
 /**
- *
+ * 
+ * @export
+ * @interface V1ListStorageResponse
+ */
+export interface V1ListStorageResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1ListStorageResponse
+     */
+    api?: string;
+    /**
+     * 
+     * @type {Array<V1Storage>}
+     * @memberof V1ListStorageResponse
+     */
+    storages?: Array<V1Storage>;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1ListStorageResponse
+     */
+    nextPageToken?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof V1ListStorageResponse
+     */
+    totalSize?: number;
+}
+
+/**
+ * 
  * @export
  * @interface V1Player
  */
 export interface V1Player {
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1Player
      */
     id?: string;
     /**
-     *
-     * @type {Array<V1StorageBase>}
+     * 
+     * @type {Array<V1Storage>}
      * @memberof V1Player
      */
-    storages?: Array<V1StorageBase>;
+    storages?: Array<V1Storage>;
 }
 
 /**
- *
+ * 
  * @export
  * @interface V1Storage
  */
 export interface V1Storage {
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1Storage
      */
     id?: string;
     /**
-     *
+     * 
      * @type {Date}
      * @memberof V1Storage
      */
     createdAt?: Date;
     /**
-     *
+     * 
      * @type {Date}
      * @memberof V1Storage
      */
     updatedAt?: Date;
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1Storage
      */
     playerId?: string;
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1Storage
      */
     name?: string;
     /**
-     *
+     * 
      * @type {Array<V1StorageItem>}
      * @memberof V1Storage
      */
@@ -631,57 +669,37 @@ export interface V1Storage {
 }
 
 /**
- *
- * @export
- * @interface V1StorageBase
- */
-export interface V1StorageBase {
-    /**
-     *
-     * @type {string}
-     * @memberof V1StorageBase
-     */
-    id?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof V1StorageBase
-     */
-    name?: string;
-}
-
-/**
- *
+ * 
  * @export
  * @interface V1StorageCurrency
  */
 export interface V1StorageCurrency {
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1StorageCurrency
      */
     id?: string;
     /**
-     *
+     * 
      * @type {Date}
      * @memberof V1StorageCurrency
      */
     createdAt?: Date;
     /**
-     *
+     * 
      * @type {Date}
      * @memberof V1StorageCurrency
      */
     updatedAt?: Date;
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1StorageCurrency
      */
     currencyId?: string;
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1StorageCurrency
      */
@@ -689,31 +707,31 @@ export interface V1StorageCurrency {
 }
 
 /**
- *
+ * 
  * @export
  * @interface V1StorageItem
  */
 export interface V1StorageItem {
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1StorageItem
      */
     id?: string;
     /**
-     *
+     * 
      * @type {Date}
      * @memberof V1StorageItem
      */
     createdAt?: Date;
     /**
-     *
+     * 
      * @type {Date}
      * @memberof V1StorageItem
      */
     updatedAt?: Date;
     /**
-     *
+     * 
      * @type {V1Item}
      * @memberof V1StorageItem
      */
@@ -721,25 +739,25 @@ export interface V1StorageItem {
 }
 
 /**
- *
+ * 
  * @export
  * @interface V1UpdateItemRequest
  */
 export interface V1UpdateItemRequest {
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1UpdateItemRequest
      */
     api?: string;
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1UpdateItemRequest
      */
     itemId?: string;
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1UpdateItemRequest
      */
@@ -747,19 +765,19 @@ export interface V1UpdateItemRequest {
 }
 
 /**
- *
+ * 
  * @export
  * @interface V1UpdateItemResponse
  */
 export interface V1UpdateItemResponse {
     /**
-     *
+     * 
      * @type {string}
      * @memberof V1UpdateItemResponse
      */
     api?: string;
     /**
-     *
+     * 
      * @type {V1Item}
      * @memberof V1UpdateItemResponse
      */
@@ -774,9 +792,9 @@ export interface V1UpdateItemResponse {
 export const EconomyServiceApiFetchParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         *
+         * 
          * @summary Create a currency
-         * @param {V1CreateCurrencyRequest} body
+         * @param {V1CreateCurrencyRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -806,9 +824,9 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             };
         },
         /**
-         *
+         * 
          * @summary Create an Item
-         * @param {V1CreateItemRequest} body
+         * @param {V1CreateItemRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -838,9 +856,9 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             };
         },
         /**
-         *
+         * 
          * @summary Create a new Storage
-         * @param {V1CreateStorageRequest} body
+         * @param {V1CreateStorageRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -870,10 +888,10 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             };
         },
         /**
-         *
+         * 
          * @summary Get a currency
-         * @param {string} currencyId
-         * @param {string} [api]
+         * @param {string} currencyId 
+         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -904,10 +922,10 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             };
         },
         /**
-         *
+         * 
          * @summary Get an Item
-         * @param {string} itemId
-         * @param {string} [api]
+         * @param {string} itemId 
+         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -938,10 +956,10 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             };
         },
         /**
-         *
+         * 
          * @summary To see what Storages belong to an User
-         * @param {string} playerId
-         * @param {string} [api]
+         * @param {string} playerId 
+         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -972,10 +990,10 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             };
         },
         /**
-         *
+         * 
          * @summary Get the contents of a storage
-         * @param {string} storageId
-         * @param {string} [api]
+         * @param {string} storageId 
+         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1006,9 +1024,9 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             };
         },
         /**
-         *
+         * 
          * @summary Give an amount of Currency to a Storage
-         * @param {V1GiveCurrencyRequest} body
+         * @param {V1GiveCurrencyRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1038,9 +1056,9 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             };
         },
         /**
-         *
+         * 
          * @summary Give Item to a Storage
-         * @param {V1GiveItemRequest} body
+         * @param {V1GiveItemRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1070,11 +1088,11 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             };
         },
         /**
-         *
+         * 
          * @summary Shows all currencies
-         * @param {string} [api]
-         * @param {number} [pageSize]
-         * @param {string} [pageToken]
+         * @param {string} [api] 
+         * @param {number} [pageSize] 
+         * @param {string} [pageToken] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1108,11 +1126,11 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             };
         },
         /**
-         *
+         * 
          * @summary List all Items
-         * @param {string} [api]
-         * @param {number} [pageSize]
-         * @param {string} [pageToken]
+         * @param {string} [api] 
+         * @param {number} [pageSize] 
+         * @param {string} [pageToken] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1146,11 +1164,11 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             };
         },
         /**
-         *
+         * 
          * @summary List all players
-         * @param {string} [api]
-         * @param {number} [pageSize]
-         * @param {string} [pageToken]
+         * @param {string} [api] 
+         * @param {number} [pageSize] 
+         * @param {string} [pageToken] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1184,9 +1202,47 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             };
         },
         /**
-         *
+         * 
+         * @summary List all storages
+         * @param {string} [api] 
+         * @param {number} [pageSize] 
+         * @param {string} [pageToken] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listStorage(api?: string, pageSize?: number, pageToken?: string, options: any = {}): FetchArgs {
+            const localVarPath = `/v1/storage`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (api !== undefined) {
+                localVarQueryParameter['api'] = api;
+            }
+
+            if (pageSize !== undefined) {
+                localVarQueryParameter['page_size'] = pageSize;
+            }
+
+            if (pageToken !== undefined) {
+                localVarQueryParameter['page_token'] = pageToken;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Update an Item
-         * @param {V1UpdateItemRequest} body
+         * @param {V1UpdateItemRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1225,9 +1281,9 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
 export const EconomyServiceApiFp = function(configuration?: Configuration) {
     return {
         /**
-         *
+         * 
          * @summary Create a currency
-         * @param {V1CreateCurrencyRequest} body
+         * @param {V1CreateCurrencyRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1244,9 +1300,9 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         *
+         * 
          * @summary Create an Item
-         * @param {V1CreateItemRequest} body
+         * @param {V1CreateItemRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1263,9 +1319,9 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         *
+         * 
          * @summary Create a new Storage
-         * @param {V1CreateStorageRequest} body
+         * @param {V1CreateStorageRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1282,10 +1338,10 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         *
+         * 
          * @summary Get a currency
-         * @param {string} currencyId
-         * @param {string} [api]
+         * @param {string} currencyId 
+         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1302,10 +1358,10 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         *
+         * 
          * @summary Get an Item
-         * @param {string} itemId
-         * @param {string} [api]
+         * @param {string} itemId 
+         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1322,10 +1378,10 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         *
+         * 
          * @summary To see what Storages belong to an User
-         * @param {string} playerId
-         * @param {string} [api]
+         * @param {string} playerId 
+         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1342,10 +1398,10 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         *
+         * 
          * @summary Get the contents of a storage
-         * @param {string} storageId
-         * @param {string} [api]
+         * @param {string} storageId 
+         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1362,9 +1418,9 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         *
+         * 
          * @summary Give an amount of Currency to a Storage
-         * @param {V1GiveCurrencyRequest} body
+         * @param {V1GiveCurrencyRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1381,9 +1437,9 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         *
+         * 
          * @summary Give Item to a Storage
-         * @param {V1GiveItemRequest} body
+         * @param {V1GiveItemRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1400,11 +1456,11 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         *
+         * 
          * @summary Shows all currencies
-         * @param {string} [api]
-         * @param {number} [pageSize]
-         * @param {string} [pageToken]
+         * @param {string} [api] 
+         * @param {number} [pageSize] 
+         * @param {string} [pageToken] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1421,11 +1477,11 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         *
+         * 
          * @summary List all Items
-         * @param {string} [api]
-         * @param {number} [pageSize]
-         * @param {string} [pageToken]
+         * @param {string} [api] 
+         * @param {number} [pageSize] 
+         * @param {string} [pageToken] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1442,11 +1498,11 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         *
+         * 
          * @summary List all players
-         * @param {string} [api]
-         * @param {number} [pageSize]
-         * @param {string} [pageToken]
+         * @param {string} [api] 
+         * @param {number} [pageSize] 
+         * @param {string} [pageToken] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1463,9 +1519,30 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         *
+         * 
+         * @summary List all storages
+         * @param {string} [api] 
+         * @param {number} [pageSize] 
+         * @param {string} [pageToken] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listStorage(api?: string, pageSize?: number, pageToken?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1ListStorageResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).listStorage(api, pageSize, pageToken, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * 
          * @summary Update an Item
-         * @param {V1UpdateItemRequest} body
+         * @param {V1UpdateItemRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1491,9 +1568,9 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
 export const EconomyServiceApiFactory = function (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) {
     return {
         /**
-         *
+         * 
          * @summary Create a currency
-         * @param {V1CreateCurrencyRequest} body
+         * @param {V1CreateCurrencyRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1501,9 +1578,9 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
             return EconomyServiceApiFp(configuration).createCurrency(body, options)(fetch, basePath);
         },
         /**
-         *
+         * 
          * @summary Create an Item
-         * @param {V1CreateItemRequest} body
+         * @param {V1CreateItemRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1511,9 +1588,9 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
             return EconomyServiceApiFp(configuration).createItem(body, options)(fetch, basePath);
         },
         /**
-         *
+         * 
          * @summary Create a new Storage
-         * @param {V1CreateStorageRequest} body
+         * @param {V1CreateStorageRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1521,10 +1598,10 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
             return EconomyServiceApiFp(configuration).createStorage(body, options)(fetch, basePath);
         },
         /**
-         *
+         * 
          * @summary Get a currency
-         * @param {string} currencyId
-         * @param {string} [api]
+         * @param {string} currencyId 
+         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1532,10 +1609,10 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
             return EconomyServiceApiFp(configuration).getCurrency(currencyId, api, options)(fetch, basePath);
         },
         /**
-         *
+         * 
          * @summary Get an Item
-         * @param {string} itemId
-         * @param {string} [api]
+         * @param {string} itemId 
+         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1543,10 +1620,10 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
             return EconomyServiceApiFp(configuration).getItem(itemId, api, options)(fetch, basePath);
         },
         /**
-         *
+         * 
          * @summary To see what Storages belong to an User
-         * @param {string} playerId
-         * @param {string} [api]
+         * @param {string} playerId 
+         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1554,10 +1631,10 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
             return EconomyServiceApiFp(configuration).getPlayer(playerId, api, options)(fetch, basePath);
         },
         /**
-         *
+         * 
          * @summary Get the contents of a storage
-         * @param {string} storageId
-         * @param {string} [api]
+         * @param {string} storageId 
+         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1565,9 +1642,9 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
             return EconomyServiceApiFp(configuration).getStorage(storageId, api, options)(fetch, basePath);
         },
         /**
-         *
+         * 
          * @summary Give an amount of Currency to a Storage
-         * @param {V1GiveCurrencyRequest} body
+         * @param {V1GiveCurrencyRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1575,9 +1652,9 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
             return EconomyServiceApiFp(configuration).giveCurrency(body, options)(fetch, basePath);
         },
         /**
-         *
+         * 
          * @summary Give Item to a Storage
-         * @param {V1GiveItemRequest} body
+         * @param {V1GiveItemRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1585,11 +1662,11 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
             return EconomyServiceApiFp(configuration).giveItem(body, options)(fetch, basePath);
         },
         /**
-         *
+         * 
          * @summary Shows all currencies
-         * @param {string} [api]
-         * @param {number} [pageSize]
-         * @param {string} [pageToken]
+         * @param {string} [api] 
+         * @param {number} [pageSize] 
+         * @param {string} [pageToken] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1597,11 +1674,11 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
             return EconomyServiceApiFp(configuration).listCurrency(api, pageSize, pageToken, options)(fetch, basePath);
         },
         /**
-         *
+         * 
          * @summary List all Items
-         * @param {string} [api]
-         * @param {number} [pageSize]
-         * @param {string} [pageToken]
+         * @param {string} [api] 
+         * @param {number} [pageSize] 
+         * @param {string} [pageToken] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1609,11 +1686,11 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
             return EconomyServiceApiFp(configuration).listItem(api, pageSize, pageToken, options)(fetch, basePath);
         },
         /**
-         *
+         * 
          * @summary List all players
-         * @param {string} [api]
-         * @param {number} [pageSize]
-         * @param {string} [pageToken]
+         * @param {string} [api] 
+         * @param {number} [pageSize] 
+         * @param {string} [pageToken] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1621,9 +1698,21 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
             return EconomyServiceApiFp(configuration).listPlayer(api, pageSize, pageToken, options)(fetch, basePath);
         },
         /**
-         *
+         * 
+         * @summary List all storages
+         * @param {string} [api] 
+         * @param {number} [pageSize] 
+         * @param {string} [pageToken] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listStorage(api?: string, pageSize?: number, pageToken?: string, options?: any) {
+            return EconomyServiceApiFp(configuration).listStorage(api, pageSize, pageToken, options)(fetch, basePath);
+        },
+        /**
+         * 
          * @summary Update an Item
-         * @param {V1UpdateItemRequest} body
+         * @param {V1UpdateItemRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1641,9 +1730,9 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
  */
 export class EconomyServiceApi extends BaseAPI {
     /**
-     *
+     * 
      * @summary Create a currency
-     * @param {V1CreateCurrencyRequest} body
+     * @param {V1CreateCurrencyRequest} body 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
@@ -1653,9 +1742,9 @@ export class EconomyServiceApi extends BaseAPI {
     }
 
     /**
-     *
+     * 
      * @summary Create an Item
-     * @param {V1CreateItemRequest} body
+     * @param {V1CreateItemRequest} body 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
@@ -1665,9 +1754,9 @@ export class EconomyServiceApi extends BaseAPI {
     }
 
     /**
-     *
+     * 
      * @summary Create a new Storage
-     * @param {V1CreateStorageRequest} body
+     * @param {V1CreateStorageRequest} body 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
@@ -1677,10 +1766,10 @@ export class EconomyServiceApi extends BaseAPI {
     }
 
     /**
-     *
+     * 
      * @summary Get a currency
-     * @param {string} currencyId
-     * @param {string} [api]
+     * @param {string} currencyId 
+     * @param {string} [api] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
@@ -1690,10 +1779,10 @@ export class EconomyServiceApi extends BaseAPI {
     }
 
     /**
-     *
+     * 
      * @summary Get an Item
-     * @param {string} itemId
-     * @param {string} [api]
+     * @param {string} itemId 
+     * @param {string} [api] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
@@ -1703,10 +1792,10 @@ export class EconomyServiceApi extends BaseAPI {
     }
 
     /**
-     *
+     * 
      * @summary To see what Storages belong to an User
-     * @param {string} playerId
-     * @param {string} [api]
+     * @param {string} playerId 
+     * @param {string} [api] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
@@ -1716,10 +1805,10 @@ export class EconomyServiceApi extends BaseAPI {
     }
 
     /**
-     *
+     * 
      * @summary Get the contents of a storage
-     * @param {string} storageId
-     * @param {string} [api]
+     * @param {string} storageId 
+     * @param {string} [api] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
@@ -1729,9 +1818,9 @@ export class EconomyServiceApi extends BaseAPI {
     }
 
     /**
-     *
+     * 
      * @summary Give an amount of Currency to a Storage
-     * @param {V1GiveCurrencyRequest} body
+     * @param {V1GiveCurrencyRequest} body 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
@@ -1741,9 +1830,9 @@ export class EconomyServiceApi extends BaseAPI {
     }
 
     /**
-     *
+     * 
      * @summary Give Item to a Storage
-     * @param {V1GiveItemRequest} body
+     * @param {V1GiveItemRequest} body 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
@@ -1753,11 +1842,11 @@ export class EconomyServiceApi extends BaseAPI {
     }
 
     /**
-     *
+     * 
      * @summary Shows all currencies
-     * @param {string} [api]
-     * @param {number} [pageSize]
-     * @param {string} [pageToken]
+     * @param {string} [api] 
+     * @param {number} [pageSize] 
+     * @param {string} [pageToken] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
@@ -1767,11 +1856,11 @@ export class EconomyServiceApi extends BaseAPI {
     }
 
     /**
-     *
+     * 
      * @summary List all Items
-     * @param {string} [api]
-     * @param {number} [pageSize]
-     * @param {string} [pageToken]
+     * @param {string} [api] 
+     * @param {number} [pageSize] 
+     * @param {string} [pageToken] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
@@ -1781,11 +1870,11 @@ export class EconomyServiceApi extends BaseAPI {
     }
 
     /**
-     *
+     * 
      * @summary List all players
-     * @param {string} [api]
-     * @param {number} [pageSize]
-     * @param {string} [pageToken]
+     * @param {string} [api] 
+     * @param {number} [pageSize] 
+     * @param {string} [pageToken] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
@@ -1795,9 +1884,23 @@ export class EconomyServiceApi extends BaseAPI {
     }
 
     /**
-     *
+     * 
+     * @summary List all storages
+     * @param {string} [api] 
+     * @param {number} [pageSize] 
+     * @param {string} [pageToken] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EconomyServiceApi
+     */
+    public listStorage(api?: string, pageSize?: number, pageToken?: string, options?: any) {
+        return EconomyServiceApiFp(this.configuration).listStorage(api, pageSize, pageToken, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * 
      * @summary Update an Item
-     * @param {V1UpdateItemRequest} body
+     * @param {V1UpdateItemRequest} body 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
