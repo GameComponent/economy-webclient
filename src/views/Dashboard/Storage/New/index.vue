@@ -3,13 +3,28 @@
     <h1 style="margin-top: 0;">Create new storage</h1>
 
     <div>
-      <input type="text" v-model="storage.name">
-    </div>
-
-    <div>
-      <button @click="handleClickCreateStorage">
-        Create
-      </button>
+      <table>
+        <tr>
+          <td>Name:</td>
+          <td>
+            <input type="text" v-model="storage.name">
+          </td>
+        </tr>
+        <tr>
+          <td>player id:</td>
+          <td>
+            <input type="text" v-model="storage.playerId">
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <button @click="handleClickCreateStorage">
+              Create
+            </button>
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
 </template>
@@ -34,6 +49,16 @@ export default class CreateStorage extends Vue {
       alert('Please enter an player_id name.');
       return;
     }
+
+    this.$economyService.createStorage(this.storage)
+      .then(() => {
+        this.$router.push({
+          name: 'dashboard-player-detail',
+          params: {
+            id: this.storage.playerId,
+          },
+        });
+      });
   }
 }
 </script>
