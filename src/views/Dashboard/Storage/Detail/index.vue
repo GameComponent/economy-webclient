@@ -32,14 +32,33 @@
       </table>
     </div>
 
-    <pre class="gc-pre">{{ JSON.stringify(storage, null, 2) }}</pre>
+    <!-- Give item -->
+    <div v-if="storage">
+      <h2>Give item</h2>
+      <div class="gc-wrapper-1">
+        <give-item
+          :storageId="this.$route.params.id"
+        ></give-item>
+      </div>
+    </div>
+
+    <!-- Raw storage -->
+    <div v-if="storage">
+      <h2>Raw storage</h2>
+      <pre class="gc-pre">{{ JSON.stringify(storage, null, 2) }}</pre>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import GiveItem from '@/components/GiveItem.vue';
 
-@Component
+@Component({
+  components: {
+    GiveItem,
+  },
+})
 export default class Storage extends Vue {
   public storage = null;
 
