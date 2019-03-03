@@ -7,6 +7,7 @@
         <tr>
           <th>ID</th>
           <th>Name</th>
+          <th>Player id</th>
           <th>Created at</th>
           <th>Updated at</th>
           <th></th>
@@ -16,6 +17,7 @@
         <tr v-for="storage in storages" :key="storage.id">
           <td>{{ storage.id }}</td>
           <td>{{ storage.name }}</td>
+          <td>{{ storage.playerId }}</td>
           <td>{{ new Date(storage.createdAt).toLocaleString() }}</td>
           <td>{{ new Date(storage.updatedAt).toLocaleString() }}</td>
           <td>
@@ -50,5 +52,12 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component
 export default class Storage extends Vue {
   public storages = [];
+
+  public mounted() {
+    this.$economyService.listStorage()
+      .then(({ storages }) => {
+        this.storages = storages;
+      });
+  }
 }
 </script>
