@@ -79,6 +79,40 @@ html, body {
   padding: 20px;
   border-radius: 5px;
 }
+
+// Wrapper component
+.gc-wrapper-1 {
+  border-left: 3px solid #bdbbbb;
+  background-color: #eee;
+  padding: 20px;
+  border-radius: 5px
+}
+
+// Input component
+.gc-input {
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px solid #bdbbbb;
+}
+
+// Button component
+.gc-button {
+  display: inline-block;
+  background-color: #38c172;
+  color: white;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+  border: 0;
+  cursor: pointer;
+}
+
+.gc-button:hover {
+  background-color: #249d57;
+  transition: .2s;
+}
 </style>
 
 <template>
