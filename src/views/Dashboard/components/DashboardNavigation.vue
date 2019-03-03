@@ -128,6 +128,10 @@
   .sidenav__close-icon {
     visibility: hidden;
   }
+
+  .sidenav__list-item--desktop-hidden {
+    display: none;
+  }
 }
 </style>
 
@@ -228,7 +232,10 @@
           <span>Settings</span>
         </a>
       </li>
-      <li class="sidenav__list-item" @click="$emit('close')">
+      <li
+        class="sidenav__list-item sidenav__list-item--desktop-hidden"
+        @click="$emit('close')"
+      >
         <a>
           <icon-close />
           <span>Close</span>
