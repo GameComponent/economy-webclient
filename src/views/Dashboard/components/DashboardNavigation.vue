@@ -34,6 +34,16 @@
   margin-left: 40px;
 }
 
+.sidebar__top-version {
+  font-size: 10px;
+  color: #1B655E;
+  background-color: #E3FCEC;
+  padding: 3px;
+  border-radius: 5px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
 .sidenav__close-icon {
   position: absolute;
   visibility: visible;
@@ -93,8 +103,8 @@
 }
 
 .sidenav__list-item a.router-link-active {
-  color: #187741;
-  fill: #187741;
+  color: #38c172;
+  fill: #38c172;
 }
 
 .sidenav__list-item a:hover {
@@ -125,9 +135,9 @@
   <aside class="sidenav">
     <div class="sidebar__top">
       <span class="sidebar__top-title">
-
         Economy Service
       </span>
+      <span class="sidebar__top-version">0.0.1</span>
     </div>
     <div class="sidenav__close-icon">
       <i class="fas fa-times sidenav__brand-close"></i>
