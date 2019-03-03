@@ -15,6 +15,7 @@
 .menu-icon__circle {
   background-color: #38c172;
   color: white;
+  fill: white;
   width: 40px;
   height: 40px;
   align-items: center;
@@ -23,10 +24,23 @@
   border-radius: 100%;
 }
 </style>
+
 <template>
-  <div class="menu-icon">
+  <div class="menu-icon" @click.prevent.stop="$emit('click')">
     <div class="menu-icon__circle">
-      M
+      <icon-menu />
     </div>
   </div>
 </template>
+
+<script lang="ts">
+import { Component, Prop, Watch, Vue} from 'vue-property-decorator';
+import IconMenu from '@/assets/icons/icon-menu.svg';
+
+@Component({
+  components: {
+    IconMenu,
+  },
+})
+export default class DashboardMenuIcon extends Vue {}
+</script>

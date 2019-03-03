@@ -8,7 +8,7 @@
   position: fixed;
   overflow-y: auto;
   transform: translateX(-245px);
-  transition: all .6s ease-in-out;
+  transition: all .15s ease-in-out;
   z-index: 2; /* Needs to sit above the hamburger menu icon */
   background-color: #fff;
   border-left: 5px solid #38c172;
@@ -121,7 +121,7 @@
 /* Non-mobile styles, 750px breakpoint */
 @media only screen and (min-width: 46.875em) {
   .sidenav {
-    position: relative;
+    // position: relative;
     transform: translateX(0);
   }
 
@@ -132,16 +132,25 @@
 </style>
 
 <template>
-  <aside class="sidenav">
+  <aside
+    class="sidenav"
+    :class="{ 'active': open }"
+    @click.prevent.stop
+  >
+    <!-- Title bar -->
     <div class="sidebar__top">
       <span class="sidebar__top-title">
         Economy Service
       </span>
       <span class="sidebar__top-version">0.0.1</span>
     </div>
+
+    <!-- Close button -->
     <div class="sidenav__close-icon">
       <i class="fas fa-times sidenav__brand-close"></i>
     </div>
+
+    <!-- Navigation -->
     <ul class="sidenav__list">
       <li class="sidenav__list-item">
         <router-link :to="{ name: 'dashboard-home' }">
@@ -191,8 +200,15 @@
           <span>Crafting</span>
         </a>
       </li>
+      <li class="sidenav__list-item sidebar__list-item--disabled">
+        <a href="https://google.com">
+          <icon-trophy />
+          <span>Drop tables</span>
+        </a>
+      </li>
     </ul>
 
+    <!-- Technical navigation -->
     <ul class="sidenav__list sidenav__list--bottom">
       <li class="sidenav__list-item sidebar__list-item--disabled">
         <router-link :to="{ name: 'dashboard-iam' }">
@@ -212,12 +228,18 @@
           <span>Settings</span>
         </a>
       </li>
+      <li class="sidenav__list-item" @click="$emit('close')">
+        <a>
+          <icon-close />
+          <span>Close</span>
+        </a>
+      </li>
     </ul>
   </aside>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Prop, Watch, Vue} from 'vue-property-decorator';
 import IconHome from '@/assets/icons/icon-home.svg';
 import IconStar from '@/assets/icons/icon-star.svg';
 import IconBriefcase from '@/assets/icons/icon-briefcase.svg';
@@ -229,6 +251,8 @@ import IconCog from '@/assets/icons/icon-cog.svg';
 import IconStore from '@/assets/icons/icon-store.svg';
 import IconBuilding from '@/assets/icons/icon-building.svg';
 import IconPuzzle from '@/assets/icons/icon-puzzle.svg';
+import IconTrophy from '@/assets/icons/icon-trophy.svg';
+import IconClose from '@/assets/icons/icon-x-square.svg';
 
 @Component({
   components: {
@@ -243,7 +267,29 @@ import IconPuzzle from '@/assets/icons/icon-puzzle.svg';
     IconStore,
     IconBuilding,
     IconPuzzle,
+    IconTrophy,
+    IconClose,
   },
 })
-export default class DashboardNavigation extends Vue {};
+export default class DashboardNavigation extends Vue {
+  @Prop() private open: boolean;
+  private clickListener = null;
+
+  public mounted() {
+    this.clickListener = window.addEventListener('click', this.handleClickOutside);
+  }
+
+  public beforeDestroy() {
+    window.removeEventListener('click', this.clickListener);
+  }
+
+  public handleClickOutside() {
+    this.$emit('close');
+  }
+
+  @Watch('$route')
+  onRouteChanged() {
+    this.$emit('close');
+  }
+};
 </script>

@@ -30,13 +30,16 @@
 
 <template>
   <div class="grid-container">
-    <dashboard-menu-icon />
-    <dashboard-navigation />
+    <dashboard-menu-icon @click="handleClickMenuIcon" />
+    <dashboard-navigation
+      :open="menuOpen"
+      @close="handleCloseNavigation"
+    />
 
     <main class="main">
       <router-view/>
     </main>
-  </div> 
+  </div>
 </template>
 
 <script lang="ts">
@@ -50,5 +53,15 @@ import DashboardMenuIcon from './components/DashboardMenuIcon.vue';
     DashboardMenuIcon,
   },
 })
-export default class Dashboard extends Vue {}
+export default class Dashboard extends Vue {
+  public menuOpen = false;
+
+  public handleClickMenuIcon() {
+    this.menuOpen = !this.menuOpen;
+  }
+
+  public handleCloseNavigation() {
+    this.menuOpen = false;
+  }
+}
 </script>
