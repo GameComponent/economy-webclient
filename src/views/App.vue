@@ -72,6 +72,11 @@ html, body {
   border-bottom: 1px solid #eee;
 }
 
+.gc-table__description {
+  font-size: 10px;
+  color: #888;
+}
+
 // Pre component
 .gc-pre {
   border-left: 3px solid #38c172;

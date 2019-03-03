@@ -14,16 +14,17 @@
         <thead>
           <tr>
             <th>Unique ID</th>
-            <th>Item ID</th>
-            <th>Name</th>
+            <th>Item</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="storageItem in storage.items" :key="storageItem.id">
             <td>{{ storageItem.id }}</td>
-            <td>{{ storageItem.item.id }}</td>
-            <td>{{ storageItem.item.name }}</td>
+            <td>
+              <div>{{ storageItem.item.name }}</div>
+              <div class="gc-table__description">({{ storageItem.item.id }})</div>
+            </td>
             <td>
               <a href="">Remove</a>
             </td>
