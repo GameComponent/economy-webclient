@@ -173,6 +173,52 @@ export interface V1CreateItemResponse {
 /**
  * 
  * @export
+ * @interface V1CreatePlayerRequest
+ */
+export interface V1CreatePlayerRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1CreatePlayerRequest
+     */
+    api?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1CreatePlayerRequest
+     */
+    id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1CreatePlayerRequest
+     */
+    name?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1CreatePlayerResponse
+ */
+export interface V1CreatePlayerResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1CreatePlayerResponse
+     */
+    api?: string;
+    /**
+     * 
+     * @type {V1Player}
+     * @memberof V1CreatePlayerResponse
+     */
+    player?: V1Player;
+}
+
+/**
+ * 
+ * @export
  * @interface V1CreateStorageRequest
  */
 export interface V1CreateStorageRequest {
@@ -618,10 +664,144 @@ export interface V1Player {
     id?: string;
     /**
      * 
+     * @type {string}
+     * @memberof V1Player
+     */
+    name?: string;
+    /**
+     * 
      * @type {Array<V1Storage>}
      * @memberof V1Player
      */
     storages?: Array<V1Storage>;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1SearchItemRequest
+ */
+export interface V1SearchItemRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1SearchItemRequest
+     */
+    api?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1SearchItemRequest
+     */
+    query?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof V1SearchItemRequest
+     */
+    pageSize?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1SearchItemRequest
+     */
+    pageToken?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1SearchItemResponse
+ */
+export interface V1SearchItemResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1SearchItemResponse
+     */
+    api?: string;
+    /**
+     * 
+     * @type {Array<V1Item>}
+     * @memberof V1SearchItemResponse
+     */
+    items?: Array<V1Item>;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1SearchItemResponse
+     */
+    nextPageToken?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof V1SearchItemResponse
+     */
+    totalSize?: number;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1SearchPlayerRequest
+ */
+export interface V1SearchPlayerRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1SearchPlayerRequest
+     */
+    api?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1SearchPlayerRequest
+     */
+    query?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof V1SearchPlayerRequest
+     */
+    pageSize?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1SearchPlayerRequest
+     */
+    pageToken?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1SearchPlayerResponse
+ */
+export interface V1SearchPlayerResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1SearchPlayerResponse
+     */
+    api?: string;
+    /**
+     * 
+     * @type {Array<V1Player>}
+     * @memberof V1SearchPlayerResponse
+     */
+    players?: Array<V1Player>;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1SearchPlayerResponse
+     */
+    nextPageToken?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof V1SearchPlayerResponse
+     */
+    totalSize?: number;
 }
 
 /**
@@ -848,6 +1028,38 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>"V1CreateItemRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Create a player
+         * @param {V1CreatePlayerRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createPlayer(body: V1CreatePlayerRequest, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling createPlayer.');
+            }
+            const localVarPath = `/v1/player`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"V1CreatePlayerRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
 
             return {
@@ -1241,6 +1453,70 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
         },
         /**
          * 
+         * @summary Search item
+         * @param {V1SearchItemRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        searchItem(body: V1SearchItemRequest, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling searchItem.');
+            }
+            const localVarPath = `/v1/item/search`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"V1SearchItemRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Search player
+         * @param {V1SearchPlayerRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        searchPlayer(body: V1SearchPlayerRequest, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling searchPlayer.');
+            }
+            const localVarPath = `/v1/player/search`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"V1SearchPlayerRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Update an Item
          * @param {V1UpdateItemRequest} body 
          * @param {*} [options] Override http request option.
@@ -1308,6 +1584,25 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
          */
         createItem(body: V1CreateItemRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1CreateItemResponse> {
             const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).createItem(body, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * 
+         * @summary Create a player
+         * @param {V1CreatePlayerRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createPlayer(body: V1CreatePlayerRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1CreatePlayerResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).createPlayer(body, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -1541,6 +1836,44 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Search item
+         * @param {V1SearchItemRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        searchItem(body: V1SearchItemRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1SearchItemResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).searchItem(body, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * 
+         * @summary Search player
+         * @param {V1SearchPlayerRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        searchPlayer(body: V1SearchPlayerRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1SearchPlayerResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).searchPlayer(body, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * 
          * @summary Update an Item
          * @param {V1UpdateItemRequest} body 
          * @param {*} [options] Override http request option.
@@ -1586,6 +1919,16 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
          */
         createItem(body: V1CreateItemRequest, options?: any) {
             return EconomyServiceApiFp(configuration).createItem(body, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Create a player
+         * @param {V1CreatePlayerRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createPlayer(body: V1CreatePlayerRequest, options?: any) {
+            return EconomyServiceApiFp(configuration).createPlayer(body, options)(fetch, basePath);
         },
         /**
          * 
@@ -1711,6 +2054,26 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
         },
         /**
          * 
+         * @summary Search item
+         * @param {V1SearchItemRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        searchItem(body: V1SearchItemRequest, options?: any) {
+            return EconomyServiceApiFp(configuration).searchItem(body, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Search player
+         * @param {V1SearchPlayerRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        searchPlayer(body: V1SearchPlayerRequest, options?: any) {
+            return EconomyServiceApiFp(configuration).searchPlayer(body, options)(fetch, basePath);
+        },
+        /**
+         * 
          * @summary Update an Item
          * @param {V1UpdateItemRequest} body 
          * @param {*} [options] Override http request option.
@@ -1751,6 +2114,18 @@ export class EconomyServiceApi extends BaseAPI {
      */
     public createItem(body: V1CreateItemRequest, options?: any) {
         return EconomyServiceApiFp(this.configuration).createItem(body, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Create a player
+     * @param {V1CreatePlayerRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EconomyServiceApi
+     */
+    public createPlayer(body: V1CreatePlayerRequest, options?: any) {
+        return EconomyServiceApiFp(this.configuration).createPlayer(body, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -1895,6 +2270,30 @@ export class EconomyServiceApi extends BaseAPI {
      */
     public listStorage(api?: string, pageSize?: number, pageToken?: string, options?: any) {
         return EconomyServiceApiFp(this.configuration).listStorage(api, pageSize, pageToken, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Search item
+     * @param {V1SearchItemRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EconomyServiceApi
+     */
+    public searchItem(body: V1SearchItemRequest, options?: any) {
+        return EconomyServiceApiFp(this.configuration).searchItem(body, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Search player
+     * @param {V1SearchPlayerRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EconomyServiceApi
+     */
+    public searchPlayer(body: V1SearchPlayerRequest, options?: any) {
+        return EconomyServiceApiFp(this.configuration).searchPlayer(body, options)(this.fetch, this.basePath);
     }
 
     /**

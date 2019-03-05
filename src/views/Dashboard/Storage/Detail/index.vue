@@ -36,11 +36,9 @@
     <!-- Give item -->
     <div v-if="storage">
       <h2>Give item</h2>
-      <div class="gc-wrapper-1">
-        <give-item
-          :storageId="this.$route.params.id"
-        ></give-item>
-      </div>
+      <give-item
+        :storageId="this.$route.params.id"
+      ></give-item>
     </div>
 
     <!-- Raw storage -->
@@ -53,7 +51,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import GiveItem from '@/components/GiveItem.vue';
+import GiveItem from '@/components/GiveItem/index.vue';
 
 @Component({
   components: {

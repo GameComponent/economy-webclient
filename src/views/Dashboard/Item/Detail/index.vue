@@ -5,9 +5,7 @@
     <!-- Give item -->
     <div>
       <h2>Give item</h2>
-      <div class="gc-wrapper-1">
-        <give-item :itemId="$route.params.id" />
-      </div>
+      <give-item :itemId="$route.params.id" />
     </div>
 
     <!-- Raw item -->
@@ -20,7 +18,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import GiveItem from '@/components/GiveItem.vue';
+import GiveItem from '@/components/GiveItem/index.vue';
 
 @Component({
   components: {
