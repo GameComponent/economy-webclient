@@ -1,4 +1,6 @@
 # Economy Service Webclient
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FGameComponent%2Feconomy-webclient.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FGameComponent%2Feconomy-webclient?ref=badge_shield)
+
 The economy service is a service to manage your game's economy.
 
 - [What is the economy service?](#what-is-the-economy-service)
@@ -46,3 +48,7 @@ npm run test:unit
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FGameComponent%2Feconomy-webclient.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FGameComponent%2Feconomy-webclient?ref=badge_large)
