@@ -1,3 +1,5 @@
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FGameComponent%2Feconomy-webclient.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FGameComponent%2Feconomy-webclient?ref=badge_shield)
+
 # Economy Service Webclient
 The economy service is a service to manage your game's economy.
 
