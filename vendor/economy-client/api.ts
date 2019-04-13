@@ -692,6 +692,38 @@ export interface V1Item {
 /**
  * 
  * @export
+ * @interface V1ListConfigResponse
+ */
+export interface V1ListConfigResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1ListConfigResponse
+     */
+    api?: string;
+    /**
+     * 
+     * @type {Array<V1Config>}
+     * @memberof V1ListConfigResponse
+     */
+    configs?: Array<V1Config>;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1ListConfigResponse
+     */
+    nextPageToken?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof V1ListConfigResponse
+     */
+    totalSize?: number;
+}
+
+/**
+ * 
+ * @export
  * @interface V1ListCurrencyResponse
  */
 export interface V1ListCurrencyResponse {
@@ -1626,6 +1658,44 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
         },
         /**
          * 
+         * @summary List all configs
+         * @param {string} [api] 
+         * @param {number} [pageSize] 
+         * @param {string} [pageToken] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listConfig(api?: string, pageSize?: number, pageToken?: string, options: any = {}): FetchArgs {
+            const localVarPath = `/v1/config`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (api !== undefined) {
+                localVarQueryParameter['api'] = api;
+            }
+
+            if (pageSize !== undefined) {
+                localVarQueryParameter['page_size'] = pageSize;
+            }
+
+            if (pageToken !== undefined) {
+                localVarQueryParameter['page_token'] = pageToken;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Shows all currencies
          * @param {string} [api] 
          * @param {number} [pageSize] 
@@ -2180,6 +2250,27 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary List all configs
+         * @param {string} [api] 
+         * @param {number} [pageSize] 
+         * @param {string} [pageToken] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listConfig(api?: string, pageSize?: number, pageToken?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1ListConfigResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).listConfig(api, pageSize, pageToken, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * 
          * @summary Shows all currencies
          * @param {string} [api] 
          * @param {number} [pageSize] 
@@ -2493,6 +2584,18 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
         },
         /**
          * 
+         * @summary List all configs
+         * @param {string} [api] 
+         * @param {number} [pageSize] 
+         * @param {string} [pageToken] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listConfig(api?: string, pageSize?: number, pageToken?: string, options?: any) {
+            return EconomyServiceApiFp(configuration).listConfig(api, pageSize, pageToken, options)(fetch, basePath);
+        },
+        /**
+         * 
          * @summary Shows all currencies
          * @param {string} [api] 
          * @param {number} [pageSize] 
@@ -2746,6 +2849,20 @@ export class EconomyServiceApi extends BaseAPI {
      */
     public giveItem(body: V1GiveItemRequest, options?: any) {
         return EconomyServiceApiFp(this.configuration).giveItem(body, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary List all configs
+     * @param {string} [api] 
+     * @param {number} [pageSize] 
+     * @param {string} [pageToken] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EconomyServiceApi
+     */
+    public listConfig(api?: string, pageSize?: number, pageToken?: string, options?: any) {
+        return EconomyServiceApiFp(this.configuration).listConfig(api, pageSize, pageToken, options)(this.fetch, this.basePath);
     }
 
     /**

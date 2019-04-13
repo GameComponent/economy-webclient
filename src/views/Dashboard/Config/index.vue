@@ -5,7 +5,8 @@
     <table class="gc-table">
       <thead>
         <tr>
-          <th>ID</th>
+          <th>Key</th>
+          <th>Value</th>
           <th></th>
         </tr>
       </thead>
@@ -13,20 +14,38 @@
         <tr v-for="config in configs" :key="config.key">
           <td>{{ config.key }}</td>
           <td>
-            <!-- <router-link
-              :to="{
-                name: 'dashboard-player-detail',
-                params: {
-                  id: player.id,
-                },
-              }"
-            >
-              View
-            </router-link> -->
+            <textarea cols="30" rows="10">{{ config.value }}</textarea>
+          </td>
+          <td>
+            Update
           </td>
         </tr>
       </tbody>
     </table>
+
+    <div style="margin-top: 3rem;">
+      <h2>Create new config</h2>
+      <table>
+        <tr>
+          <td>
+            Key:
+          </td>
+          <td>
+            <input
+              v-model="config.key"
+              type="text"
+            >
+          </td>
+        </tr>
+        <tr>
+          <td>Value:</td>
+          <td>
+            <!-- <textarea v-model="config.value" cols="30" rows="10"></textarea> -->
+          </td>
+        </tr>
+      </table>
+      <button @click="onClickCreateConfig">Create</button>
+    </div>
   </div>
 </template>
 
@@ -36,12 +55,24 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component
 export default class Config extends Vue {
   public configs = [];
+  public config = {
+    key: '',
+    value: {},
+  };
 
   public mounted() {
-    // this.$economyService.listPlayer()
-    //   .then(({ players }) => {
-    //     this.players = players;
-    //   });
+    this.$economyService.listConfig()
+      .then(({ configs }) => {
+        this.configs = configs;
+      });
   }
+
+  public onClickCreateConfig() {
+    this.$economyService.setConfig(this.config)
+      .then((result) => {
+        console.log('result', result);
+      });
+  }
+
 }
 </script>
