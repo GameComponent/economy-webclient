@@ -118,11 +118,16 @@ html, body {
   background-color: #249d57;
   transition: .2s;
 }
+
+.gc-label-title {
+  color: #555;
+  font-size: 10px;
+}
 </style>
 
 <template>
   <div id="app">
-    <router-view/>
+    <router-view />
   </div>
 </template>
 

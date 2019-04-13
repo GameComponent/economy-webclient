@@ -79,6 +79,153 @@ export class RequiredError extends Error {
 }
 
 /**
+ * `ListValue` is a wrapper around a repeated field of values.  The JSON representation for `ListValue` is JSON array.
+ * @export
+ * @interface ProtobufListValue
+ */
+export interface ProtobufListValue {
+    /**
+     * Repeated field of dynamically typed values.
+     * @type {Array<ProtobufValue>}
+     * @memberof ProtobufListValue
+     */
+    values?: Array<ProtobufValue>;
+}
+
+/**
+ * `NullValue` is a singleton enumeration to represent the null value for the `Value` type union.   The JSON representation for `NullValue` is JSON `null`.   - NULL_VALUE: Null value.
+ * @export
+ * @enum {string}
+ */
+export enum ProtobufNullValue {
+    NULLVALUE = <any> 'NULL_VALUE'
+}
+
+/**
+ * `Struct` represents a structured data value, consisting of fields which map to dynamically typed values. In some languages, `Struct` might be supported by a native representation. For example, in scripting languages like JS a struct is represented as an object. The details of that representation are described together with the proto support for the language.  The JSON representation for `Struct` is JSON object.
+ * @export
+ * @interface ProtobufStruct
+ */
+export interface ProtobufStruct {
+    /**
+     * Unordered map of dynamically typed values.
+     * @type {{ [key: string]: ProtobufValue; }}
+     * @memberof ProtobufStruct
+     */
+    fields?: { [key: string]: ProtobufValue; };
+}
+
+/**
+ * `Value` represents a dynamically typed value which can be either null, a number, a string, a boolean, a recursive struct value, or a list of values. A producer of value is expected to set one of that variants, absence of any variant indicates an error.  The JSON representation for `Value` is JSON value.
+ * @export
+ * @interface ProtobufValue
+ */
+export interface ProtobufValue {
+    /**
+     * Represents a null value.
+     * @type {ProtobufNullValue}
+     * @memberof ProtobufValue
+     */
+    nullValue?: ProtobufNullValue;
+    /**
+     * Represents a double value.
+     * @type {number}
+     * @memberof ProtobufValue
+     */
+    numberValue?: number;
+    /**
+     * Represents a string value.
+     * @type {string}
+     * @memberof ProtobufValue
+     */
+    stringValue?: string;
+    /**
+     * Represents a boolean value.
+     * @type {boolean}
+     * @memberof ProtobufValue
+     */
+    boolValue?: boolean;
+    /**
+     * Represents a structured value.
+     * @type {ProtobufStruct}
+     * @memberof ProtobufValue
+     */
+    structValue?: ProtobufStruct;
+    /**
+     * Represents a repeated `Value`.
+     * @type {ProtobufListValue}
+     * @memberof ProtobufValue
+     */
+    listValue?: ProtobufListValue;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1AuthenticateRequest
+ */
+export interface V1AuthenticateRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1AuthenticateRequest
+     */
+    api?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1AuthenticateRequest
+     */
+    email?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1AuthenticateRequest
+     */
+    password?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1AuthenticateResponse
+ */
+export interface V1AuthenticateResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1AuthenticateResponse
+     */
+    api?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1AuthenticateResponse
+     */
+    token?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1Config
+ */
+export interface V1Config {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1Config
+     */
+    key?: string;
+    /**
+     * 
+     * @type {ProtobufStruct}
+     * @memberof V1Config
+     */
+    value?: ProtobufStruct;
+}
+
+/**
  * 
  * @export
  * @interface V1CreateCurrencyRequest
@@ -304,6 +451,26 @@ export interface V1Currency {
      * @memberof V1Currency
      */
     symbol?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1GetConfigResponse
+ */
+export interface V1GetConfigResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1GetConfigResponse
+     */
+    api?: string;
+    /**
+     * 
+     * @type {V1Config}
+     * @memberof V1GetConfigResponse
+     */
+    config?: V1Config;
 }
 
 /**
@@ -679,6 +846,52 @@ export interface V1Player {
 /**
  * 
  * @export
+ * @interface V1RegisterRequest
+ */
+export interface V1RegisterRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1RegisterRequest
+     */
+    api?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1RegisterRequest
+     */
+    email?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1RegisterRequest
+     */
+    password?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1RegisterResponse
+ */
+export interface V1RegisterResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1RegisterResponse
+     */
+    api?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1RegisterResponse
+     */
+    token?: string;
+}
+
+/**
+ * 
+ * @export
  * @interface V1SearchItemRequest
  */
 export interface V1SearchItemRequest {
@@ -802,6 +1015,52 @@ export interface V1SearchPlayerResponse {
      * @memberof V1SearchPlayerResponse
      */
     totalSize?: number;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1SetConfigRequest
+ */
+export interface V1SetConfigRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1SetConfigRequest
+     */
+    api?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1SetConfigRequest
+     */
+    key?: string;
+    /**
+     * 
+     * @type {ProtobufStruct}
+     * @memberof V1SetConfigRequest
+     */
+    value?: ProtobufStruct;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1SetConfigResponse
+ */
+export interface V1SetConfigResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1SetConfigResponse
+     */
+    api?: string;
+    /**
+     * 
+     * @type {V1Config}
+     * @memberof V1SetConfigResponse
+     */
+    config?: V1Config;
 }
 
 /**
@@ -973,6 +1232,38 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
     return {
         /**
          * 
+         * @summary Authenticate a user
+         * @param {V1AuthenticateRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authenticate(body: V1AuthenticateRequest, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling authenticate.');
+            }
+            const localVarPath = `/v1/authenticate`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"V1AuthenticateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Create a currency
          * @param {V1CreateCurrencyRequest} body 
          * @param {*} [options] Override http request option.
@@ -1093,6 +1384,40 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>"V1CreateStorageRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get a config
+         * @param {string} key 
+         * @param {string} [api] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getConfig(key: string, api?: string, options: any = {}): FetchArgs {
+            // verify required parameter 'key' is not null or undefined
+            if (key === null || key === undefined) {
+                throw new RequiredError('key','Required parameter key was null or undefined when calling getConfig.');
+            }
+            const localVarPath = `/v1/config/{key}`
+                .replace(`{${"key"}}`, encodeURIComponent(String(key)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (api !== undefined) {
+                localVarQueryParameter['api'] = api;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
 
             return {
                 url: url.format(localVarUrlObj),
@@ -1453,6 +1778,38 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
         },
         /**
          * 
+         * @summary Register a user
+         * @param {V1RegisterRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        register(body: V1RegisterRequest, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling register.');
+            }
+            const localVarPath = `/v1/register`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"V1RegisterRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Search item
          * @param {V1SearchItemRequest} body 
          * @param {*} [options] Override http request option.
@@ -1517,6 +1874,38 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
         },
         /**
          * 
+         * @summary Set a config
+         * @param {V1SetConfigRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        setConfig(body: V1SetConfigRequest, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling setConfig.');
+            }
+            const localVarPath = `/v1/config`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"V1SetConfigRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Update an Item
          * @param {V1UpdateItemRequest} body 
          * @param {*} [options] Override http request option.
@@ -1556,6 +1945,25 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
  */
 export const EconomyServiceApiFp = function(configuration?: Configuration) {
     return {
+        /**
+         * 
+         * @summary Authenticate a user
+         * @param {V1AuthenticateRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authenticate(body: V1AuthenticateRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1AuthenticateResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).authenticate(body, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
         /**
          * 
          * @summary Create a currency
@@ -1622,6 +2030,26 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
          */
         createStorage(body: V1CreateStorageRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1CreateStorageResponse> {
             const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).createStorage(body, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * 
+         * @summary Get a config
+         * @param {string} key 
+         * @param {string} [api] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getConfig(key: string, api?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1GetConfigResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).getConfig(key, api, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -1836,6 +2264,25 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Register a user
+         * @param {V1RegisterRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        register(body: V1RegisterRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1RegisterResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).register(body, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * 
          * @summary Search item
          * @param {V1SearchItemRequest} body 
          * @param {*} [options] Override http request option.
@@ -1862,6 +2309,25 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
          */
         searchPlayer(body: V1SearchPlayerRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1SearchPlayerResponse> {
             const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).searchPlayer(body, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * 
+         * @summary Set a config
+         * @param {V1SetConfigRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        setConfig(body: V1SetConfigRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1SetConfigResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).setConfig(body, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -1902,6 +2368,16 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
     return {
         /**
          * 
+         * @summary Authenticate a user
+         * @param {V1AuthenticateRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authenticate(body: V1AuthenticateRequest, options?: any) {
+            return EconomyServiceApiFp(configuration).authenticate(body, options)(fetch, basePath);
+        },
+        /**
+         * 
          * @summary Create a currency
          * @param {V1CreateCurrencyRequest} body 
          * @param {*} [options] Override http request option.
@@ -1939,6 +2415,17 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
          */
         createStorage(body: V1CreateStorageRequest, options?: any) {
             return EconomyServiceApiFp(configuration).createStorage(body, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Get a config
+         * @param {string} key 
+         * @param {string} [api] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getConfig(key: string, api?: string, options?: any) {
+            return EconomyServiceApiFp(configuration).getConfig(key, api, options)(fetch, basePath);
         },
         /**
          * 
@@ -2054,6 +2541,16 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
         },
         /**
          * 
+         * @summary Register a user
+         * @param {V1RegisterRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        register(body: V1RegisterRequest, options?: any) {
+            return EconomyServiceApiFp(configuration).register(body, options)(fetch, basePath);
+        },
+        /**
+         * 
          * @summary Search item
          * @param {V1SearchItemRequest} body 
          * @param {*} [options] Override http request option.
@@ -2071,6 +2568,16 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
          */
         searchPlayer(body: V1SearchPlayerRequest, options?: any) {
             return EconomyServiceApiFp(configuration).searchPlayer(body, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Set a config
+         * @param {V1SetConfigRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        setConfig(body: V1SetConfigRequest, options?: any) {
+            return EconomyServiceApiFp(configuration).setConfig(body, options)(fetch, basePath);
         },
         /**
          * 
@@ -2092,6 +2599,18 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
  * @extends {BaseAPI}
  */
 export class EconomyServiceApi extends BaseAPI {
+    /**
+     * 
+     * @summary Authenticate a user
+     * @param {V1AuthenticateRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EconomyServiceApi
+     */
+    public authenticate(body: V1AuthenticateRequest, options?: any) {
+        return EconomyServiceApiFp(this.configuration).authenticate(body, options)(this.fetch, this.basePath);
+    }
+
     /**
      * 
      * @summary Create a currency
@@ -2138,6 +2657,19 @@ export class EconomyServiceApi extends BaseAPI {
      */
     public createStorage(body: V1CreateStorageRequest, options?: any) {
         return EconomyServiceApiFp(this.configuration).createStorage(body, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Get a config
+     * @param {string} key 
+     * @param {string} [api] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EconomyServiceApi
+     */
+    public getConfig(key: string, api?: string, options?: any) {
+        return EconomyServiceApiFp(this.configuration).getConfig(key, api, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -2274,6 +2806,18 @@ export class EconomyServiceApi extends BaseAPI {
 
     /**
      * 
+     * @summary Register a user
+     * @param {V1RegisterRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EconomyServiceApi
+     */
+    public register(body: V1RegisterRequest, options?: any) {
+        return EconomyServiceApiFp(this.configuration).register(body, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * 
      * @summary Search item
      * @param {V1SearchItemRequest} body 
      * @param {*} [options] Override http request option.
@@ -2294,6 +2838,18 @@ export class EconomyServiceApi extends BaseAPI {
      */
     public searchPlayer(body: V1SearchPlayerRequest, options?: any) {
         return EconomyServiceApiFp(this.configuration).searchPlayer(body, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Set a config
+     * @param {V1SetConfigRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EconomyServiceApi
+     */
+    public setConfig(body: V1SetConfigRequest, options?: any) {
+        return EconomyServiceApiFp(this.configuration).setConfig(body, options)(this.fetch, this.basePath);
     }
 
     /**
