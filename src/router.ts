@@ -2,15 +2,18 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import Dashboard from './views/Dashboard/index.vue';
+import Login from './views/Login.vue';
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     {
       path: '/',
+      component: Login,
+      name: 'login',
     },
     {
       path: '/dashboard',
@@ -92,7 +95,32 @@ export default new Router({
           name: 'dashboard-iam',
           component: () => import(/* webpackChunkName: "iam" */ './views/Dashboard/IAM/index.vue'),
         },
+        {
+          path: 'config',
+          name: 'dashboard-config',
+          component: () => import(/* webpackChunkName: "config" */ './views/Dashboard/Config/index.vue'),
+        },
+        {
+          path: 'logout',
+          name: 'dashboard-logout',
+          component: () => import(/* webpackChunkName: "logout" */ './views/Dashboard/Logout.vue'),
+        },
       ],
     },
   ],
 });
+
+router.beforeEach((to, from, next) => {
+  if (to.path === '/') {
+    next();
+    return;
+  }
+
+  if (!localStorage.getItem('token')) {
+    next('/');
+  }
+
+  next();
+});
+
+export default router;

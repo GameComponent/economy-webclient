@@ -220,18 +220,29 @@
           <span>IAM</span>
         </router-link>
       </li>
+
       <li class="sidenav__list-item">
-        <a href="https://google.com">
+        <a href="https://www.gamecomponent.com/developers/economy-service">
           <icon-information />
           <span>Documentation</span>
         </a>
       </li>
+
       <li class="sidenav__list-item">
-        <a href="https://google.com">
+        <router-link :to="{ name: 'dashboard-config' }">
           <icon-cog />
-          <span>Settings</span>
-        </a>
+          <span>Config</span>
+        </router-link>
       </li>
+
+      <li class="sidenav__list-item">
+        <router-link :to="{ name: 'dashboard-logout' }">
+          <icon-logout />
+          <span>Logout</span>
+        </router-link>
+      </li>
+
+
       <li
         class="sidenav__list-item sidenav__list-item--desktop-hidden"
         @click="$emit('close')"
@@ -260,6 +271,7 @@ import IconBuilding from '@/assets/icons/icon-building.svg';
 import IconPuzzle from '@/assets/icons/icon-puzzle.svg';
 import IconTrophy from '@/assets/icons/icon-trophy.svg';
 import IconClose from '@/assets/icons/icon-x-square.svg';
+import IconLogout from '@/assets/icons/icon-x-circle.svg';
 
 @Component({
   components: {
@@ -276,6 +288,7 @@ import IconClose from '@/assets/icons/icon-x-square.svg';
     IconPuzzle,
     IconTrophy,
     IconClose,
+    IconLogout,
   },
 })
 export default class DashboardNavigation extends Vue {
