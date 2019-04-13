@@ -3,25 +3,22 @@
     <h1 style="margin-top: 0;">Create new currency</h1>
 
     <div>
-      <table>
-        <tr>
-          <td>Name</td>
-          <td>
-            <input type="text" v-model="currency.name">
-          </td>
-        </tr>
-        <tr>
-          <td>Shortname</td>
-          <td>
-            <input type="text" v-model="currency.shortName">
-          </td>
-        </tr>
-      </table>
+      <p>
+        <b class="gc-label-title">Name</b><br>
+        <input type="text" v-model="currency.name" class="gc-input">
+      </p>
 
-    </div>
+      <p>
+        <b class="gc-label-title">Shortname</b><br>
+        <input type="text" v-model="currency.shortName" class="gc-input">
+      </p>
 
-    <div>
-      <button @click="handleClickCreateCurrency">
+      <p>
+        <b class="gc-label-title">Symbol</b><br>
+        <input type="text" v-model="currency.symbol" class="gc-input">
+      </p>
+
+      <button @click="handleClickCreateCurrency" class="gc-button">
         Create
       </button>
     </div>
