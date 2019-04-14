@@ -3,6 +3,11 @@ import App from './views/App.vue';
 import router from './router';
 import store from './store/index';
 import { EconomyServicePlugin } from '@/services/EconomyService';
+import VueCodemirror from 'vue-codemirror';
+
+import 'codemirror/lib/codemirror.css';
+import 'codemirror/mode/javascript/javascript.js';
+import 'codemirror/theme/lucario.css';
 
 import GcButtonLink from './components/GcButtonLink.vue';
 
@@ -17,3 +22,13 @@ new Vue({
 Vue.use(EconomyServicePlugin);
 
 Vue.component('gc-button-link', GcButtonLink);
+
+Vue.use(VueCodemirror, {
+  options: {
+    tabSize: 2,
+    mode: 'text/javascript',
+    theme: 'lucario',
+    lineNumbers: true,
+    line: true,
+  },
+});

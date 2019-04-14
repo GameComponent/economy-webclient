@@ -1,3 +1,11 @@
+<style>
+  .CodeMirror {
+    border: 1px solid #eee;
+    height: auto;
+    border-radius: 3px;
+  }
+</style>
+
 <template>
   <div style="padding: 3rem;">
     <h1 style="margin-top: 0;">Config</h1>
@@ -13,8 +21,11 @@
       <tbody>
         <tr v-for="config in configs" :key="config.key">
           <td>{{ config.key }}</td>
-          <td>
-            <textarea cols="30" rows="10">{{ config.value }}</textarea>
+          <td style="width: 300px;">
+            <codemirror
+              :value="JSON.stringify(config.value, null, 2)"
+            ></codemirror>
+            <!-- <textarea cols="30" rows="3" class="gc-input">{{ config.value }}</textarea> -->
           </td>
           <td>
             Update
@@ -25,40 +36,49 @@
 
     <div style="margin-top: 3rem;">
       <h2>Create new config</h2>
-      <table>
+      <table style="width: 100%;">
         <tr>
           <td>
             Key:
           </td>
           <td>
             <input
-              v-model="config.key"
+              v-model="key"
+              class="gc-input"
               type="text"
+              placeholder="Key"
             >
           </td>
         </tr>
         <tr>
           <td>Value:</td>
           <td>
-            <!-- <textarea v-model="config.value" cols="30" rows="10"></textarea> -->
+            <codemirror
+              v-model="value"
+            ></codemirror>
           </td>
         </tr>
       </table>
-      <button @click="onClickCreateConfig">Create</button>
+
+      <button
+        @click="onClickCreateConfig"
+        :disabled="!valueObject"
+        class="gc-button"
+      >
+        Create
+      </button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Watch } from 'vue-property-decorator';
 
 @Component
 export default class Config extends Vue {
-  public configs = [];
-  public config = {
-    key: '',
-    value: {},
-  };
+  public configs: Array<any> = [];
+  public key: string = '';
+  public value: string = '';
 
   public mounted() {
     this.$economyService.listConfig()
@@ -68,11 +88,41 @@ export default class Config extends Vue {
   }
 
   public onClickCreateConfig() {
-    this.$economyService.setConfig(this.config)
+    this.$economyService.setConfig({
+      key: this.key,
+      value: this.valueObject,
+    })
       .then((result) => {
-        console.log('result', result);
+        this.$router.push({
+          name: 'dashboard-config',
+        });
       });
   }
 
+  public generateValueForKey(key) {
+    return ['{', '\n', `  "${key}": ""`, '\n', '}']
+      .reduce((a, b) => `${a}${b}`, '');
+  }
+
+  get valueObject() {
+    try {
+      return JSON.parse(this.value);
+    } catch(e) {
+      return null;
+    }
+
+    return null;
+  }
+
+  @Watch('key')
+  onKeyChange(key: string, oldKey: string) {
+    if (this.value === '') {
+      this.value = this.generateValueForKey(key);
+    }
+
+    if (this.value === this.generateValueForKey(oldKey)) {
+      this.value = this.generateValueForKey(key);
+    }
+  }
 }
 </script>
