@@ -24,15 +24,21 @@
           <td style="width: 300px;">
             <codemirror
               :value="JSON.stringify(config.value, null, 2)"
+              @input="(value) => { onInputConfig(config.key, value); }"
             ></codemirror>
           </td>
           <td>
-            Update
+            <span v-if="editedConfigs[config.key]">
+              <a href="#" @click="onClickUpdateConfig(config.key)">
+                Update
+              </a>
+            </span>
           </td>
         </tr>
       </tbody>
     </table>
 
+    <!-- Create new config -->
     <div style="margin-top: 3rem;">
       <h2>Create new config</h2>
       <table style="width: 100%;">
@@ -77,6 +83,7 @@ import { Component, Vue, Watch } from 'vue-property-decorator';
 @Component
 export default class Config extends Vue {
   public configs: Array<any> = [];
+  public editedConfigs = {};
   public key: string = '';
   public value: string = '';
 
@@ -93,9 +100,43 @@ export default class Config extends Vue {
       value: this.valueObject,
     })
       .then((result) => {
-        this.$router.push({
-          name: 'dashboard-config',
-        });
+        this.$router.go(0);
+      });
+  }
+
+  public onInputConfig(key, value) {
+    if (this.editedConfigs[key]) {
+      this.editedConfigs[key].value = value;
+      return;
+    }
+
+    this.$set(this.editedConfigs, key, { key, value });
+  }
+
+  public onClickUpdateConfig(key) {
+    const config = this.editedConfigs[key];
+
+    // Parse the value to an object
+    let valueObject = null;
+    try {
+      valueObject = JSON.parse(config.value);
+    } catch(e) {
+      return null;
+    }
+
+    // Check if the object is valid
+    if (!valueObject) {
+      alert('Invalid value');
+      return;
+    }
+
+    // Set the new config and force a page refresh
+    this.$economyService.setConfig({
+      key: config.key,
+      value: valueObject,
+    })
+      .then((result) => {
+        this.$router.go(0);
       });
   }
 
