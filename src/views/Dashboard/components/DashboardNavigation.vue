@@ -222,7 +222,7 @@
       </li>
 
       <li class="sidenav__list-item">
-        <a href="https://www.gamecomponent.com/developers/economy-service">
+        <a href="https://www.gamecomponent.com/developers/economy-service" target="_blank">
           <icon-information />
           <span>Documentation</span>
         </a>
