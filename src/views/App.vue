@@ -119,6 +119,10 @@ html, body {
   transition: .2s;
 }
 
+.gc-button--disabled {
+  background-color: #888;
+}
+
 .gc-label-title {
   color: #555;
   font-size: 10px;

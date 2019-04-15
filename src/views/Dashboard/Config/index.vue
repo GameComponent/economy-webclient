@@ -25,7 +25,6 @@
             <codemirror
               :value="JSON.stringify(config.value, null, 2)"
             ></codemirror>
-            <!-- <textarea cols="30" rows="3" class="gc-input">{{ config.value }}</textarea> -->
           </td>
           <td>
             Update
@@ -64,6 +63,7 @@
         @click="onClickCreateConfig"
         :disabled="!valueObject"
         class="gc-button"
+        :class="{ 'gc-button--disabled': !valueObject }"
       >
         Create
       </button>
@@ -99,11 +99,6 @@ export default class Config extends Vue {
       });
   }
 
-  public generateValueForKey(key) {
-    return ['{', '\n', `  "${key}": ""`, '\n', '}']
-      .reduce((a, b) => `${a}${b}`, '');
-  }
-
   get valueObject() {
     try {
       return JSON.parse(this.value);
@@ -112,17 +107,6 @@ export default class Config extends Vue {
     }
 
     return null;
-  }
-
-  @Watch('key')
-  onKeyChange(key: string, oldKey: string) {
-    if (this.value === '') {
-      this.value = this.generateValueForKey(key);
-    }
-
-    if (this.value === this.generateValueForKey(oldKey)) {
-      this.value = this.generateValueForKey(key);
-    }
   }
 }
 </script>
