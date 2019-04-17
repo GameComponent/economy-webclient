@@ -10,7 +10,7 @@
 
 <template>
   <div class="wrapper">
-    <div style="padding: 3rem;">
+    <div class="p-16">
       <h1>Login</h1>
 
       <div>
@@ -22,7 +22,7 @@
         >
       </div>
 
-      <div>
+      <div class="mt-2">
         <input
           v-model="loginForm.password"
           class="gc-input"
@@ -31,7 +31,7 @@
         >
       </div>
 
-      <button @click="onClickLogin" class="gc-button">
+      <button @click="onClickLogin" class="gc-button mt-4">
         Login
       </button>
 

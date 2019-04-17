@@ -1,13 +1,21 @@
 <template>
-  <div style="padding: 3rem;">
-    <h1 style="margin-top: 0;">Create new item</h1>
+  <div class="p-16">
+    <h1>Create new item</h1>
 
-    <div>
-      <input type="text" v-model="item.name">
+    <div class="mt-4">
+      <input
+        v-model="item.name"
+        type="text"
+        class="gc-input"
+        placeholder="Item name"
+      >
     </div>
 
-    <div>
-      <button @click="handleClickCreateItem">
+    <div class="mt-4">
+      <button
+        class="gc-button"
+        @click="handleClickCreateItem"
+      >
         Create
       </button>
     </div>

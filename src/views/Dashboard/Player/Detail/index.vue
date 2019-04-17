@@ -1,10 +1,10 @@
 <template>
-  <div style="padding: 3rem;">
-    <h1 style="margin-top: 0;">Player</h1>
+  <div class="p-16">
+    <h1>Player</h1>
 
-    <div v-if="player && player.storages">
+    <div v-if="player && player.storages" class="mt-4">
       <h2>Storages</h2>
-      <table class="gc-table">
+      <table class="gc-table mt-4">
         <thead>
           <tr>
             <th>ID</th>
@@ -36,21 +36,23 @@
         </tbody>
       </table>
 
-      <gc-button-link
-        :to="{
-          name: 'dashboard-storage-new',
-          query: {
-            playerId: this.player.id,
-          },
-        }"
-      >
-        Create new storage
-      </gc-button-link>
+      <div class="mt-4">
+        <gc-button-link
+          :to="{
+            name: 'dashboard-storage-new',
+            query: {
+              playerId: this.player.id,
+            },
+          }"
+        >
+          Create new storage
+        </gc-button-link>
+      </div>
     </div>
 
-    <div>
+    <div class="mt-8">
       <h2>Raw</h2>
-      <pre class="gc-pre">{{ JSON.stringify(player, null, 2) }}</pre>
+      <pre class="gc-pre mt-4">{{ JSON.stringify(player, null, 2) }}</pre>
     </div>
   </div>
 </template>

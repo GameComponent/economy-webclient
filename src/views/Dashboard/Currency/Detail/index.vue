@@ -1,7 +1,7 @@
 <template>
-  <div style="padding: 3rem;">
-    <h1 style="margin-top: 0;">Currency</h1>
-    <pre>{{ JSON.stringify(currency, null, 2) }}</pre>
+  <div class="p-16">
+    <h1>Currency</h1>
+    <pre class="gc-pre mt-4">{{ JSON.stringify(currency, null, 2) }}</pre>
   </div>
 </template>
 

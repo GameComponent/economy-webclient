@@ -1,0 +1,12 @@
+@tailwind preflight;
+@tailwind components;
+
+@import 'table.scss';
+@import 'button.scss';
+@import 'pre.scss';
+@import 'input.scss';
+@import 'wrapper.scss';
+@import 'label-title.scss';
+@import 'titles.scss';
+
+@tailwind utilities;

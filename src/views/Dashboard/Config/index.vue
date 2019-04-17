@@ -7,10 +7,10 @@
 </style>
 
 <template>
-  <div style="padding: 3rem;">
-    <h1 style="margin-top: 0;">Config</h1>
+  <div class="p-16">
+    <h1>Config</h1>
 
-    <table class="gc-table">
+    <table class="gc-table mt-4">
       <thead>
         <tr>
           <th>Key</th>
@@ -21,7 +21,7 @@
       <tbody>
         <tr v-for="config in configs" :key="config.key">
           <td>{{ config.key }}</td>
-          <td style="width: 300px;">
+          <td>
             <codemirror
               :value="JSON.stringify(config.value, null, 2)"
               @input="(value) => { onInputConfig(config.key, value); }"
@@ -39,9 +39,10 @@
     </table>
 
     <!-- Create new config -->
-    <div style="margin-top: 3rem;">
+    <div class="mt-8">
       <h2>Create new config</h2>
-      <table style="width: 100%;">
+
+      <table class="w-full mt-4">
         <tr>
           <td>
             Key:
@@ -63,16 +64,20 @@
             ></codemirror>
           </td>
         </tr>
+        <tr>
+          <td></td>
+          <td>
+            <button
+              @click="onClickCreateConfig"
+              :disabled="!valueObject"
+              class="gc-button"
+              :class="{ 'gc-button--disabled': !valueObject }"
+            >
+              Create
+            </button>
+          </td>
+        </tr>
       </table>
-
-      <button
-        @click="onClickCreateConfig"
-        :disabled="!valueObject"
-        class="gc-button"
-        :class="{ 'gc-button--disabled': !valueObject }"
-      >
-        Create
-      </button>
     </div>
   </div>
 </template>

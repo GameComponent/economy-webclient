@@ -1,6 +1,6 @@
 <template>
-  <div style="padding: 3rem;">
-    <h1 style="margin-top: 0;">Identity and Access Management</h1>
+  <div class="p-16">
+    <h1>Identity and Access Management</h1>
   </div>
 </template>
 

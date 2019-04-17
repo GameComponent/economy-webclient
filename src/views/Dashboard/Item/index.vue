@@ -1,8 +1,8 @@
 <template>
-  <div style="padding: 3rem;">
-    <h1 style="margin-top: 0;">Items</h1>
+  <div class="p-16">
+    <h1>Items</h1>
 
-    <table style="text-align: left;" class="gc-table">
+    <table class="gc-table text-left mt-4">
       <thead>
         <tr>
           <th>ID</th>
@@ -34,13 +34,15 @@
       </tbody>
     </table>
 
-    <gc-button-link
-      :to="{
-        name: 'dashboard-item-new',
-      }"
-    >
-      Create new item
-    </gc-button-link>
+    <div class="mt-4">
+      <gc-button-link
+        :to="{
+          name: 'dashboard-item-new',
+        }"
+      >
+        Create new item
+      </gc-button-link>
+    </div>
   </div>
 </template>
 

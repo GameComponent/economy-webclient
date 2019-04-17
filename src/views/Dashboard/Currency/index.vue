@@ -1,7 +1,8 @@
 <template>
-  <div style="padding: 3rem;">
-    <h1 style="margin-top: 0;">Currencies</h1>
-    <table style="text-align: left;" class="gc-table">
+  <div class="p-16">
+    <h1>Currencies</h1>
+
+    <table class="gc-table text-left mt-4">
       <thead>
         <tr>
           <th>ID</th>
@@ -33,7 +34,7 @@
       </tbody>
     </table>
 
-  <div style="margin-top: 20px;">
+  <div class="mt-4">
     <gc-button-link
       :to="{
         name: 'dashboard-currency-new',

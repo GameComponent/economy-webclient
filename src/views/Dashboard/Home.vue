@@ -1,6 +1,9 @@
 <template>
-  <div style="padding: 3rem;">
+  <div class="p-16">
     <h1>Dashboard</h1>
+    <div class="mt-4">
+      Welcome to the Economy service.
+    </div>
   </div>
 </template>
 

@@ -1,15 +1,18 @@
 <template>
-  <div style="padding: 3rem;">
-    <h1 style="margin-top: 0;">Item</h1>
+  <div class="p-16">
+    <h1>Item</h1>
 
     <!-- Give item -->
-    <div>
+    <div class="mt-4">
       <h2>Give item</h2>
-      <give-item :itemId="$route.params.id" />
+
+      <div class="mt-4">
+        <give-item :itemId="$route.params.id" />
+      </div>
     </div>
 
     <!-- Raw item -->
-    <div>
+    <div class="mt-8">
       <h2>Raw item</h2>
       <pre class="gc-pre">{{ JSON.stringify(item, null, 2) }}</pre>
     </div>

@@ -9,6 +9,8 @@ import 'codemirror/lib/codemirror.css';
 import 'codemirror/mode/javascript/javascript.js';
 import 'codemirror/theme/lucario.css';
 
+import './assets/css/styles.scss';
+
 import GcButtonLink from './components/GcButtonLink.vue';
 
 Vue.config.productionTip = false;

@@ -1,8 +1,8 @@
 <template>
-  <div style="padding: 3rem;">
-    <h1 style="margin-top: 0;">Storages</h1>
+  <div class="p-16">
+    <h1>Storages</h1>
 
-    <table style="text-align: left;" class="gc-table">
+    <table class="gc-table text-left mt-4">
       <thead>
         <tr>
           <th>ID</th>
@@ -36,13 +36,15 @@
       </tbody>
     </table>
 
-    <gc-button-link
-      :to="{
-        name: 'dashboard-storage-new',
-      }"
-    >
-      Create new storage
-    </gc-button-link>
+    <div class="mt-4">
+      <gc-button-link
+        :to="{
+          name: 'dashboard-storage-new',
+        }"
+      >
+        Create new storage
+      </gc-button-link>
+    </div>
   </div>
 </template>
 

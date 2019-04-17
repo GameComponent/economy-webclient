@@ -1,11 +1,11 @@
 <template>
-  <div style="padding: 3rem;">
-    <h1 style="margin-top: 0;">Create new player</h1>
+  <div class="p-16">
+    <h1>Create new player</h1>
 
-    <div>
+    <div class="mt-4">
       <table>
         <tr>
-          <td>Id:</td>
+          <td>ID:</td>
           <td>
             <input
               v-model="player.id"
@@ -24,6 +24,7 @@
             >
           </td>
         </tr>
+
         <tr>
           <td></td>
           <td>
@@ -32,11 +33,16 @@
             </button>
           </td>
         </tr>
-      </table>
 
-      <div v-if="error">
-        A player with a same ID already exists.
-      </div>
+        <tr v-if="error">
+          <td></td>
+          <td>
+            <div class="bg-red-500 text-white rounded p-3">
+              <span class="font-semibold">Error:</span> a player with a same ID already exists.
+            </div>
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
 </template>

@@ -1,8 +1,8 @@
 <template>
-  <div style="padding: 3rem;">
-    <h1 style="margin-top: 0;">Create new storage</h1>
+  <div class="p-16">
+    <h1>Create new storage</h1>
 
-    <div>
+    <div class="mt-4">
       <table>
         <tr>
           <td>Name:</td>

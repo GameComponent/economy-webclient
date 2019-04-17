@@ -1,8 +1,8 @@
 <template>
-  <div style="padding: 3rem;">
-    <h1 style="margin-top: 0;">Players</h1>
+  <div class="p-16">
+    <h1>Players</h1>
 
-    <table class="gc-table">
+    <table class="gc-table mt-4">
       <thead>
         <tr>
           <th>ID</th>
@@ -28,13 +28,15 @@
       </tbody>
     </table>
 
-    <gc-button-link
-      :to="{
-        name: 'dashboard-player-new',
-      }"
-    >
-      Create new player
-    </gc-button-link>
+    <div class="mt-4">
+      <gc-button-link
+        :to="{
+          name: 'dashboard-player-new',
+        }"
+      >
+        Create new player
+      </gc-button-link>
+    </div>
   </div>
 </template>
 

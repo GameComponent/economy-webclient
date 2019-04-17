@@ -1,16 +1,16 @@
 <template>
-  <div style="padding: 3rem;">
-    <h1 style="margin-top: 0;">Storage</h1>
+  <div class="p-16">
+    <h1>Storage</h1>
 
     <!-- Storage Items -->
-    <div v-if="storage && storage.items">
+    <div v-if="storage && storage.items" class="mt-4">
       <h2>Items</h2>
 
-      <div v-if="storage.items.lenght === 0">
+      <div v-if="storage.items.lenght === 0" class="mt-4">
         Sorry, no items found in the storage
       </div>
 
-      <table class="gc-table" v-if="storage.items.length > 0">
+      <table class="gc-table mt-4" v-if="storage.items.length > 0">
         <thead>
           <tr>
             <th>Unique ID</th>
@@ -34,15 +34,18 @@
     </div>
 
     <!-- Give item -->
-    <div v-if="storage">
+    <div v-if="storage" class="mt-8">
       <h2>Give item</h2>
-      <give-item
-        :storageId="this.$route.params.id"
-      ></give-item>
+
+      <div class="mt-4">
+        <give-item
+          :storageId="this.$route.params.id"
+        ></give-item>
+      </div>
     </div>
 
     <!-- Raw storage -->
-    <div v-if="storage">
+    <div v-if="storage" class="mt-8">
       <h2>Raw storage</h2>
       <pre class="gc-pre">{{ JSON.stringify(storage, null, 2) }}</pre>
     </div>
