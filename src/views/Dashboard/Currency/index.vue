@@ -54,8 +54,6 @@ export default class Currency extends Vue {
   public currencies = [];
 
   public mounted() {
-    const kaas = this.$economyService.listCurrency();
-    console.log(kaas);
     this.$economyService.listCurrency()
       .then(({ currencies }) => {
         this.currencies = currencies;
