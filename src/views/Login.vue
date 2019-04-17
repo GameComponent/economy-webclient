@@ -13,7 +13,7 @@
     <div class="p-16">
       <h1>Login</h1>
 
-      <div>
+      <div class="mt-4">
         <input
           v-model="loginForm.email"
           class="gc-input"
@@ -60,6 +60,13 @@ export default class Login extends Vue {
       this.$router.push({
         name: 'dashboard-home',
       });
+    }
+
+    if (this.$route.query.reason) {
+      this.error = {
+        message: 'Unable to connect to server',
+        code: 'no status code',
+      };
     }
   }
 
