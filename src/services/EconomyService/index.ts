@@ -6,6 +6,7 @@ import {
 } from '@/../vendor/economy-client';
 
 import * as portableFetch from "portable-fetch";
+import Vue from 'vue';
 
 declare module 'vue/types/vue' {
   interface Vue {
@@ -26,15 +27,15 @@ const hookedFetch: FetchAPI = (url: string, init?: any) => {
 
   return fetch(url, init)
     .then((res) => {
-      if (res.status < 200 || res.status >= 400) {
+      if (res.status === 401) {
         localStorage.removeItem('token');
+        window.location.reload();
         return res;
       }
 
       return res;
     })
     .catch((err) => {
-      console.log('errzzz', err);
       return err;
     });
 };
