@@ -35,7 +35,19 @@
           </tr>
         </tbody>
       </table>
+
+      <gc-button-link
+        :to="{
+          name: 'dashboard-storage-new',
+          query: {
+            playerId: this.player.id,
+          },
+        }"
+      >
+        Create new storage
+      </gc-button-link>
     </div>
+
     <div>
       <h2>Raw</h2>
       <pre class="gc-pre">{{ JSON.stringify(player, null, 2) }}</pre>

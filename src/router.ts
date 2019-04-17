@@ -71,6 +71,11 @@ const router = new Router({
           component: () => import(/* webpackChunkName: "player" */ './views/Dashboard/Player/index.vue'),
         },
         {
+          path: 'player/new',
+          name: 'dashboard-player-new',
+          component: () => import(/* webpackChunkName: "player" */ './views/Dashboard/Player/New/index.vue'),
+        },
+        {
           path: 'player/:id',
           name: 'dashboard-player-detail',
           component: () => import(/* webpackChunkName: "player" */ './views/Dashboard/Player/Detail/index.vue'),

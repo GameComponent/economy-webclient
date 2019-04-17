@@ -27,6 +27,14 @@
         </tr>
       </tbody>
     </table>
+
+    <gc-button-link
+      :to="{
+        name: 'dashboard-player-new',
+      }"
+    >
+      Create new player
+    </gc-button-link>
   </div>
 </template>
 
