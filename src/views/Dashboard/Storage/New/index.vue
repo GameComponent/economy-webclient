@@ -7,19 +7,27 @@
         <tr>
           <td>Name:</td>
           <td>
-            <input type="text" v-model="storage.name">
+            <input
+              v-model="storage.name"
+              type="text"
+              class="gc-input"
+            >
           </td>
         </tr>
         <tr>
           <td>player id:</td>
           <td>
-            <input type="text" v-model="storage.playerId">
+            <input
+              v-model="storage.playerId"
+              type="text"
+              class="gc-input"
+            >
           </td>
         </tr>
         <tr>
           <td></td>
           <td>
-            <button @click="handleClickCreateStorage">
+            <button @click="handleClickCreateStorage" class="gc-button">
               Create
             </button>
           </td>
@@ -38,6 +46,12 @@ export default class CreateStorage extends Vue {
     name: '',
     playerId: '',
   };
+
+  public mounted(): void {
+    if (!this.$route.query.playerId) return;
+
+    this.storage.playerId = String(this.$route.query.playerId);
+  }
 
   public handleClickCreateStorage(): void {
     if (this.storage.name.length === 0) {
