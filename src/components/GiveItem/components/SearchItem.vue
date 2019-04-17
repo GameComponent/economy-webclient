@@ -6,7 +6,7 @@
           class="gc-input"
           type="text"
           v-model="query"
-          placeholder="Search player"
+          placeholder="Search item"
         >
         <button
           class="gc-button"
