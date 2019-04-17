@@ -139,7 +139,6 @@
   <aside
     class="sidenav"
     :class="{ 'active': open }"
-    @click.prevent.stop
   >
     <!-- Title bar -->
     <div class="sidebar__top">
@@ -249,7 +248,7 @@
       >
         <a>
           <icon-close />
-          <span>Close</span>
+          <span>Close sidebar</span>
         </a>
       </li>
     </ul>
