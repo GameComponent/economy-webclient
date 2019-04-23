@@ -1,0 +1,45 @@
+<template>
+  <div>
+    <select-currency
+      v-if="!currencyId || currencyId === ''"
+      @input="handleInputCurrency"
+    />
+  </div>
+</template>
+
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import { V1GiveCurrencyRequest } from '@/../vendor/economy-client/api.ts';
+import SelectCurrency from './components/SelectCurrency.vue';
+
+@Component({
+  components: {
+    SelectCurrency,
+  },
+})
+export default class GiveCurrency extends Vue {
+  @Prop() private currencyId: string;
+  @Prop() private storageId: string;
+
+  public request: V1GiveCurrencyRequest = {
+    currencyId: '',
+    storageId: '',
+    amount: '0',
+  };
+
+  public mounted() {
+    this.request.currencyId = this.currencyId;
+    this.request.storageId = this.storageId;
+  }
+
+  public handleInputCurrency({ currencyId, amount }) {
+    this.request.currencyId = currencyId;
+    this.request.amount = amount;
+
+    this.$economyService.giveCurrency(this.request)
+      .then(() => {
+        this.$router.go(this.$router.currentRoute);
+      });
+  }
+}
+</script>
