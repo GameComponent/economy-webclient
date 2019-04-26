@@ -96,6 +96,36 @@ const router = new Router({
           component: () => import(/* webpackChunkName: "storage" */ './views/Dashboard/Storage/Detail/index.vue'),
         },
         {
+          path: 'shop',
+          name: 'dashboard-shop',
+          component: () => import(/* webpackChunkName: "shop" */ './views/Dashboard/Shop/index.vue'),
+        },
+        {
+          path: 'shop/new',
+          name: 'dashboard-shop-new',
+          component: () => import(/* webpackChunkName: "shop" */ './views/Dashboard/Shop/New/index.vue'),
+        },
+        {
+          path: 'shop/product',
+          name: 'dashboard-shop-product',
+          component: () => import(/* webpackChunkName: "shop" */ './views/Dashboard/Shop/Product/index.vue'),
+        },
+        {
+          path: 'shop/product/new',
+          name: 'dashboard-shop-product-new',
+          component: () => import(/* webpackChunkName: "shop" */ './views/Dashboard/Shop/Product/New/index.vue'),
+        },
+        {
+          path: 'shop/product/:id',
+          name: 'dashboard-shop-product-detail',
+          component: () => import(/* webpackChunkName: "shop" */ './views/Dashboard/Shop/Product/Detail/index.vue'),
+        },
+        {
+          path: 'shop/:id',
+          name: 'dashboard-shop-detail',
+          component: () => import(/* webpackChunkName: "shop" */ './views/Dashboard/Shop/Detail/index.vue'),
+        },
+        {
           path: 'iam',
           name: 'dashboard-iam',
           component: () => import(/* webpackChunkName: "iam" */ './views/Dashboard/IAM/index.vue'),

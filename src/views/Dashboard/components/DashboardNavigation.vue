@@ -75,11 +75,12 @@
 
 .sidenav__list-item:hover.sidebar__list-item--disabled {
   background-color: transparent;
-  cursor: pointer;
+  cursor: default;
 }
 .sidenav__list-item.sidebar__list-item--disabled a {
   color: #A8EEEB;
   fill: #A8EEEB;
+  cursor: default;
 }
 
 .sidenav__list-item.sidebar__list-item--disabled a:hover {
@@ -185,11 +186,11 @@
           <span>Storages</span>
         </router-link>
       </li>
-      <li class="sidenav__list-item sidebar__list-item--disabled">
-        <a href="https://google.com">
-          <icon-store />
-          <span>Stores</span>
-        </a>
+      <li class="sidenav__list-item">
+        <router-link :to="{ name: 'dashboard-shop' }">
+          <icon-shop />
+          <span>Shops</span>
+        </router-link>
       </li>
       <li class="sidenav__list-item sidebar__list-item--disabled">
         <a href="https://google.com">
@@ -265,7 +266,7 @@ import IconCurrencyDollar from '@/assets/icons/icon-currency-dollar.svg';
 import IconInformation from '@/assets/icons/icon-information.svg';
 import IconGroup from '@/assets/icons/icon-group.svg';
 import IconCog from '@/assets/icons/icon-cog.svg';
-import IconStore from '@/assets/icons/icon-store.svg';
+import IconShop from '@/assets/icons/icon-store.svg';
 import IconBuilding from '@/assets/icons/icon-building.svg';
 import IconPuzzle from '@/assets/icons/icon-puzzle.svg';
 import IconTrophy from '@/assets/icons/icon-trophy.svg';
@@ -282,7 +283,7 @@ import IconLogout from '@/assets/icons/icon-x-circle.svg';
     IconInformation ,
     IconGroup,
     IconCog,
-    IconStore,
+    IconShop,
     IconBuilding,
     IconPuzzle,
     IconTrophy,
