@@ -162,6 +162,104 @@ export interface ProtobufValue {
 /**
  * 
  * @export
+ * @interface V1AttachItemRequest
+ */
+export interface V1AttachItemRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1AttachItemRequest
+     */
+    api?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1AttachItemRequest
+     */
+    productId?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1AttachItemRequest
+     */
+    itemId?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1AttachItemRequest
+     */
+    amount?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1AttachItemResponse
+ */
+export interface V1AttachItemResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1AttachItemResponse
+     */
+    api?: string;
+    /**
+     * 
+     * @type {V1Product}
+     * @memberof V1AttachItemResponse
+     */
+    product?: V1Product;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1AttachProductRequest
+ */
+export interface V1AttachProductRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1AttachProductRequest
+     */
+    api?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1AttachProductRequest
+     */
+    shopId?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1AttachProductRequest
+     */
+    productId?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1AttachProductResponse
+ */
+export interface V1AttachProductResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1AttachProductResponse
+     */
+    api?: string;
+    /**
+     * 
+     * @type {V1Shop}
+     * @memberof V1AttachProductResponse
+     */
+    shop?: V1Shop;
+}
+
+/**
+ * 
+ * @export
  * @interface V1AuthenticateRequest
  */
 export interface V1AuthenticateRequest {
@@ -219,10 +317,10 @@ export interface V1Config {
     key?: string;
     /**
      * 
-     * @type {ProtobufStruct}
+     * @type {ProtobufValue}
      * @memberof V1Config
      */
-    value?: ProtobufStruct;
+    value?: ProtobufValue;
 }
 
 /**
@@ -366,6 +464,86 @@ export interface V1CreatePlayerResponse {
 /**
  * 
  * @export
+ * @interface V1CreateProductRequest
+ */
+export interface V1CreateProductRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1CreateProductRequest
+     */
+    api?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1CreateProductRequest
+     */
+    name?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1CreateProductResponse
+ */
+export interface V1CreateProductResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1CreateProductResponse
+     */
+    api?: string;
+    /**
+     * 
+     * @type {V1Product}
+     * @memberof V1CreateProductResponse
+     */
+    product?: V1Product;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1CreateShopRequest
+ */
+export interface V1CreateShopRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1CreateShopRequest
+     */
+    api?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1CreateShopRequest
+     */
+    name?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1CreateShopResponse
+ */
+export interface V1CreateShopResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1CreateShopResponse
+     */
+    api?: string;
+    /**
+     * 
+     * @type {V1Shop}
+     * @memberof V1CreateShopResponse
+     */
+    shop?: V1Shop;
+}
+
+/**
+ * 
+ * @export
  * @interface V1CreateStorageRequest
  */
 export interface V1CreateStorageRequest {
@@ -456,6 +634,46 @@ export interface V1Currency {
 /**
  * 
  * @export
+ * @interface V1DetachItemResponse
+ */
+export interface V1DetachItemResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1DetachItemResponse
+     */
+    api?: string;
+    /**
+     * 
+     * @type {V1Product}
+     * @memberof V1DetachItemResponse
+     */
+    product?: V1Product;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1DetachProductResponse
+ */
+export interface V1DetachProductResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1DetachProductResponse
+     */
+    api?: string;
+    /**
+     * 
+     * @type {V1Shop}
+     * @memberof V1DetachProductResponse
+     */
+    shop?: V1Shop;
+}
+
+/**
+ * 
+ * @export
  * @interface V1GetConfigResponse
  */
 export interface V1GetConfigResponse {
@@ -531,6 +749,46 @@ export interface V1GetPlayerResponse {
      * @memberof V1GetPlayerResponse
      */
     player?: V1Player;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1GetProductResponse
+ */
+export interface V1GetProductResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1GetProductResponse
+     */
+    api?: string;
+    /**
+     * 
+     * @type {V1Product}
+     * @memberof V1GetProductResponse
+     */
+    product?: V1Product;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1GetShopResponse
+ */
+export interface V1GetShopResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1GetShopResponse
+     */
+    api?: string;
+    /**
+     * 
+     * @type {V1Shop}
+     * @memberof V1GetShopResponse
+     */
+    shop?: V1Shop;
 }
 
 /**
@@ -820,6 +1078,38 @@ export interface V1ListPlayerResponse {
 /**
  * 
  * @export
+ * @interface V1ListShopResponse
+ */
+export interface V1ListShopResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1ListShopResponse
+     */
+    api?: string;
+    /**
+     * 
+     * @type {Array<V1Shop>}
+     * @memberof V1ListShopResponse
+     */
+    shops?: Array<V1Shop>;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1ListShopResponse
+     */
+    nextPageToken?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof V1ListShopResponse
+     */
+    totalSize?: number;
+}
+
+/**
+ * 
+ * @export
  * @interface V1ListStorageResponse
  */
 export interface V1ListStorageResponse {
@@ -873,6 +1163,108 @@ export interface V1Player {
      * @memberof V1Player
      */
     storages?: Array<V1Storage>;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1Product
+ */
+export interface V1Product {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1Product
+     */
+    id?: string;
+    /**
+     * 
+     * @type {Date}
+     * @memberof V1Product
+     */
+    createdAt?: Date;
+    /**
+     * 
+     * @type {Date}
+     * @memberof V1Product
+     */
+    updatedAt?: Date;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1Product
+     */
+    name?: string;
+    /**
+     * 
+     * @type {Array<V1ProductItem>}
+     * @memberof V1Product
+     */
+    items?: Array<V1ProductItem>;
+    /**
+     * 
+     * @type {Array<V1ProductPrice>}
+     * @memberof V1Product
+     */
+    prices?: Array<V1ProductPrice>;
+    /**
+     * 
+     * @type {ProtobufValue}
+     * @memberof V1Product
+     */
+    metadata?: ProtobufValue;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1ProductItem
+ */
+export interface V1ProductItem {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1ProductItem
+     */
+    id?: string;
+    /**
+     * 
+     * @type {V1Item}
+     * @memberof V1ProductItem
+     */
+    item?: V1Item;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1ProductItem
+     */
+    amount?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1ProductPrice
+ */
+export interface V1ProductPrice {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1ProductPrice
+     */
+    id?: string;
+    /**
+     * 
+     * @type {V1Currency}
+     * @memberof V1ProductPrice
+     */
+    currency?: V1Currency;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1ProductPrice
+     */
+    amount?: string;
 }
 
 /**
@@ -1069,10 +1461,10 @@ export interface V1SetConfigRequest {
     key?: string;
     /**
      * 
-     * @type {ProtobufStruct}
+     * @type {ProtobufValue}
      * @memberof V1SetConfigRequest
      */
-    value?: ProtobufStruct;
+    value?: ProtobufValue;
 }
 
 /**
@@ -1093,6 +1485,50 @@ export interface V1SetConfigResponse {
      * @memberof V1SetConfigResponse
      */
     config?: V1Config;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1Shop
+ */
+export interface V1Shop {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1Shop
+     */
+    id?: string;
+    /**
+     * 
+     * @type {Date}
+     * @memberof V1Shop
+     */
+    createdAt?: Date;
+    /**
+     * 
+     * @type {Date}
+     * @memberof V1Shop
+     */
+    updatedAt?: Date;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1Shop
+     */
+    name?: string;
+    /**
+     * 
+     * @type {Array<V1Product>}
+     * @memberof V1Shop
+     */
+    products?: Array<V1Product>;
+    /**
+     * 
+     * @type {ProtobufValue}
+     * @memberof V1Shop
+     */
+    metadata?: ProtobufValue;
 }
 
 /**
@@ -1137,6 +1573,12 @@ export interface V1Storage {
      * @memberof V1Storage
      */
     items?: Array<V1StorageItem>;
+    /**
+     * 
+     * @type {Array<V1StorageCurrency>}
+     * @memberof V1Storage
+     */
+    currencies?: Array<V1StorageCurrency>;
 }
 
 /**
@@ -1153,22 +1595,10 @@ export interface V1StorageCurrency {
     id?: string;
     /**
      * 
-     * @type {Date}
+     * @type {V1Currency}
      * @memberof V1StorageCurrency
      */
-    createdAt?: Date;
-    /**
-     * 
-     * @type {Date}
-     * @memberof V1StorageCurrency
-     */
-    updatedAt?: Date;
-    /**
-     * 
-     * @type {string}
-     * @memberof V1StorageCurrency
-     */
-    currencyId?: string;
+    currency?: V1Currency;
     /**
      * 
      * @type {string}
@@ -1264,7 +1694,71 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
     return {
         /**
          * 
-         * @summary Authenticate a user
+         * @summary Attach item to a product
+         * @param {V1AttachItemRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        attachItem(body: V1AttachItemRequest, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling attachItem.');
+            }
+            const localVarPath = `/v1/product/attach/item`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"V1AttachItemRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Attach product to a shop
+         * @param {V1AttachProductRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        attachProduct(body: V1AttachProductRequest, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling attachProduct.');
+            }
+            const localVarPath = `/v1/shop/attach/product`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"V1AttachProductRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Authenticate an account
          * @param {V1AuthenticateRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1392,6 +1886,70 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
         },
         /**
          * 
+         * @summary Create a product
+         * @param {V1CreateProductRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createProduct(body: V1CreateProductRequest, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling createProduct.');
+            }
+            const localVarPath = `/v1/product`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"V1CreateProductRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Create a shop
+         * @param {V1CreateShopRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createShop(body: V1CreateShopRequest, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling createShop.');
+            }
+            const localVarPath = `/v1/shop`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"V1CreateShopRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Create a new Storage
          * @param {V1CreateStorageRequest} body 
          * @param {*} [options] Override http request option.
@@ -1416,6 +1974,74 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>"V1CreateStorageRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Detach item from a product
+         * @param {string} productItemId 
+         * @param {string} [api] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        detachItem(productItemId: string, api?: string, options: any = {}): FetchArgs {
+            // verify required parameter 'productItemId' is not null or undefined
+            if (productItemId === null || productItemId === undefined) {
+                throw new RequiredError('productItemId','Required parameter productItemId was null or undefined when calling detachItem.');
+            }
+            const localVarPath = `/v1/product/detach/item/{product_item_id}`
+                .replace(`{${"product_item_id"}}`, encodeURIComponent(String(productItemId)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (api !== undefined) {
+                localVarQueryParameter['api'] = api;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Detach product from a shop
+         * @param {string} shopProductId 
+         * @param {string} [api] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        detachProduct(shopProductId: string, api?: string, options: any = {}): FetchArgs {
+            // verify required parameter 'shopProductId' is not null or undefined
+            if (shopProductId === null || shopProductId === undefined) {
+                throw new RequiredError('shopProductId','Required parameter shopProductId was null or undefined when calling detachProduct.');
+            }
+            const localVarPath = `/v1/shop/detach/product/{shop_product_id}`
+                .replace(`{${"shop_product_id"}}`, encodeURIComponent(String(shopProductId)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (api !== undefined) {
+                localVarQueryParameter['api'] = api;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
 
             return {
                 url: url.format(localVarUrlObj),
@@ -1539,6 +2165,74 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             }
             const localVarPath = `/v1/player/{player_id}`
                 .replace(`{${"player_id"}}`, encodeURIComponent(String(playerId)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (api !== undefined) {
+                localVarQueryParameter['api'] = api;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get a product
+         * @param {string} productId 
+         * @param {string} [api] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getProduct(productId: string, api?: string, options: any = {}): FetchArgs {
+            // verify required parameter 'productId' is not null or undefined
+            if (productId === null || productId === undefined) {
+                throw new RequiredError('productId','Required parameter productId was null or undefined when calling getProduct.');
+            }
+            const localVarPath = `/v1/product/{product_id}`
+                .replace(`{${"product_id"}}`, encodeURIComponent(String(productId)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (api !== undefined) {
+                localVarQueryParameter['api'] = api;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get a shop
+         * @param {string} shopId 
+         * @param {string} [api] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getShop(shopId: string, api?: string, options: any = {}): FetchArgs {
+            // verify required parameter 'shopId' is not null or undefined
+            if (shopId === null || shopId === undefined) {
+                throw new RequiredError('shopId','Required parameter shopId was null or undefined when calling getShop.');
+            }
+            const localVarPath = `/v1/shop/{shop_id}`
+                .replace(`{${"shop_id"}}`, encodeURIComponent(String(shopId)));
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = {} as any;
@@ -1810,6 +2504,44 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
         },
         /**
          * 
+         * @summary List all shops
+         * @param {string} [api] 
+         * @param {number} [pageSize] 
+         * @param {string} [pageToken] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listShop(api?: string, pageSize?: number, pageToken?: string, options: any = {}): FetchArgs {
+            const localVarPath = `/v1/shop`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (api !== undefined) {
+                localVarQueryParameter['api'] = api;
+            }
+
+            if (pageSize !== undefined) {
+                localVarQueryParameter['page_size'] = pageSize;
+            }
+
+            if (pageToken !== undefined) {
+                localVarQueryParameter['page_token'] = pageToken;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary List all storages
          * @param {string} [api] 
          * @param {number} [pageSize] 
@@ -1848,7 +2580,7 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
         },
         /**
          * 
-         * @summary Register a user
+         * @summary Register an account
          * @param {V1RegisterRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2017,7 +2749,45 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @summary Authenticate a user
+         * @summary Attach item to a product
+         * @param {V1AttachItemRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        attachItem(body: V1AttachItemRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1AttachItemResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).attachItem(body, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * 
+         * @summary Attach product to a shop
+         * @param {V1AttachProductRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        attachProduct(body: V1AttachProductRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1AttachProductResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).attachProduct(body, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * 
+         * @summary Authenticate an account
          * @param {V1AuthenticateRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2093,6 +2863,44 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Create a product
+         * @param {V1CreateProductRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createProduct(body: V1CreateProductRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1CreateProductResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).createProduct(body, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * 
+         * @summary Create a shop
+         * @param {V1CreateShopRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createShop(body: V1CreateShopRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1CreateShopResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).createShop(body, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * 
          * @summary Create a new Storage
          * @param {V1CreateStorageRequest} body 
          * @param {*} [options] Override http request option.
@@ -2100,6 +2908,46 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
          */
         createStorage(body: V1CreateStorageRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1CreateStorageResponse> {
             const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).createStorage(body, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * 
+         * @summary Detach item from a product
+         * @param {string} productItemId 
+         * @param {string} [api] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        detachItem(productItemId: string, api?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1DetachItemResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).detachItem(productItemId, api, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * 
+         * @summary Detach product from a shop
+         * @param {string} shopProductId 
+         * @param {string} [api] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        detachProduct(shopProductId: string, api?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1DetachProductResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).detachProduct(shopProductId, api, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -2180,6 +3028,46 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
          */
         getPlayer(playerId: string, api?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1GetPlayerResponse> {
             const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).getPlayer(playerId, api, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * 
+         * @summary Get a product
+         * @param {string} productId 
+         * @param {string} [api] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getProduct(productId: string, api?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1GetProductResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).getProduct(productId, api, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * 
+         * @summary Get a shop
+         * @param {string} shopId 
+         * @param {string} [api] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getShop(shopId: string, api?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1GetShopResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).getShop(shopId, api, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -2334,6 +3222,27 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary List all shops
+         * @param {string} [api] 
+         * @param {number} [pageSize] 
+         * @param {string} [pageToken] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listShop(api?: string, pageSize?: number, pageToken?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1ListShopResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).listShop(api, pageSize, pageToken, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * 
          * @summary List all storages
          * @param {string} [api] 
          * @param {number} [pageSize] 
@@ -2355,7 +3264,7 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Register a user
+         * @summary Register an account
          * @param {V1RegisterRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2459,7 +3368,27 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
     return {
         /**
          * 
-         * @summary Authenticate a user
+         * @summary Attach item to a product
+         * @param {V1AttachItemRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        attachItem(body: V1AttachItemRequest, options?: any) {
+            return EconomyServiceApiFp(configuration).attachItem(body, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Attach product to a shop
+         * @param {V1AttachProductRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        attachProduct(body: V1AttachProductRequest, options?: any) {
+            return EconomyServiceApiFp(configuration).attachProduct(body, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Authenticate an account
          * @param {V1AuthenticateRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2499,6 +3428,26 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
         },
         /**
          * 
+         * @summary Create a product
+         * @param {V1CreateProductRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createProduct(body: V1CreateProductRequest, options?: any) {
+            return EconomyServiceApiFp(configuration).createProduct(body, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Create a shop
+         * @param {V1CreateShopRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createShop(body: V1CreateShopRequest, options?: any) {
+            return EconomyServiceApiFp(configuration).createShop(body, options)(fetch, basePath);
+        },
+        /**
+         * 
          * @summary Create a new Storage
          * @param {V1CreateStorageRequest} body 
          * @param {*} [options] Override http request option.
@@ -2506,6 +3455,28 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
          */
         createStorage(body: V1CreateStorageRequest, options?: any) {
             return EconomyServiceApiFp(configuration).createStorage(body, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Detach item from a product
+         * @param {string} productItemId 
+         * @param {string} [api] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        detachItem(productItemId: string, api?: string, options?: any) {
+            return EconomyServiceApiFp(configuration).detachItem(productItemId, api, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Detach product from a shop
+         * @param {string} shopProductId 
+         * @param {string} [api] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        detachProduct(shopProductId: string, api?: string, options?: any) {
+            return EconomyServiceApiFp(configuration).detachProduct(shopProductId, api, options)(fetch, basePath);
         },
         /**
          * 
@@ -2550,6 +3521,28 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
          */
         getPlayer(playerId: string, api?: string, options?: any) {
             return EconomyServiceApiFp(configuration).getPlayer(playerId, api, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Get a product
+         * @param {string} productId 
+         * @param {string} [api] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getProduct(productId: string, api?: string, options?: any) {
+            return EconomyServiceApiFp(configuration).getProduct(productId, api, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Get a shop
+         * @param {string} shopId 
+         * @param {string} [api] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getShop(shopId: string, api?: string, options?: any) {
+            return EconomyServiceApiFp(configuration).getShop(shopId, api, options)(fetch, basePath);
         },
         /**
          * 
@@ -2632,6 +3625,18 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
         },
         /**
          * 
+         * @summary List all shops
+         * @param {string} [api] 
+         * @param {number} [pageSize] 
+         * @param {string} [pageToken] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listShop(api?: string, pageSize?: number, pageToken?: string, options?: any) {
+            return EconomyServiceApiFp(configuration).listShop(api, pageSize, pageToken, options)(fetch, basePath);
+        },
+        /**
+         * 
          * @summary List all storages
          * @param {string} [api] 
          * @param {number} [pageSize] 
@@ -2644,7 +3649,7 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
         },
         /**
          * 
-         * @summary Register a user
+         * @summary Register an account
          * @param {V1RegisterRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2704,7 +3709,31 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
 export class EconomyServiceApi extends BaseAPI {
     /**
      * 
-     * @summary Authenticate a user
+     * @summary Attach item to a product
+     * @param {V1AttachItemRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EconomyServiceApi
+     */
+    public attachItem(body: V1AttachItemRequest, options?: any) {
+        return EconomyServiceApiFp(this.configuration).attachItem(body, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Attach product to a shop
+     * @param {V1AttachProductRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EconomyServiceApi
+     */
+    public attachProduct(body: V1AttachProductRequest, options?: any) {
+        return EconomyServiceApiFp(this.configuration).attachProduct(body, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Authenticate an account
      * @param {V1AuthenticateRequest} body 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2752,6 +3781,30 @@ export class EconomyServiceApi extends BaseAPI {
 
     /**
      * 
+     * @summary Create a product
+     * @param {V1CreateProductRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EconomyServiceApi
+     */
+    public createProduct(body: V1CreateProductRequest, options?: any) {
+        return EconomyServiceApiFp(this.configuration).createProduct(body, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Create a shop
+     * @param {V1CreateShopRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EconomyServiceApi
+     */
+    public createShop(body: V1CreateShopRequest, options?: any) {
+        return EconomyServiceApiFp(this.configuration).createShop(body, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * 
      * @summary Create a new Storage
      * @param {V1CreateStorageRequest} body 
      * @param {*} [options] Override http request option.
@@ -2760,6 +3813,32 @@ export class EconomyServiceApi extends BaseAPI {
      */
     public createStorage(body: V1CreateStorageRequest, options?: any) {
         return EconomyServiceApiFp(this.configuration).createStorage(body, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Detach item from a product
+     * @param {string} productItemId 
+     * @param {string} [api] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EconomyServiceApi
+     */
+    public detachItem(productItemId: string, api?: string, options?: any) {
+        return EconomyServiceApiFp(this.configuration).detachItem(productItemId, api, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Detach product from a shop
+     * @param {string} shopProductId 
+     * @param {string} [api] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EconomyServiceApi
+     */
+    public detachProduct(shopProductId: string, api?: string, options?: any) {
+        return EconomyServiceApiFp(this.configuration).detachProduct(shopProductId, api, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -2812,6 +3891,32 @@ export class EconomyServiceApi extends BaseAPI {
      */
     public getPlayer(playerId: string, api?: string, options?: any) {
         return EconomyServiceApiFp(this.configuration).getPlayer(playerId, api, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Get a product
+     * @param {string} productId 
+     * @param {string} [api] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EconomyServiceApi
+     */
+    public getProduct(productId: string, api?: string, options?: any) {
+        return EconomyServiceApiFp(this.configuration).getProduct(productId, api, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Get a shop
+     * @param {string} shopId 
+     * @param {string} [api] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EconomyServiceApi
+     */
+    public getShop(shopId: string, api?: string, options?: any) {
+        return EconomyServiceApiFp(this.configuration).getShop(shopId, api, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -2909,6 +4014,20 @@ export class EconomyServiceApi extends BaseAPI {
 
     /**
      * 
+     * @summary List all shops
+     * @param {string} [api] 
+     * @param {number} [pageSize] 
+     * @param {string} [pageToken] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EconomyServiceApi
+     */
+    public listShop(api?: string, pageSize?: number, pageToken?: string, options?: any) {
+        return EconomyServiceApiFp(this.configuration).listShop(api, pageSize, pageToken, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * 
      * @summary List all storages
      * @param {string} [api] 
      * @param {number} [pageSize] 
@@ -2923,7 +4042,7 @@ export class EconomyServiceApi extends BaseAPI {
 
     /**
      * 
-     * @summary Register a user
+     * @summary Register an account
      * @param {V1RegisterRequest} body 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
