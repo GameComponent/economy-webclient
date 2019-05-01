@@ -126,6 +126,11 @@ const router = new Router({
           component: () => import(/* webpackChunkName: "shop" */ './views/Dashboard/Shop/Detail/index.vue'),
         },
         {
+          path: 'shop/:id/product',
+          name: 'dashboard-shop-detail-product',
+          component: () => import(/* webpackChunkName: "shop" */ './views/Dashboard/Shop/Detail/Product/index.vue'),
+        },
+        {
           path: 'iam',
           name: 'dashboard-iam',
           component: () => import(/* webpackChunkName: "iam" */ './views/Dashboard/IAM/index.vue'),
