@@ -43,6 +43,13 @@
   letter-spacing: 0.05em;
 }
 
+.gc-table.gc-table--small-head thead th {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 .gc-table tbody tr td:last-child {
   text-align: right;
 }
