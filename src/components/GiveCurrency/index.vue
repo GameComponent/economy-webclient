@@ -38,7 +38,7 @@ export default class GiveCurrency extends Vue {
 
     this.$economyService.giveCurrency(this.request)
       .then(() => {
-        this.$router.go(this.$router.currentRoute);
+        this.$router.go(this.$router.currentRoute as any);
       });
   }
 }
