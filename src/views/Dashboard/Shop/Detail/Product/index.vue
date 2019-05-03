@@ -22,8 +22,18 @@
           v-for="product in shop.products"
           :key="product.id"
         >
-          <div class="product-header mt-4">
-            {{ product.name }}
+          <div class="product-header mt-4 clearfix overflow-hidden">
+            <div class="inline-block float-left">
+              {{ product.name }}
+            </div>
+            <div class="inline-block float-right">
+              <span
+                class="bg-red-500 p-2 rounded text-white text-sm cursor-pointer border-0 hover:bg-red-600"
+                @click="handleClickDetachProduct(product)"
+              >
+                Detach product
+              </span>
+            </div>
           </div>
           <table class="gc-table gc-table--small-head text-left">
             <thead>
@@ -66,6 +76,13 @@ export default class ShopProductDetail extends Vue {
     this.$economyService.getShop(this.$route.params.id)
       .then(({ shop }) => {
         this.shop = shop;
+      });
+  }
+
+  public handleClickDetachProduct({ id }) {
+    this.$economyService.detachProduct(id)
+      .then(() => {
+        this.$router.go(this.$router.currentRoute as any);
       });
   }
 }
