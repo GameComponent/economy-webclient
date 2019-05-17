@@ -12,6 +12,16 @@
     </div>
 
     <div class="mt-4">
+      <label for="stackable">Stackable</label>
+      <input
+        v-model="item.stackable"
+        type="checkbox"
+        class="gc-input"
+        name="stackable"
+      >
+    </div>
+
+    <div class="mt-4">
       <button
         class="gc-button"
         @click="handleClickCreateItem"
@@ -29,6 +39,7 @@ import { Component, Vue } from 'vue-property-decorator';
 export default class CreateItem extends Vue {
   public item = {
     name: '',
+    stackable: false,
   };
 
   public handleClickCreateItem(): void {

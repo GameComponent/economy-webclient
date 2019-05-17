@@ -30,6 +30,7 @@ export default class GiveItem extends Vue {
   public request: V1GiveItemRequest = {
     itemId: '',
     storageId: '',
+    amount: 1,
   };
 
   public mounted() {
@@ -37,8 +38,9 @@ export default class GiveItem extends Vue {
     this.request.storageId = this.storageId;
   }
 
-  public handleInputPlayerStorage({ storageId }) {
+  public handleInputPlayerStorage({ storageId, amount = 1 }) {
     this.request.storageId = storageId;
+    this.request.amount = amount;
     console.log('giveItem', this.request);
 
     this.$economyService.giveItem(this.request)
@@ -47,8 +49,9 @@ export default class GiveItem extends Vue {
       });
   }
 
-  public handleInputItem({ itemId }) {
+  public handleInputItem({ itemId, amount = 1 }) {
     this.request.itemId = itemId;
+    this.request.amount = amount;
     console.log('giveItem', this.request);
 
     this.$economyService.giveItem(this.request)

@@ -15,6 +15,7 @@
           <tr>
             <th>Unique ID</th>
             <th>Item</th>
+            <th>Amount</th>
             <th></th>
           </tr>
         </thead>
@@ -24,6 +25,14 @@
             <td>
               <div>{{ storageItem.item.name }}</div>
               <div class="gc-table__description">({{ storageItem.item.id }})</div>
+            </td>
+            <td>
+              <div>
+                <span v-if="storageItem.amount">{{ storageItem.amount }}</span>
+                <span v-else class="font-medium text-white text-xs bg-gray-600 rounded-lg px-2 tracking-wider">
+                  UNSTACKABLE
+                </span>
+              </div>
             </td>
             <td>
               <a href="">Remove</a>
