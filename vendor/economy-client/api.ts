@@ -79,6 +79,18 @@ export class RequiredError extends Error {
 }
 
 /**
+ *  - DEFAULT: Same as the UNBALANCED_CREATE_NEW_STACKS method  - UNBALANCED_CREATE_NEW_STACKS: Multiple stacks exists and can have varying amounts of items in them. Whenever new items are added it will create new stacks  - BALANCED_FILL_EXISTING_STACKS: There can be only 1 stack that's not the stack_max_count, if there are 2 stack's with less than the stack_max_count one stack will be reduced till the other fill up till the stack_max_count. Whenever new items are added it will try to fill up existing stacks till the stack_max_count.  - UNBALANCED_FILL_EXISTING_STACKS: Multiple stacks exists and can have varying amounts of items in them. Whenever new items are added it will try to fill up existing stacks till the stack_max_count.
+ * @export
+ * @enum {string}
+ */
+export enum ItemStackBalancingMethod {
+    DEFAULT = <any> 'DEFAULT',
+    UNBALANCEDCREATENEWSTACKS = <any> 'UNBALANCED_CREATE_NEW_STACKS',
+    BALANCEDFILLEXISTINGSTACKS = <any> 'BALANCED_FILL_EXISTING_STACKS',
+    UNBALANCEDFILLEXISTINGSTACKS = <any> 'UNBALANCED_FILL_EXISTING_STACKS'
+}
+
+/**
  * `ListValue` is a wrapper around a repeated field of values.  The JSON representation for `ListValue` is JSON array.
  * @export
  * @interface ProtobufListValue
@@ -157,6 +169,26 @@ export interface ProtobufValue {
      * @memberof ProtobufValue
      */
     listValue?: ProtobufListValue;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1Amount
+ */
+export interface V1Amount {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1Amount
+     */
+    minAmount?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1Amount
+     */
+    maxAmount?: string;
 }
 
 /**
@@ -393,6 +425,12 @@ export interface V1CreateItemRequest {
      * @memberof V1CreateItemRequest
      */
     name?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof V1CreateItemRequest
+     */
+    stackable?: boolean;
 }
 
 /**
@@ -837,10 +875,10 @@ export interface V1GiveCurrencyRequest {
     currencyId?: string;
     /**
      * 
-     * @type {string}
+     * @type {V1Amount}
      * @memberof V1GiveCurrencyRequest
      */
-    amount?: string;
+    amount?: V1Amount;
 }
 
 /**
@@ -887,6 +925,12 @@ export interface V1GiveItemRequest {
      * @memberof V1GiveItemRequest
      */
     itemId?: string;
+    /**
+     * 
+     * @type {V1Amount}
+     * @memberof V1GiveItemRequest
+     */
+    amount?: V1Amount;
 }
 
 /**
@@ -909,10 +953,10 @@ export interface V1GiveItemResponse {
     storageId?: string;
     /**
      * 
-     * @type {V1StorageItem}
+     * @type {string}
      * @memberof V1GiveItemResponse
      */
-    item?: V1StorageItem;
+    amount?: string;
 }
 
 /**
@@ -945,6 +989,24 @@ export interface V1Item {
      * @memberof V1Item
      */
     name?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof V1Item
+     */
+    stackable?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1Item
+     */
+    stackMaxCount?: string;
+    /**
+     * 
+     * @type {ItemStackBalancingMethod}
+     * @memberof V1Item
+     */
+    stackBalancingMethod?: ItemStackBalancingMethod;
 }
 
 /**
@@ -1287,14 +1349,66 @@ export interface V1ProductPrice {
     id?: string;
     /**
      * 
-     * @type {V1Currency}
+     * @type {Array<V1ProductPriceCurrency>}
      * @memberof V1ProductPrice
+     */
+    currencies?: Array<V1ProductPriceCurrency>;
+    /**
+     * 
+     * @type {Array<V1ProductPriceItem>}
+     * @memberof V1ProductPrice
+     */
+    items?: Array<V1ProductPriceItem>;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1ProductPriceCurrency
+ */
+export interface V1ProductPriceCurrency {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1ProductPriceCurrency
+     */
+    id?: string;
+    /**
+     * 
+     * @type {V1Currency}
+     * @memberof V1ProductPriceCurrency
      */
     currency?: V1Currency;
     /**
      * 
      * @type {string}
-     * @memberof V1ProductPrice
+     * @memberof V1ProductPriceCurrency
+     */
+    amount?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1ProductPriceItem
+ */
+export interface V1ProductPriceItem {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1ProductPriceItem
+     */
+    id?: string;
+    /**
+     * 
+     * @type {V1Item}
+     * @memberof V1ProductPriceItem
+     */
+    item?: V1Item;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1ProductPriceItem
      */
     amount?: string;
 }
@@ -1669,6 +1783,12 @@ export interface V1StorageItem {
      * @memberof V1StorageItem
      */
     item?: V1Item;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1StorageItem
+     */
+    amount?: string;
 }
 
 /**
