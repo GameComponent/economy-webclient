@@ -46,28 +46,35 @@
 
         <tfoot v-if="selectedItem">
           <tr>
-            <td style="padding-left: 20px; padding-bottom: 10px;">
-              Min. amount:
-              <input
-                v-model="minAmount"
-                type="number"
-                class="gc-input"
-              >
+            <td style="padding: 20px" colspan="3">
+              <div class="inline-block">
+                <label for="minAmount">Min. amount: </label>
+                <input
+                  v-model="minAmount"
+                  type="number"
+                  class="gc-input"
+                  name="minAmount"
+                >
+              </div>
 
-              Max. amount:
-              <input
-                v-model="maxAmount"
-                type="number"
-                class="gc-input"
-              >
-            </td>
-            <td style="padding-left: 20px; padding-bottom: 10px;">
-              <button
-                class="gc-button"
-                @click="handleClickGiveItem"
-              >
-                Give item
-              </button>
+              <div class="inline-block ml-4">
+                <label for="maxAmount">Max. amount: </label>
+                <input
+                  v-model="maxAmount"
+                  type="number"
+                  class="gc-input"
+                  name="maxAmount"
+                >
+              </div>
+
+              <div class="inline-block ml-4">
+                <button
+                  class="gc-button"
+                  @click="handleClickGiveItem"
+                >
+                  Give item
+                </button>
+              </div>
             </td>
           </tr>
         </tfoot>
