@@ -1,19 +1,16 @@
 <template>
   <div>
-    <div style="background-color: #F2F5F7; border-top: 1px solid #eee; border-bottom: 1px solid #eee;">
+    <div
+      style="background-color: #F2F5F7; border-top: 1px solid #eee; border-bottom: 1px solid #eee;"
+    >
       <div style="padding-left: 20px; padding-top: 10px; padding-bottom: 10px;">
-        <select
-          v-model="selectedCurrencyId"
-          class="gc-input"
-        >
+        <select v-model="selectedCurrencyId" class="gc-input">
           <option :value="null">Select a currency</option>
           <option
             v-for="currency in currencies"
             :value="currency.id"
             :key="currency.id"
-          >
-            {{ currency.name }}
-          </option>
+          >{{ currency.name }}</option>
         </select>
       </div>
 
@@ -24,28 +21,25 @@
             <th>Name</th>
             <th>Shortname</th>
             <th>Symbol</th>
-            <th>Amount</th>
+            <th>Min Amount</th>
+            <th>Max Amount</th>
           </tr>
         </thead>
         <tbody>
           <tr>
+            <td>{{ selectedCurrency.id }}</td>
+            <td style="text-align: left;">{{ selectedCurrency.name }}</td>
+            <td style="text-align: left;">{{ selectedCurrency.shortName }}</td>
+            <td style="text-align: left;">{{ selectedCurrency.symbol }}</td>
             <td>
-              {{ selectedCurrency.id }}
-            </td>
-            <td style="text-align: left;">
-              {{ selectedCurrency.name }}
-            </td>
-            <td style="text-align: left;">
-              {{ selectedCurrency.shortName }}
-            </td>
-            <td style="text-align: left;">
-              {{ selectedCurrency.symbol }}
+              <input v-model="selectedMinAmount" type="number" class="gc-input">
             </td>
             <td>
               <input
-                v-model="selectedAmount"
+                v-model="selectedMaxAmount"
                 type="number"
                 class="gc-input"
+                @focus="onFocusSelectedMaxAmount"
               >
             </td>
           </tr>
@@ -59,10 +53,8 @@
                 :class="{
                   'gc-button--disabled': !selectedCurrency || !selectedAmount,
                 }"
-                @click="handleClickGiveCurrency"
-              >
-                Select currency
-              </button>
+                @click="onClickGiveCurrency"
+              >Select currency</button>
             </td>
           </tr>
         </tfoot>
@@ -72,27 +64,40 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
+import { Component, Prop, Watch, Vue } from "vue-property-decorator";
 
 @Component
 export default class SelectCurrencyAmount extends Vue {
-  public currencies = [];
-  public selectedCurrencyId = null;
-  public selectedAmount = 0;
+  public currencies: Array<any> = [];
+  public selectedCurrencyId: String = null;
+  public selectedMinAmount: Number = 0;
+  public selectedMaxAmount: Number = 0;
+  public shouldAdjustMaxAmount: Boolean = true;
 
   public mounted() {
-    this.$economyService.listCurrency()
-      .then(({ currencies }) => {
-        this.currencies = currencies;
-      });
+    this.$economyService.listCurrency().then(({ currencies }) => {
+      this.currencies = currencies;
+    });
   }
 
-  public handleClickGiveCurrency() {
-    this.$emit('input', {
+  public onClickGiveCurrency() {
+    this.$emit("input", {
       currencyId: this.selectedCurrencyId,
       currency: this.currencies.find(x => x.id === this.selectedCurrencyId),
-      amount: this.selectedAmount,
+      minAmount: this.selectedMinAmount,
+      maxAmount: this.selectedMaxAmount
     });
+  }
+
+  @Watch("selectedMinAmount")
+  onSelectedMinAmountChanged() {
+    if (this.shouldAdjustMaxAmount) {
+      this.selectedMaxAmount = this.selectedMinAmount;
+    }
+  }
+
+  public onFocusSelectedMaxAmount() {
+    this.shouldAdjustMaxAmount = false;
   }
 
   get selectedCurrency() {
@@ -100,8 +105,9 @@ export default class SelectCurrencyAmount extends Vue {
       return null;
     }
 
-    return this.currencies
-      .find(currency => currency.id === this.selectedCurrencyId);
+    return this.currencies.find(
+      currency => currency.id === this.selectedCurrencyId
+    );
   }
 }
 </script>
