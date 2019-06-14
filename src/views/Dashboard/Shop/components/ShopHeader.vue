@@ -41,24 +41,52 @@
     <router-link
       :to="{ name: 'dashboard-shop' }"
       class="shop-header__item"
+      :class="{
+        'shop-header__item--active': isShopActive && !isProductActive,
+      }"
       active-class="shop-header__item--active"
       exact
     >
-      Shops
+      <icon-shop class="align-middle mr-3 mb-2" />
+      <span>Shops</span>
     </router-link>
+
     <router-link
       :to="{ name: 'dashboard-shop-product' }"
       class="shop-header__item"
+      :class="{
+        'shop-header__item--active': isProductActive,
+      }"
       active-class="shop-header__item--active"
+      exact
     >
-      Products
+      <icon-product class="align-middle mr-3 mb-1" />
+      <span>Products</span>
     </router-link>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import IconShop from '@/assets/icons/icon-store.svg';
+import IconProduct from '@/assets/icons/icon-tag.svg';
 
-@Component
-export default class ShopHeader extends Vue {}
+const SHOP_ROUTE_SELECTOR = 'dashboard-shop';
+const PRODUCT_ROUTE_SELECTOR = 'dashboard-shop-product';
+
+@Component({
+  components: {
+    IconShop,
+    IconProduct,
+  },
+})
+export default class ShopHeader extends Vue {
+  get isShopActive() {
+    return this.$route.name.includes(SHOP_ROUTE_SELECTOR);
+  }
+
+  get isProductActive() {
+    return this.$route.name.includes(PRODUCT_ROUTE_SELECTOR);
+  }
+}
 </script>

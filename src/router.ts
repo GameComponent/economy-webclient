@@ -121,6 +121,24 @@ const router = new Router({
           component: () => import(/* webpackChunkName: "shop" */ './views/Dashboard/Shop/Product/Detail/index.vue'),
         },
         {
+          path: 'shop/product/:id/item',
+          name: 'dashboard-shop-product-detail-item',
+          // tslint:disable-next-line
+          component: () => import(/* webpackChunkName: "shop" */ './views/Dashboard/Shop/Product/Detail/Item/index.vue'),
+        },
+        {
+          path: 'shop/product/:id/price',
+          name: 'dashboard-shop-product-detail-price',
+          // tslint:disable-next-line
+          component: () => import(/* webpackChunkName: "shop" */ './views/Dashboard/Shop/Product/Detail/Price/index.vue'),
+        },
+        {
+          path: 'shop/product/:id/price/new',
+          name: 'dashboard-shop-product-detail-price-new',
+          // tslint:disable-next-line
+          component: () => import(/* webpackChunkName: "shop" */ './views/Dashboard/Shop/Product/Detail/Price/New/index.vue'),
+        },
+        {
           path: 'shop/:id',
           name: 'dashboard-shop-detail',
           component: () => import(/* webpackChunkName: "shop" */ './views/Dashboard/Shop/Detail/index.vue'),

@@ -1,18 +1,18 @@
 <style scoped>
-  .selected-shop-header {
+  .selected-product-header {
     height: 60px;
     width: 100%;
     background: white;
     border-bottom: 1px solid #eee;
   }
 
-  .selected-shop-header__wrapper {
+  .selected-product-header__wrapper {
     padding: 0;
     margin: 0;
     list-style: none;
   }
 
-  .selected-shop-header__item {
+  .selected-product-header__item {
     height: 60px;
     display: inline-block;
     line-height: 60px;
@@ -25,15 +25,15 @@
     cursor: pointer;
   }
 
-  .selected-shop-header__item:hover {
+  .selected-product-header__item:hover {
     background-color: rgba(238, 145, 145, .2);
   }
 
-  .selected-shop-header__item--back {
+  .selected-product-header__item--back {
     border-right: 1px solid #eee;
   }
 
-  .selected-shop-header__item--active {
+  .selected-product-header__item--active {
     border-bottom: 3px solid #38c172;
     color: #38c172;
     fill: #38c172;
@@ -41,24 +41,32 @@
 </style>
 
 <template>
-  <div class="selected-shop-header">
+  <div class="selected-product-header">
     <router-link
       :to="{
-        name: 'dashboard-shop-detail',
+        name: 'dashboard-shop-product-detail',
       }"
-      class="selected-shop-header__item"
-      active-class="selected-shop-header__item--active"
+      class="selected-product-header__item"
+      active-class="selected-product-header__item--active"
       exact
     >
       Details
     </router-link>
 
     <router-link
-      :to="{ name: 'dashboard-shop-detail-product' }"
-      class="selected-shop-header__item"
-      active-class="selected-shop-header__item--active"
+      :to="{ name: 'dashboard-shop-product-detail-item' }"
+      class="selected-product-header__item"
+      active-class="selected-product-header__item--active"
     >
-      Products
+      Items
+    </router-link>
+
+    <router-link
+      :to="{ name: 'dashboard-shop-product-detail-price' }"
+      class="selected-product-header__item"
+      active-class="selected-product-header__item--active"
+    >
+      Prices
     </router-link>
   </div>
 </template>
@@ -72,5 +80,5 @@ import { Component, Vue } from 'vue-property-decorator';
     IconBack,
   },
 })
-export default class SelectedShopHeader extends Vue {}
+export default class SelectedProductHeader extends Vue {}
 </script>
