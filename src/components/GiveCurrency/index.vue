@@ -1,6 +1,6 @@
 <template>
   <div>
-    <select-currency
+    <select-currency-amount
       v-if="!currencyId || currencyId === ''"
       @input="handleInputCurrency"
     />
@@ -10,11 +10,11 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { V1GiveCurrencyRequest } from '@/../vendor/economy-client/api.ts';
-import SelectCurrency from './components/SelectCurrency.vue';
+import SelectCurrencyAmount from '@/components/SelectCurrencyAmount/index.vue';
 
 @Component({
   components: {
-    SelectCurrency,
+    SelectCurrencyAmount,
   },
 })
 export default class GiveCurrency extends Vue {

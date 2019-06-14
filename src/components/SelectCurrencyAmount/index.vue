@@ -43,8 +43,9 @@
             </td>
             <td>
               <input
-                type="number"
                 v-model="selectedAmount"
+                type="number"
+                class="gc-input"
               >
             </td>
           </tr>
@@ -55,10 +56,12 @@
             <td style="padding-left: 20px; padding-top: 10px; padding-bottom: 10px;">
               <button
                 class="gc-button"
-                :class="{ 'gc-button--disabled': !selectedselectedCurrency || !selectedAmount }"
+                :class="{
+                  'gc-button--disabled': !selectedCurrency || !selectedAmount,
+                }"
                 @click="handleClickGiveCurrency"
               >
-                Give currency
+                Select currency
               </button>
             </td>
           </tr>
@@ -72,7 +75,7 @@
 import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
 
 @Component
-export default class SearchItem extends Vue {
+export default class SelectCurrencyAmount extends Vue {
   public currencies = [];
   public selectedCurrencyId = null;
   public selectedAmount = 0;
@@ -87,6 +90,7 @@ export default class SearchItem extends Vue {
   public handleClickGiveCurrency() {
     this.$emit('input', {
       currencyId: this.selectedCurrencyId,
+      currency: this.currencies.find(x => x.id === this.selectedCurrencyId),
       amount: this.selectedAmount,
     });
   }
