@@ -47,16 +47,9 @@
         <tfoot v-if="selectedItem">
           <tr>
             <td style="padding-left: 20px; padding-bottom: 10px;">
-              Min. amount:
+              Amount:
               <input
-                v-model="minAmount"
-                type="number"
-                class="gc-input"
-              >
-
-              Max. amount:
-              <input
-                v-model="maxAmount"
+                v-model="amount"
                 type="number"
                 class="gc-input"
               >
@@ -66,7 +59,7 @@
                 class="gc-button"
                 @click="handleClickGiveItem"
               >
-                Give item
+                Select item
               </button>
             </td>
           </tr>
@@ -82,8 +75,7 @@ import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
 @Component
 export default class SearchItemAmount extends Vue {
   public query: string = '';
-  public minAmount: number = 1;
-  public maxAmount: number = 1;
+  public amount: number = 1;
   public items = [];
   public selectedItem = null;
 
@@ -94,7 +86,6 @@ export default class SearchItemAmount extends Vue {
       query: this.query,
     })
       .then(({ items }) => {
-        console.log('item search results: ', items);
         this.items = items;
       });
   }
@@ -107,10 +98,8 @@ export default class SearchItemAmount extends Vue {
   public handleClickGiveItem() {
     this.$emit('input', {
       itemId: this.selectedItem,
-      amount: {
-        minAmount: this.minAmount,
-        maxAmount: this.maxAmount,
-      },
+      item: this.items.find(x => x.id === this.selectedItem),
+      amount: this.amount,
     });
   }
 }
