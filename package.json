@@ -11,7 +11,7 @@
   "dependencies": {
     "portable-fetch": "^3.0.0",
     "vue": "^2.5.22",
-    "vue-class-component": "^6.0.0",
+    "vue-class-component": "^7.1.0",
     "vue-codemirror": "^4.0.6",
     "vue-property-decorator": "^8.2.1",
     "vue-router": "^3.0.6",
