@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "portable-fetch": "^3.0.0",
-    "vue": "^2.5.22",
+    "vue": "^2.6.10",
     "vue-class-component": "^7.1.0",
     "vue-codemirror": "^4.0.6",
     "vue-property-decorator": "^8.2.1",
@@ -29,6 +29,6 @@
     "ts-jest": "^23.0.0",
     "typescript": "^3.0.0",
     "vue-svg-loader": "^0.12.0",
-    "vue-template-compiler": "^2.5.21"
+    "vue-template-compiler": "^2.6.10"
   }
 }
