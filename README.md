@@ -1,5 +1,7 @@
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FGameComponent%2Feconomy-webclient.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FGameComponent%2Feconomy-webclient?ref=badge_shield)
 
+**State of the project:** Unstable and in active development
+
 # Economy Service Webclient
 The economy service is a service to manage your game's economy.
 
@@ -8,8 +10,6 @@ The economy service is a service to manage your game's economy.
 ## What is the economy service?
 
 The economy services allow you to give your players access to items, currencies and much more. Anything that touches the economy of your game is parts of this service. This services allows you to define item definitions, create currencies, open up shops and much more.
-
-**State of the project:** Unstable and in active development
 
 ## Contributing
 
