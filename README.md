@@ -1,4 +1,5 @@
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FGameComponent%2Feconomy-webclient.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FGameComponent%2Feconomy-webclient?ref=badge_shield)
+[![Discord Chat](https://img.shields.io/discord/555785438162583553.svg)](https://discord.gg/CPmb5N5)  
 
 **State of the project:** Unstable and in active development
 
