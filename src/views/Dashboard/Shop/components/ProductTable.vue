@@ -31,11 +31,11 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
-import { V1Product } from '@/../vendor/economy-client/api.ts'
+import { V1Product } from '@/../vendor/economy-client/api.ts';
 
 @Component
 export default class ProductTable extends Vue {
   @Prop({ default: [] })
-  products: Array<V1Product>
+  public products: V1Product[];
 }
 </script>

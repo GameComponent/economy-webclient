@@ -21,7 +21,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import ShopHeader from '../../../components/ShopHeader.vue';
-import SelectedProductHeader from '../components/SelectedProductHeader.vue'
+import SelectedProductHeader from '../components/SelectedProductHeader.vue';
 import { V1Product, V1Item } from '@/../vendor/economy-client/api.ts';
 
 @Component({

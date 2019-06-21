@@ -48,7 +48,7 @@ export default class CreateStorage extends Vue {
   };
 
   public mounted(): void {
-    if (!this.$route.query.playerId) return;
+    if (!this.$route.query.playerId) { return; }
 
     this.storage.playerId = String(this.$route.query.playerId);
   }

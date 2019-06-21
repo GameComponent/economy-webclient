@@ -103,7 +103,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import ShopHeader from '../../../components/ShopHeader.vue';
-import SelectedProductHeader from '../components/SelectedProductHeader.vue'
+import SelectedProductHeader from '../components/SelectedProductHeader.vue';
 import { V1Product, V1Item } from '@/../vendor/economy-client/api.ts';
 
 @Component({
@@ -114,8 +114,8 @@ import { V1Product, V1Item } from '@/../vendor/economy-client/api.ts';
 })
 export default class ProductItemDetail extends Vue {
   public product: V1Product = null;
-  public items: Array<V1Item> = [];
-  public itemAmount: { [key: string]: string; } = {}
+  public items: V1Item[] = [];
+  public itemAmount: { [key: string]: string; } = {};
 
   public mounted() {
     this.$economyService.getProduct(this.$route.params.id)
@@ -152,16 +152,16 @@ export default class ProductItemDetail extends Vue {
   }
 
   get attachedItemIds() {
-    if (!this.product) return [];
-    if (!this.product.items) return [];
+    if (!this.product) { return []; }
+    if (!this.product.items) { return []; }
 
-    return this.product.items.map(x => x.item.id);
+    return this.product.items.map((x) => x.item.id);
   }
 
   get itemsWhichAreNotAttached() {
-    if (!this.items) return [];
+    if (!this.items) { return []; }
 
-    return this.items.filter(x => !this.attachedItemIds.includes(x.id));
+    return this.items.filter((x) => !this.attachedItemIds.includes(x.id));
   }
 }
 </script>

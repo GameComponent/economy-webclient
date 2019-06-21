@@ -55,7 +55,7 @@ import { V1Shop } from '@/../vendor/economy-client/api.ts';
   },
 })
 export default class Shop extends Vue {
-  public shops: Array<V1Shop> = [];
+  public shops: V1Shop[] = [];
 
   public mounted() {
     this.$economyService.listShop()

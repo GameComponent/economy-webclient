@@ -248,21 +248,21 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from "vue-property-decorator";
-import IconHome from "@/assets/icons/icon-home.svg";
-import IconStar from "@/assets/icons/icon-star.svg";
-import IconBriefcase from "@/assets/icons/icon-briefcase.svg";
-import IconUser from "@/assets/icons/icon-user.svg";
-import IconCurrencyDollar from "@/assets/icons/icon-currency-dollar.svg";
-import IconInformation from "@/assets/icons/icon-information.svg";
-import IconGroup from "@/assets/icons/icon-group.svg";
-import IconCog from "@/assets/icons/icon-cog.svg";
-import IconShop from "@/assets/icons/icon-store.svg";
-import IconBuilding from "@/assets/icons/icon-building.svg";
-import IconPuzzle from "@/assets/icons/icon-puzzle.svg";
-import IconTrophy from "@/assets/icons/icon-trophy.svg";
-import IconClose from "@/assets/icons/icon-x-square.svg";
-import IconLogout from "@/assets/icons/icon-x-circle.svg";
+import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
+import IconHome from '@/assets/icons/icon-home.svg';
+import IconStar from '@/assets/icons/icon-star.svg';
+import IconBriefcase from '@/assets/icons/icon-briefcase.svg';
+import IconUser from '@/assets/icons/icon-user.svg';
+import IconCurrencyDollar from '@/assets/icons/icon-currency-dollar.svg';
+import IconInformation from '@/assets/icons/icon-information.svg';
+import IconGroup from '@/assets/icons/icon-group.svg';
+import IconCog from '@/assets/icons/icon-cog.svg';
+import IconShop from '@/assets/icons/icon-store.svg';
+import IconBuilding from '@/assets/icons/icon-building.svg';
+import IconPuzzle from '@/assets/icons/icon-puzzle.svg';
+import IconTrophy from '@/assets/icons/icon-trophy.svg';
+import IconClose from '@/assets/icons/icon-x-square.svg';
+import IconLogout from '@/assets/icons/icon-x-circle.svg';
 
 @Component({
   components: {
@@ -279,8 +279,8 @@ import IconLogout from "@/assets/icons/icon-x-circle.svg";
     IconPuzzle,
     IconTrophy,
     IconClose,
-    IconLogout
-  }
+    IconLogout,
+  },
 })
 export default class DashboardNavigation extends Vue {
   @Prop() private open: boolean;
@@ -288,22 +288,22 @@ export default class DashboardNavigation extends Vue {
 
   public mounted() {
     this.clickListener = window.addEventListener(
-      "click",
-      this.handleClickOutside
+      'click',
+      this.handleClickOutside,
     );
   }
 
   public beforeDestroy() {
-    window.removeEventListener("click", this.clickListener);
+    window.removeEventListener('click', this.clickListener);
   }
 
   public handleClickOutside() {
-    this.$emit("close");
+    this.$emit('close');
   }
 
-  @Watch("$route")
-  onRouteChanged() {
-    this.$emit("close");
+  @Watch('$route')
+  public onRouteChanged() {
+    this.$emit('close');
   }
 }
 </script>

@@ -64,15 +64,15 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from "vue-property-decorator";
+import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
 
 @Component
 export default class SelectCurrencyAmount extends Vue {
-  public currencies: Array<any> = [];
-  public selectedCurrencyId: String = null;
-  public selectedMinAmount: Number = 0;
-  public selectedMaxAmount: Number = 0;
-  public shouldAdjustMaxAmount: Boolean = true;
+  public currencies: any[] = [];
+  public selectedCurrencyId: string = null;
+  public selectedMinAmount: number = 0;
+  public selectedMaxAmount: number = 0;
+  public shouldAdjustMaxAmount: boolean = true;
 
   public mounted() {
     this.$economyService.listCurrency().then(({ currencies }) => {
@@ -81,16 +81,16 @@ export default class SelectCurrencyAmount extends Vue {
   }
 
   public onClickGiveCurrency() {
-    this.$emit("input", {
+    this.$emit('input', {
       currencyId: this.selectedCurrencyId,
-      currency: this.currencies.find(x => x.id === this.selectedCurrencyId),
+      currency: this.currencies.find((x) => x.id === this.selectedCurrencyId),
       minAmount: this.selectedMinAmount,
-      maxAmount: this.selectedMaxAmount
+      maxAmount: this.selectedMaxAmount,
     });
   }
 
-  @Watch("selectedMinAmount")
-  onSelectedMinAmountChanged() {
+  @Watch('selectedMinAmount')
+  public onSelectedMinAmountChanged() {
     if (this.shouldAdjustMaxAmount) {
       this.selectedMaxAmount = this.selectedMinAmount;
     }
@@ -106,7 +106,7 @@ export default class SelectCurrencyAmount extends Vue {
     }
 
     return this.currencies.find(
-      currency => currency.id === this.selectedCurrencyId
+      (currency) => currency.id === this.selectedCurrencyId,
     );
   }
 }

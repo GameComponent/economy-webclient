@@ -87,7 +87,7 @@ import { Component, Vue, Watch } from 'vue-property-decorator';
 
 @Component
 export default class Config extends Vue {
-  public configs: Array<any> = [];
+  public configs: any[] = [];
   public editedConfigs = {};
   public key: string = '';
   public value: string = '';
@@ -125,7 +125,7 @@ export default class Config extends Vue {
     let valueObject = null;
     try {
       valueObject = JSON.parse(config.value);
-    } catch(e) {
+    } catch (e) {
       return null;
     }
 
@@ -148,7 +148,7 @@ export default class Config extends Vue {
   get valueObject() {
     try {
       return JSON.parse(this.value);
-    } catch(e) {
+    } catch (e) {
       return null;
     }
 

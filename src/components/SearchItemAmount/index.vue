@@ -91,14 +91,14 @@ export default class SearchItemAmount extends Vue {
   }
 
   public reset() {
-    this.selectedItem = null
+    this.selectedItem = null;
     this.items = [];
   }
 
   public handleClickGiveItem() {
     this.$emit('input', {
       itemId: this.selectedItem,
-      item: this.items.find(x => x.id === this.selectedItem),
+      item: this.items.find((x) => x.id === this.selectedItem),
       amount: this.amount,
     });
   }

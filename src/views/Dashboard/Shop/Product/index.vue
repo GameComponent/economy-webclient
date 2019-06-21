@@ -56,7 +56,7 @@ import ShopHeader from '../components/ShopHeader.vue';
   },
 })
 export default class Product extends Vue {
-  public products: Array<V1Product> = [];
+  public products: V1Product[] = [];
 
   public mounted() {
     this.$economyService.listProduct()

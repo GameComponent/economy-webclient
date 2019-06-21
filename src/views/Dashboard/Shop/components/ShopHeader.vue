@@ -72,18 +72,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import IconShop from "@/assets/icons/icon-store.svg";
-import IconProduct from "@/assets/icons/icon-tag.svg";
+import { Component, Vue } from 'vue-property-decorator';
+import IconShop from '@/assets/icons/icon-store.svg';
+import IconProduct from '@/assets/icons/icon-tag.svg';
 
-const SHOP_ROUTE_SELECTOR = "dashboard-shop";
-const PRODUCT_ROUTE_SELECTOR = "dashboard-shop-product";
+const SHOP_ROUTE_SELECTOR = 'dashboard-shop';
+const PRODUCT_ROUTE_SELECTOR = 'dashboard-shop-product';
 
 @Component({
   components: {
     IconShop,
-    IconProduct
-  }
+    IconProduct,
+  },
 })
 export default class ShopHeader extends Vue {
   get isShopActive() {

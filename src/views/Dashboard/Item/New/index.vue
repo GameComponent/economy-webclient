@@ -73,7 +73,7 @@ export default class CreateItem extends Vue {
     'DEFAULT',
     'UNBALANCED_CREATE_NEW_STACKS',
     'BALANCED_FILL_EXISTING_STACKS',
-    'UNBALANCED_FILL_EXISTING_STACKS'
+    'UNBALANCED_FILL_EXISTING_STACKS',
   ];
 
   // public item: V1CreateItemRequest  = {
@@ -85,20 +85,11 @@ export default class CreateItem extends Vue {
   };
 
   public handleClickCreateItem(): void {
-    console.log(this.item);
-
     if (this.item.name.length === 0) {
       alert('Please enter an item name.');
       return;
     }
 
-    // fetch('http://localhost:8888/v1/item', {
-    //   method: 'POST',
-    //   body: JSON.stringify({
-    //     api: 'v1',
-    //     ...this.item,
-    //   }),
-    // })
     this.$economyService.createItem({
       api: 'v1',
       ...this.item,

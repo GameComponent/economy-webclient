@@ -76,7 +76,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import ShopHeader from '../../../../components/ShopHeader.vue';
-import SelectedProductHeader from '../../components/SelectedProductHeader.vue'
+import SelectedProductHeader from '../../components/SelectedProductHeader.vue';
 import { V1Product, V1Item } from '@/../vendor/economy-client/api.ts';
 import SelectCurrencyAmount from '@/components/SelectCurrencyAmount/index.vue';
 import SearchItemAmount from '@/components/SearchItemAmount/index.vue';
@@ -95,7 +95,7 @@ export default class ProductPriceNew extends Vue {
 
   public onInputCurrencyAmount({ currencyId, currency, amount }) {
     this.currencyAmounts = [
-      ...this.currencyAmounts.filter(x => x.id !== currencyId),
+      ...this.currencyAmounts.filter((x) => x.id !== currencyId),
       {
         id: currencyId,
         currency,
@@ -106,7 +106,7 @@ export default class ProductPriceNew extends Vue {
 
   public onInputItemAmount({ itemId, item, amount }) {
     this.itemAmounts = [
-      ...this.itemAmounts.filter(x => x.id !== itemId),
+      ...this.itemAmounts.filter((x) => x.id !== itemId),
       {
         id: itemId,
         item,
@@ -117,12 +117,12 @@ export default class ProductPriceNew extends Vue {
 
   public onClickRemoveCurrency(currencyAmountId) {
     this.currencyAmounts = this.currencyAmounts
-      .filter(x => x.id !== currencyAmountId);
+      .filter((x) => x.id !== currencyAmountId);
   }
 
   public onClickRemoveItem(itemAmountId) {
     this.itemAmounts = this.itemAmounts
-      .filter(x => x.id !== itemAmountId);
+      .filter((x) => x.id !== itemAmountId);
   }
 
   public onClickCreatePrice() {

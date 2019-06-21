@@ -37,8 +37,6 @@ export default class CreateCurrency extends Vue {
   };
 
   public handleClickCreateCurrency(): void {
-    console.log(this.currency);
-
     if (this.currency.name.length === 0) {
       alert('Please enter a currency name.');
       return;
