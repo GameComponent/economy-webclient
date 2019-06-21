@@ -1,3 +1,10 @@
+<style scoped>
+.extend {
+  background-color: #f3f3f3;
+  border: 1px solid #e4e4e4
+}
+</style>
+
 <template>
   <div class="p-16">
     <h1>Create new item</h1>
@@ -7,7 +14,7 @@
       <input
         v-model="item.name"
         type="text"
-        class="gc-input"
+        class="gc-input ml-2"
         placeholder="Item name"
         name="name"
       >
@@ -18,36 +25,39 @@
       <input
         v-model="item.stackable"
         type="checkbox"
-        class="gc-input"
+        class="gc-input ml-2"
         name="stackable"
       >
     </div>
 
-    <div class="mt-4">
-      <label for="stackMaxAmount">Stack max amount(0 is infinite)</label>
-      <input
-        v-model="item.stackMaxAmount"
-        type="number"
-        class="gc-input"
-        name="stackMaxAmount"
-      >
-    </div>
-
-    <div class="mt-4">
-      <label for="ItemStackBalancingMethod">Stack balancing method</label>
-      <select
-        v-model="item.stackBalancingMethod"
-        type="checkbox"
-        class="gc-input"
-        name="stackBalancingMethod"
-      >
-        <option
-          v-for="stackBalancingMethod in stackBalancingMethods"
-          :key="stackBalancingMethod"
-          :value="stackBalancingMethod"
+    <div v-show="item.stackable" class="extend mt-4 p-4 rounded">
+      <div>
+        <label for="stackMaxAmount">Stack max amount(0 is infinite)</label>
+        <input
+          v-model="item.stackMaxAmount"
+          type="number"
+          class="gc-input ml-2"
+          name="stackMaxAmount"
         >
-        </option>
-      </select>
+      </div>
+
+      <div class="mt-4">
+        <label for="ItemStackBalancingMethod">Stack balancing method</label>
+        <select
+          v-model="item.stackBalancingMethod"
+          type="checkbox"
+          class="gc-input ml-2"
+          name="stackBalancingMethod"
+        >
+          <option
+            v-for="stackBalancingMethod in stackBalancingMethods"
+            :key="stackBalancingMethod"
+            :value="stackBalancingMethod"
+          >
+            {{ stackBalancingMethod }}
+          </option>
+        </select>
+      </div>
     </div>
 
     <div class="mt-4">
