@@ -126,7 +126,7 @@ export default class ProductPriceNew extends Vue {
   }
 
   public onClickCreatePrice() {
-    this.$economyService.createProductPrice({})
+    this.$economyService.createPrice({})
       .then(() => {
         this.$router.push({
            name: 'dashboard-shop-product-detail-price',
