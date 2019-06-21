@@ -42,11 +42,10 @@
         name="stackBalancingMethod"
       >
         <option
-          v-for="ItemStackBalancingMethod in ItemStackBalancingMethods"
-          :key="ItemStackBalancingMethod"
-          :value="ItemStackBalancingMethod"
+          v-for="stackBalancingMethod in stackBalancingMethods"
+          :key="stackBalancingMethod"
+          :value="stackBalancingMethod"
         >
-          {{ ItemStackBalancingMethod }}
         </option>
       </select>
     </div>
@@ -64,24 +63,20 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-// import { ItemStackBalancingMethod } from '@/../vendor/economy-client/api.ts';
-import { V1CreateItemRequest } from '@/../vendor/economy-client/api.ts';
+import {
+  V1CreateItemRequest,
+  V1StackBalancingMethod,
+} from '@/../vendor/economy-client/api.ts';
 
 @Component
 export default class CreateItem extends Vue {
-  public ItemStackBalancingMethods = [
-    'DEFAULT',
-    'UNBALANCED_CREATE_NEW_STACKS',
-    'BALANCED_FILL_EXISTING_STACKS',
-    'UNBALANCED_FILL_EXISTING_STACKS',
-  ];
+  public v1StackBalancingMethod = V1StackBalancingMethod;
 
-  // public item: V1CreateItemRequest  = {
-  public item = {
+  public item: V1CreateItemRequest  = {
     name: '',
     stackable: false,
-    stackMaxAmount: 0,
-    stackBalancingMethod: 'DEFAULT',
+    stackMaxAmount: '0',
+    stackBalancingMethod: V1StackBalancingMethod.DEFAULT,
   };
 
   public handleClickCreateItem(): void {
@@ -91,7 +86,6 @@ export default class CreateItem extends Vue {
     }
 
     this.$economyService.createItem({
-      api: 'v1',
       ...this.item,
     })
       .then(() => {
@@ -99,6 +93,12 @@ export default class CreateItem extends Vue {
           name: 'dashboard-item',
         });
       });
+  }
+
+  get stackBalancingMethods() {
+    return Object.values(this.v1StackBalancingMethod)
+      .filter((method: string) => method.includes('_') || method === 'DEFAULT')
+      .filter((v, i, s) => s.indexOf(v) === i);
   }
 }
 </script>
