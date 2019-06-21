@@ -24,39 +24,40 @@ import SearchItem from './components/SearchItem.vue';
   },
 })
 export default class GiveItem extends Vue {
-  @Prop() private itemId: string;
-  @Prop() private storageId: string;
-
   public request: V1GiveItemRequest = {
     itemId: '',
     storageId: '',
-    amount: 1,
+    amount: {
+      minAmount: '0',
+      maxAmount: '0',
+    },
   };
+
+  @Prop() private itemId: string;
+  @Prop() private storageId: string;
 
   public mounted() {
     this.request.itemId = this.itemId;
     this.request.storageId = this.storageId;
   }
 
-  public handleInputPlayerStorage({ storageId, amount = 1 }) {
+  public handleInputPlayerStorage({ storageId, amount }) {
     this.request.storageId = storageId;
     this.request.amount = amount;
-    console.log('giveItem', this.request);
 
     this.$economyService.giveItem(this.request)
       .then(() => {
-        this.$router.go(this.$router.currentRoute);
+        this.$router.go(this.$router.currentRoute as any);
       });
   }
 
-  public handleInputItem({ itemId, amount = 1 }) {
+  public handleInputItem({ itemId, amount }) {
     this.request.itemId = itemId;
     this.request.amount = amount;
-    console.log('giveItem', this.request);
 
     this.$economyService.giveItem(this.request)
       .then(() => {
-        this.$router.go(this.$router.currentRoute);
+        this.$router.go(this.$router.currentRoute as any);
       });
   }
 }

@@ -57,12 +57,34 @@
         <tfoot v-if="selectedStorage">
           <tr>
             <td style="padding-left: 20px; padding-bottom: 10px;">
-              <button
-                class="gc-button"
-                @click="handleClickGiveItem"
-              >
-                Give item
-              </button>
+                            <div class="inline-block">
+                <label for="minAmount">Min. amount: </label>
+                <input
+                  v-model="minAmount"
+                  type="number"
+                  class="gc-input"
+                  name="minAmount"
+                >
+              </div>
+
+              <div class="inline-block ml-4">
+                <label for="maxAmount">Max. amount: </label>
+                <input
+                  v-model="maxAmount"
+                  type="number"
+                  class="gc-input"
+                  name="maxAmount"
+                >
+              </div>
+
+              <div class="inline-block ml-4">
+                <button
+                  class="gc-button"
+                  @click="handleClickGiveItem"
+                >
+                  Give item
+                </button>
+              </div>
             </td>
           </tr>
         </tfoot>
@@ -81,6 +103,8 @@ export default class SearchPlayerStorage extends Vue {
   public selectedPlayer = null;
   public selectedStorage = null;
   public storages = [];
+  public minAmount: number = 1;
+  public maxAmount: number = 1;
 
   public handleClickSearch() {
     this.reset();
@@ -89,7 +113,6 @@ export default class SearchPlayerStorage extends Vue {
       query: this.query,
     })
       .then(({ players }) => {
-        console.log('player search results: ', players);
         this.players = players;
       });
   }
@@ -104,18 +127,22 @@ export default class SearchPlayerStorage extends Vue {
 
   public reset() {
     this.selectedPlayer = null;
-    this.selectedStorage = null
+    this.selectedStorage = null;
     this.storages = [];
   }
 
   public handleClickGiveItem() {
     this.$emit('input', {
       storageId: this.selectedStorage,
+      amount: {
+        minAmount: this.minAmount,
+        maxAmount: this.maxAmount,
+      },
     });
   }
 
   @Watch('selectedPlayer')
-  handleSelectedPlayerChanged() {
+  public handleSelectedPlayerChanged() {
     this.$economyService.getPlayer(this.selectedPlayer)
       .then(({ player }) => {
         this.storages = player.storages || [];

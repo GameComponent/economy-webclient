@@ -101,13 +101,12 @@ export default class SearchItemAmount extends Vue {
       query: this.query,
     })
       .then(({ items }) => {
-        console.log('item search results: ', items);
         this.items = items;
       });
   }
 
   public reset() {
-    this.selectedItem = null
+    this.selectedItem = null;
     this.items = [];
   }
 
