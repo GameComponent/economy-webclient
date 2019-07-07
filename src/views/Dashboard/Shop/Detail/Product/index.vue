@@ -1,14 +1,14 @@
-<style>
-  .product-header {
-    background-color: #dedfe0;
-    color: #4a4a4a;
-    text-transform: uppercase;
-    padding: 20px;
-    border: 1px solid #eee;
-    border-bottom: 0;
-    font-weight: 500;
-    letter-spacing: .05em;
-  }
+<style scoped>
+.product-header {
+  background-color: #dedfe0;
+  color: #4a4a4a;
+  text-transform: uppercase;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-bottom: 0;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
 </style>
 
 <template>
@@ -19,21 +19,14 @@
       <h1>Shop Product</h1>
 
       <div v-if="shop">
-        <div
-          v-for="product in shop.products"
-          :key="product.id"
-        >
+        <div v-for="product in shop.products" :key="product.id">
           <div class="product-header mt-4 clearfix overflow-hidden">
-            <div class="inline-block float-left">
-              {{ product.name }}
-            </div>
+            <div class="inline-block float-left">{{ product.name }}</div>
             <div class="inline-block float-right">
               <span
                 class="bg-red-500 p-2 rounded text-white text-sm cursor-pointer border-0 hover:bg-red-600"
                 @click="handleClickDetachProduct(product)"
-              >
-                Detach product
-              </span>
+              >Detach product</span>
             </div>
           </div>
           <table class="gc-table gc-table--small-head text-left">
@@ -61,32 +54,30 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import ShopHeader from '../../components/ShopHeader.vue';
-import SelectedShopHeader from '../../components/SelectedShopHeader.vue';
-import { V1Shop } from '@/../vendor/economy-client/api.ts';
+import { Component, Vue } from "vue-property-decorator";
+import ShopHeader from "../../components/ShopHeader.vue";
+import SelectedShopHeader from "../../components/SelectedShopHeader.vue";
+import { V1Shop } from "@/../vendor/economy-client/api.ts";
 
 @Component({
   components: {
     ShopHeader,
-    SelectedShopHeader,
-  },
+    SelectedShopHeader
+  }
 })
 export default class ShopProductDetail extends Vue {
-   public shop: V1Shop = null;
+  public shop: V1Shop = null;
 
   public mounted() {
-    this.$economyService.getShop(this.$route.params.id)
-      .then(({ shop }) => {
-        this.shop = shop;
-      });
+    this.$economyService.getShop(this.$route.params.id).then(({ shop }) => {
+      this.shop = shop;
+    });
   }
 
   public handleClickDetachProduct({ id }) {
-    this.$economyService.detachProduct(id)
-      .then(() => {
-        this.$router.go(this.$router.currentRoute as any);
-      });
+    this.$economyService.detachProduct(id).then(() => {
+      this.$router.go(this.$router.currentRoute as any);
+    });
   }
 }
 </script>
