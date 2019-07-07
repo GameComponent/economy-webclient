@@ -25,12 +25,10 @@
                 :to="{
                   name: 'dashboard-storage-detail',
                   params: {
-                    id: storage.id,
+                    storageId: storage.id,
                   },
                 }"
-              >
-                View
-              </router-link>
+              >View</router-link>
             </td>
           </tr>
         </tbody>
@@ -44,9 +42,7 @@
               playerId: this.player.id,
             },
           }"
-        >
-          Create new storage
-        </gc-button-link>
+        >Create new storage</gc-button-link>
       </div>
     </div>
 
@@ -58,14 +54,15 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue } from "vue-property-decorator";
 
 @Component
 export default class Player extends Vue {
   public player = null;
 
   public mounted() {
-    this.$economyService.getPlayer(this.$route.params.id)
+    this.$economyService
+      .getPlayer(this.$route.params.playerId)
       .then(({ player }) => {
         this.player = player;
       });

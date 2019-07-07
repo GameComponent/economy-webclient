@@ -6,9 +6,7 @@
     <div v-if="storage && storage.items" class="mt-4">
       <h2>Items</h2>
 
-      <div v-if="storage.items.length === 0" class="mt-4">
-        Sorry, no items found in the storage
-      </div>
+      <div v-if="storage.items.length === 0" class="mt-4">Sorry, no items found in the storage</div>
 
       <table class="gc-table mt-4" v-if="storage.items.length > 0">
         <thead>
@@ -29,13 +27,14 @@
             <td>
               <div>
                 <span v-if="storageItem.amount">{{ storageItem.amount }}</span>
-                <span v-else class="font-medium text-white text-xs bg-gray-600 rounded-lg px-2 tracking-wider">
-                  UNSTACKABLE
-                </span>
+                <span
+                  v-else
+                  class="font-medium text-white text-xs bg-gray-600 rounded-lg px-2 tracking-wider"
+                >UNSTACKABLE</span>
               </div>
             </td>
             <td>
-              <a href="">Remove</a>
+              <a href>Remove</a>
             </td>
           </tr>
         </tbody>
@@ -46,9 +45,10 @@
     <div v-if="storage && storage.currencies" class="mt-8">
       <h2>Currencies</h2>
 
-      <div v-if="storage.currencies.length === 0" class="mt-4">
-        Sorry, no currencies found in the storage
-      </div>
+      <div
+        v-if="storage.currencies.length === 0"
+        class="mt-4"
+      >Sorry, no currencies found in the storage</div>
 
       <table class="gc-table mt-4" v-if="storage.currencies.length > 0">
         <thead>
@@ -67,8 +67,7 @@
               <div class="gc-table__description">({{ storageCurrency.currency.id }})</div>
             </td>
             <td>{{ storageCurrency.amount }}</td>
-            <td>
-            </td>
+            <td></td>
           </tr>
         </tbody>
       </table>
@@ -79,9 +78,7 @@
       <h2>Give item</h2>
 
       <div class="mt-4">
-        <give-item
-          :storageId="this.$route.params.id"
-        ></give-item>
+        <give-item :storageId="this.$route.params.storageId"></give-item>
       </div>
     </div>
 
@@ -90,9 +87,7 @@
       <h2>Give currency</h2>
 
       <div class="mt-4">
-        <give-currency
-          :storageId="this.$route.params.id"
-        ></give-currency>
+        <give-currency :storageId="this.$route.params.storageId"></give-currency>
       </div>
     </div>
 
@@ -105,21 +100,22 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import GiveItem from '@/components/GiveItem/index.vue';
-import GiveCurrency from '@/components/GiveCurrency/index.vue';
+import { Component, Vue } from "vue-property-decorator";
+import GiveItem from "@/components/GiveItem/index.vue";
+import GiveCurrency from "@/components/GiveCurrency/index.vue";
 
 @Component({
   components: {
     GiveItem,
-    GiveCurrency,
-  },
+    GiveCurrency
+  }
 })
 export default class Storage extends Vue {
   public storage = null;
 
   public mounted() {
-    this.$economyService.getStorage(this.$route.params.id)
+    this.$economyService
+      .getStorage(this.$route.params.storageId)
       .then(({ storage }) => {
         this.storage = storage;
       });

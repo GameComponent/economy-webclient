@@ -9,19 +9,14 @@
       <table class="mt-4">
         <tr>
           <td>
-            <b>
-              Name:
-            </b>
+            <b>Name:</b>
           </td>
-          <td>
-            {{ product.name }}
-          </td>
+          <td>{{ product.name }}</td>
         </tr>
 
         <tr>
           <td></td>
-          <td>
-          </td>
+          <td></td>
         </tr>
       </table>
 
@@ -34,22 +29,23 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { V1Product, V1Item } from '@/../vendor/economy-client/api.ts';
-import ShopHeader from '../../components/ShopHeader.vue';
-import SelectedProductHeader from './components/SelectedProductHeader.vue';
+import { Component, Vue } from "vue-property-decorator";
+import { V1Product, V1Item } from "@/../vendor/economy-client/api.ts";
+import ShopHeader from "../../components/ShopHeader.vue";
+import SelectedProductHeader from "./components/SelectedProductHeader.vue";
 
 @Component({
   components: {
     ShopHeader,
-    SelectedProductHeader,
-  },
+    SelectedProductHeader
+  }
 })
 export default class ProductDetail extends Vue {
   public product: V1Product = null;
 
   public mounted() {
-    this.$economyService.getProduct(this.$route.params.id)
+    this.$economyService
+      .getProduct(this.$route.params.productId)
       .then(({ product }) => {
         this.product = product;
       });

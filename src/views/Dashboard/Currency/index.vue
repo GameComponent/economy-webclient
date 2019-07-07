@@ -23,41 +23,34 @@
               :to="{
                 name: 'dashboard-currency-detail',
                 params: {
-                  id: currency.id,
+                  currencyId: currency.id,
                 },
               }"
-            >
-              View
-            </router-link>
+            >View</router-link>
           </td>
         </tr>
       </tbody>
     </table>
 
-  <div class="mt-4">
-    <gc-button-link
-      :to="{
+    <div class="mt-4">
+      <gc-button-link :to="{
         name: 'dashboard-currency-new',
-      }"
-    >
-      Create new currency
-    </gc-button-link>
-  </div>
+      }">Create new currency</gc-button-link>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue } from "vue-property-decorator";
 
 @Component
 export default class Currency extends Vue {
   public currencies = [];
 
   public mounted() {
-    this.$economyService.listCurrency()
-      .then(({ currencies }) => {
-        this.currencies = currencies;
-      });
+    this.$economyService.listCurrency().then(({ currencies }) => {
+      this.currencies = currencies;
+    });
   }
 }
 </script>

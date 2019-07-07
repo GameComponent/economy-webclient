@@ -23,41 +23,34 @@
               :to="{
                 name: 'dashboard-item-detail',
                 params: {
-                  id: item.id,
+                  itemId: item.id,
                 },
               }"
-            >
-              View
-            </router-link>
+            >View</router-link>
           </td>
         </tr>
       </tbody>
     </table>
 
     <div class="mt-4">
-      <gc-button-link
-        :to="{
+      <gc-button-link :to="{
           name: 'dashboard-item-new',
-        }"
-      >
-        Create new item
-      </gc-button-link>
+        }">Create new item</gc-button-link>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue } from "vue-property-decorator";
 
 @Component
 export default class Item extends Vue {
   public items = [];
 
   public mounted() {
-    this.$economyService.listItem()
-      .then(({ items }) => {
-        this.items = items;
-      });
+    this.$economyService.listItem().then(({ items }) => {
+      this.items = items;
+    });
   }
 }
 </script>

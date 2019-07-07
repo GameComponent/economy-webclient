@@ -29,7 +29,6 @@
                 :to="{
                   name: 'dashboard-shop-product-detail-price-detail',
                   params: {
-                    id: $route.params.id,
                     priceId: price.id,
                   },
                 }"
@@ -108,7 +107,7 @@ export default class ProductDetailPrice extends Vue {
 
   public mounted() {
     this.$economyService
-      .getProduct(this.$route.params.id)
+      .getProduct(this.$route.params.productId)
       .then(({ product }) => {
         this.product = product;
       });

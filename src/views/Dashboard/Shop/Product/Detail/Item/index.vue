@@ -26,26 +26,15 @@
                   :to="{
                     name: 'dashboard-item-detail',
                     params: {
-                      id: productItem.item.id,
+                      itemId: productItem.item.id,
                     },
                   }"
-                >
-                  {{ productItem.item.id }}
-                </router-link>
+                >{{ productItem.item.id }}</router-link>
               </td>
+              <td>{{ productItem.item.name }}</td>
+              <td>{{ productItem.amount }}</td>
               <td>
-                {{ productItem.item.name }}
-              </td>
-              <td>
-                {{ productItem.amount }}
-              </td>
-              <td>
-                <button
-                  class="gc-button"
-                  @click="handleClickDetach(productItem)"
-                >
-                  Detach
-                </button>
+                <button class="gc-button" @click="handleClickDetach(productItem)">Detach</button>
               </td>
             </tr>
           </tbody>
@@ -55,9 +44,7 @@
           v-if="!product.items"
           class="mt-4 p-4 border rounded"
           style="background-color: #EEE;"
-        >
-          No items attached to this item
-        </div>
+        >No items attached to this item</div>
       </div>
 
       <div class="mt-8" v-if="itemsWhichAreNotAttached && itemsWhichAreNotAttached.length > 0">
@@ -82,15 +69,10 @@
                   placeholder="1"
                   @input="e => handleInputItemAmount(e, item)"
                   :value="items[item.id] || '1'"
-                >
+                />
               </td>
               <td>
-                <button
-                  class="gc-button"
-                  @click="handleClickAttachItem(item)"
-                >
-                  Attach
-                </button>
+                <button class="gc-button" @click="handleClickAttachItem(item)">Attach</button>
               </td>
             </tr>
           </tbody>
@@ -101,67 +83,73 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import ShopHeader from '../../../components/ShopHeader.vue';
-import SelectedProductHeader from '../components/SelectedProductHeader.vue';
-import { V1Product, V1Item } from '@/../vendor/economy-client/api.ts';
+import { Component, Vue } from "vue-property-decorator";
+import ShopHeader from "../../../components/ShopHeader.vue";
+import SelectedProductHeader from "../components/SelectedProductHeader.vue";
+import { V1Product, V1Item } from "@/../vendor/economy-client/api.ts";
 
 @Component({
   components: {
     ShopHeader,
-    SelectedProductHeader,
-  },
+    SelectedProductHeader
+  }
 })
 export default class ProductItemDetail extends Vue {
   public product: V1Product = null;
   public items: V1Item[] = [];
-  public itemAmount: { [key: string]: string; } = {};
+  public itemAmount: { [key: string]: string } = {};
 
   public mounted() {
-    this.$economyService.getProduct(this.$route.params.id)
+    this.$economyService
+      .getProduct(this.$route.params.productId)
       .then(({ product }) => {
         this.product = product;
       });
 
-    this.$economyService.listItem()
-      .then(({ items }) => {
-        this.items = items;
-      });
+    this.$economyService.listItem().then(({ items }) => {
+      this.items = items;
+    });
   }
 
   public handleClickDetach({ id }) {
-    this.$economyService.detachItem(id)
-      .then(() => {
-        this.$router.go(this.$router.currentRoute as any);
-      });
+    this.$economyService.detachItem(id).then(() => {
+      this.$router.go(this.$router.currentRoute as any);
+    });
   }
 
   public handleClickAttachItem({ id }) {
-    this.$economyService.attachItem({
-      itemId: id,
-      productId: this.$route.params.id,
-      amount: this.itemAmount[id] || '1',
-    })
+    this.$economyService
+      .attachItem({
+        itemId: id,
+        productId: this.$route.params.productId,
+        amount: this.itemAmount[id] || "1"
+      })
       .then(() => {
         this.$router.go(this.$router.currentRoute as any);
       });
   }
 
-  public handleInputItemAmount({ target: { value }}, { id }) {
+  public handleInputItemAmount({ target: { value } }, { id }) {
     this.itemAmount[id] = `${value}`;
   }
 
   get attachedItemIds() {
-    if (!this.product) { return []; }
-    if (!this.product.items) { return []; }
+    if (!this.product) {
+      return [];
+    }
+    if (!this.product.items) {
+      return [];
+    }
 
-    return this.product.items.map((x) => x.item.id);
+    return this.product.items.map(x => x.item.id);
   }
 
   get itemsWhichAreNotAttached() {
-    if (!this.items) { return []; }
+    if (!this.items) {
+      return [];
+    }
 
-    return this.items.filter((x) => !this.attachedItemIds.includes(x.id));
+    return this.items.filter(x => !this.attachedItemIds.includes(x.id));
   }
 }
 </script>

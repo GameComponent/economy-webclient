@@ -20,48 +20,41 @@
                 :to="{
                   name: 'dashboard-shop-detail',
                   params: {
-                    id: shop.id,
+                    shopId: shop.id,
                   },
                 }"
-              >
-                View
-              </router-link>
+              >View</router-link>
             </td>
           </tr>
         </tbody>
       </table>
 
       <div class="mt-4">
-        <gc-button-link
-          :to="{
+        <gc-button-link :to="{
             name: 'dashboard-shop-new',
-          }"
-        >
-          Create new shop
-        </gc-button-link>
+          }">Create new shop</gc-button-link>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import ShopHeader from './components/ShopHeader.vue';
-import { V1Shop } from '@/../vendor/economy-client/api.ts';
+import { Component, Vue } from "vue-property-decorator";
+import ShopHeader from "./components/ShopHeader.vue";
+import { V1Shop } from "@/../vendor/economy-client/api.ts";
 
 @Component({
   components: {
-    ShopHeader,
-  },
+    ShopHeader
+  }
 })
 export default class Shop extends Vue {
   public shops: V1Shop[] = [];
 
   public mounted() {
-    this.$economyService.listShop()
-      .then(({ shops }) => {
-        this.shops = shops;
-      });
+    this.$economyService.listShop().then(({ shops }) => {
+      this.shops = shops;
+    });
   }
 }
 </script>

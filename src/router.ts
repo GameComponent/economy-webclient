@@ -57,7 +57,7 @@ const router = new Router({
             )
         },
         {
-          path: "item/:id",
+          path: "item/:itemId",
           name: "dashboard-item-detail",
           component: () =>
             import(
@@ -81,7 +81,7 @@ const router = new Router({
             )
         },
         {
-          path: "currency/:id",
+          path: "currency/:currencyId",
           name: "dashboard-currency-detail",
           component: () =>
             import(
@@ -105,7 +105,7 @@ const router = new Router({
             )
         },
         {
-          path: "player/:id",
+          path: "player/:playerId",
           name: "dashboard-player-detail",
           component: () =>
             import(
@@ -129,7 +129,7 @@ const router = new Router({
             )
         },
         {
-          path: "storage/:id",
+          path: "storage/:storageId",
           name: "dashboard-storage-detail",
           component: () =>
             import(
@@ -169,7 +169,7 @@ const router = new Router({
             )
         },
         {
-          path: "shop/product/:id",
+          path: "shop/product/:productId",
           name: "dashboard-shop-product-detail",
           component: () =>
             import(
@@ -177,7 +177,7 @@ const router = new Router({
             )
         },
         {
-          path: "shop/product/:id/item",
+          path: "shop/product/:productId/item",
           name: "dashboard-shop-product-detail-item",
           // tslint:disable-next-line
           component: () =>
@@ -186,7 +186,7 @@ const router = new Router({
             )
         },
         {
-          path: "shop/product/:id/price",
+          path: "shop/product/:productId/price",
           name: "dashboard-shop-product-detail-price",
           // tslint:disable-next-line
           component: () =>
@@ -195,7 +195,7 @@ const router = new Router({
             )
         },
         {
-          path: "shop/product/:id/price/:priceId",
+          path: "shop/product/:productId/price/:priceId",
           name: "dashboard-shop-product-detail-price-detail",
           // tslint:disable-next-line
           component: () =>
@@ -204,7 +204,7 @@ const router = new Router({
             )
         },
         {
-          path: "shop/product/:id/price/new",
+          path: "shop/product/:productId/price/new",
           name: "dashboard-shop-product-detail-price-new",
           // tslint:disable-next-line
           component: () =>
@@ -213,7 +213,7 @@ const router = new Router({
             )
         },
         {
-          path: "shop/:id",
+          path: "shop/:shopId",
           name: "dashboard-shop-detail",
           component: () =>
             import(
@@ -221,7 +221,7 @@ const router = new Router({
             )
         },
         {
-          path: "shop/:id/product",
+          path: "shop/:shopId/product",
           name: "dashboard-shop-detail-product",
           component: () =>
             import(

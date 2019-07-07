@@ -69,7 +69,7 @@ export default class ShopProductDetail extends Vue {
   public shop: V1Shop = null;
 
   public mounted() {
-    this.$economyService.getShop(this.$route.params.id).then(({ shop }) => {
+    this.$economyService.getShop(this.$route.params.shopId).then(({ shop }) => {
       this.shop = shop;
     });
   }

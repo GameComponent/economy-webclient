@@ -7,7 +7,7 @@
       <h2>Give item</h2>
 
       <div class="mt-4">
-        <give-item :itemId="$route.params.id" />
+        <give-item :itemId="$route.params.itemId" />
       </div>
     </div>
 
@@ -20,22 +20,21 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import GiveItem from '@/components/GiveItem/index.vue';
+import { Component, Vue } from "vue-property-decorator";
+import GiveItem from "@/components/GiveItem/index.vue";
 
 @Component({
   components: {
-    GiveItem,
-  },
+    GiveItem
+  }
 })
 export default class Item extends Vue {
   public item = null;
 
   public mounted() {
-    this.$economyService.getItem(this.$route.params.id)
-      .then(({ item }) => {
-        this.item = item;
-      });
+    this.$economyService.getItem(this.$route.params.itemId).then(({ item }) => {
+      this.item = item;
+    });
   }
 }
 </script>

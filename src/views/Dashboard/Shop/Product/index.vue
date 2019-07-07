@@ -21,12 +21,10 @@
                 :to="{
                   name: 'dashboard-shop-product-detail',
                   params: {
-                    id: product.id,
+                    productId: product.id,
                   },
                 }"
-              >
-                View
-              </router-link>
+              >View</router-link>
             </td>
           </tr>
         </tbody>
@@ -37,32 +35,29 @@
           :to="{
             name: 'dashboard-shop-product-new',
           }"
-        >
-          Create new product
-        </gc-button-link>
+        >Create new product</gc-button-link>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { V1Product } from '@/../vendor/economy-client/api.ts';
-import ShopHeader from '../components/ShopHeader.vue';
+import { Component, Vue } from "vue-property-decorator";
+import { V1Product } from "@/../vendor/economy-client/api.ts";
+import ShopHeader from "../components/ShopHeader.vue";
 
 @Component({
   components: {
-    ShopHeader,
-  },
+    ShopHeader
+  }
 })
 export default class Product extends Vue {
   public products: V1Product[] = [];
 
   public mounted() {
-    this.$economyService.listProduct()
-      .then(({ products }) => {
-        this.products = products;
-      });
+    this.$economyService.listProduct().then(({ products }) => {
+      this.products = products;
+    });
   }
 }
 </script>

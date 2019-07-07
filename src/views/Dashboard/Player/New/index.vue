@@ -7,30 +7,20 @@
         <tr>
           <td>ID:</td>
           <td>
-            <input
-              v-model="player.id"
-              type="text"
-              class="gc-input"
-            >
+            <input v-model="player.id" type="text" class="gc-input" />
           </td>
         </tr>
         <tr>
           <td>Name:</td>
           <td>
-            <input
-              v-model="player.name"
-              type="text"
-              class="gc-input"
-            >
+            <input v-model="player.name" type="text" class="gc-input" />
           </td>
         </tr>
 
         <tr>
           <td></td>
           <td>
-            <button @click="handleClickCreatePlayer" class="gc-button">
-              Create
-            </button>
+            <button @click="handleClickCreatePlayer" class="gc-button">Create</button>
           </td>
         </tr>
 
@@ -48,38 +38,39 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue } from "vue-property-decorator";
 
 @Component
 export default class CreatePlayer extends Vue {
   public player = {
-    id: '',
-    name: '',
+    id: "",
+    name: ""
   };
 
   public error = null;
 
   public handleClickCreatePlayer(): void {
     if (this.player.name.length === 0) {
-      alert('Please enter a player name.');
+      alert("Please enter a player name.");
       return;
     }
 
     if (this.player.id.length === 0) {
-      alert('Please enter a player_id.');
+      alert("Please enter a player_id.");
       return;
     }
 
-    this.$economyService.createPlayer(this.player)
+    this.$economyService
+      .createPlayer(this.player)
       .then(({ player }) => {
         this.$router.push({
-          name: 'dashboard-player-detail',
+          name: "dashboard-player-detail",
           params: {
-            id: player.id,
-          },
+            playerId: player.id
+          }
         });
       })
-      .catch((error) => {
+      .catch(error => {
         this.error = error;
       });
   }

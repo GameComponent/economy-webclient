@@ -17,7 +17,7 @@
               :to="{
                 name: 'dashboard-player-detail',
                 params: {
-                  id: player.id,
+                  playerId: player.id,
                 },
               }"
             >
