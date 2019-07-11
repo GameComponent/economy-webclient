@@ -34,13 +34,13 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue} from 'vue-property-decorator';
-import IconMenu from '@/assets/icons/icon-menu.svg';
+import { Component, Prop, Watch, Vue } from "vue-property-decorator";
+import IconMenu from "@/assets/icons/icon-menu.svg";
 
 @Component({
   components: {
-    IconMenu,
-  },
+    IconMenu
+  }
 })
 export default class DashboardMenuIcon extends Vue {}
 </script>

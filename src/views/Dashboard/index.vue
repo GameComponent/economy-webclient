@@ -4,15 +4,14 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
-  grid-template-areas:
-    'main';
+  grid-template-areas: "main";
   height: 100vh;
   overflow: hidden;
 }
 
 .main {
   grid-area: main;
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -22,8 +21,7 @@
   /* Show the sidenav */
   .grid-container {
     grid-template-columns: 240px 1fr;
-    grid-template-areas:
-      "sidenav main"
+    grid-template-areas: "sidenav main";
   }
 }
 </style>
@@ -31,27 +29,24 @@
 <template>
   <div class="grid-container">
     <dashboard-menu-icon @click="handleClickMenuIcon" />
-    <dashboard-navigation
-      :open="menuOpen"
-      @close="handleCloseNavigation"
-    />
+    <dashboard-navigation :open="menuOpen" @close="handleCloseNavigation" />
 
     <main class="main">
-      <router-view/>
+      <router-view />
     </main>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import DashboardNavigation from './components/DashboardNavigation.vue';
-import DashboardMenuIcon from './components/DashboardMenuIcon.vue';
+import { Component, Vue } from "vue-property-decorator";
+import DashboardNavigation from "./components/DashboardNavigation.vue";
+import DashboardMenuIcon from "./components/DashboardMenuIcon.vue";
 
 @Component({
   components: {
     DashboardNavigation,
-    DashboardMenuIcon,
-  },
+    DashboardMenuIcon
+  }
 })
 export default class Dashboard extends Vue {
   public menuOpen = false;

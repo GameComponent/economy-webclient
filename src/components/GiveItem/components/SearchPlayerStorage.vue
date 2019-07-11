@@ -1,20 +1,15 @@
 <template>
   <div>
-    <div style="background-color: #F2F5F7; border-top: 1px solid #eee; border-bottom: 1px solid #eee;">
+    <div
+      style="background-color: #F2F5F7; border-top: 1px solid #eee; border-bottom: 1px solid #eee;"
+    >
       <div style="padding-left: 20px; padding-top: 5px; padding-bottom: 10px;">
-        <input
-          class="gc-input"
-          type="text"
-          v-model="query"
-          placeholder="Search player"
-        >
+        <input class="gc-input" type="text" v-model="query" placeholder="Search player" />
         <button
           class="gc-button"
           style="padding: 5px; margin-left: 10px;"
           @click="handleClickSearch"
-        >
-          Search
-        </button>
+        >Search</button>
       </div>
       <table class="gc-table" v-if="indices && indices.length > 0">
         <thead>
@@ -32,11 +27,9 @@
                 name="selectedPlayer"
                 :value="players[index].id"
                 v-model="selectedPlayer"
-              >
+              />
               <span v-if="players[index]">{{ players[index].name }}</span>
-              <span v-if="players[index]" class="gc-table__description">
-                ({{ players[index].id }})
-              </span>
+              <span v-if="players[index]" class="gc-table__description">({{ players[index].id }})</span>
             </td>
             <td style="text-align: left;">
               <input
@@ -45,11 +38,9 @@
                 name="selectedStorage"
                 :value="storages[index].id"
                 v-model="selectedStorage"
-              >
+              />
               <span v-if="storages[index]">{{ storages[index].name }}</span>
-              <span v-if="storages[index]" class="gc-table__description">
-                ({{ storages[index].id }})
-              </span>
+              <span v-if="storages[index]" class="gc-table__description">({{ storages[index].id }})</span>
             </td>
           </tr>
         </tbody>
@@ -57,33 +48,18 @@
         <tfoot v-if="selectedStorage">
           <tr>
             <td style="padding-left: 20px; padding-bottom: 10px;">
-                            <div class="inline-block">
-                <label for="minAmount">Min. amount: </label>
-                <input
-                  v-model="minAmount"
-                  type="number"
-                  class="gc-input"
-                  name="minAmount"
-                >
+              <div class="inline-block">
+                <label for="minAmount">Min. amount:</label>
+                <input v-model="minAmount" type="number" class="gc-input" name="minAmount" />
               </div>
 
               <div class="inline-block ml-4">
-                <label for="maxAmount">Max. amount: </label>
-                <input
-                  v-model="maxAmount"
-                  type="number"
-                  class="gc-input"
-                  name="maxAmount"
-                >
+                <label for="maxAmount">Max. amount:</label>
+                <input v-model="maxAmount" type="number" class="gc-input" name="maxAmount" />
               </div>
 
               <div class="inline-block ml-4">
-                <button
-                  class="gc-button"
-                  @click="handleClickGiveItem"
-                >
-                  Give item
-                </button>
+                <button class="gc-button" @click="handleClickGiveItem">Give item</button>
               </div>
             </td>
           </tr>
@@ -94,11 +70,11 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
+import { Component, Prop, Watch, Vue } from "vue-property-decorator";
 
 @Component
 export default class SearchPlayerStorage extends Vue {
-  public query: string = '';
+  public query: string = "";
   public players = [];
   public selectedPlayer = null;
   public selectedStorage = null;
@@ -109,9 +85,10 @@ export default class SearchPlayerStorage extends Vue {
   public handleClickSearch() {
     this.reset();
 
-    this.$economyService.searchPlayer({
-      query: this.query,
-    })
+    this.$economyService
+      .searchPlayer({
+        query: this.query
+      })
       .then(({ players }) => {
         this.players = players;
       });
@@ -132,21 +109,20 @@ export default class SearchPlayerStorage extends Vue {
   }
 
   public handleClickGiveItem() {
-    this.$emit('input', {
+    this.$emit("input", {
       storageId: this.selectedStorage,
       amount: {
         minAmount: this.minAmount,
-        maxAmount: this.maxAmount,
-      },
+        maxAmount: this.maxAmount
+      }
     });
   }
 
-  @Watch('selectedPlayer')
+  @Watch("selectedPlayer")
   public handleSelectedPlayerChanged() {
-    this.$economyService.getPlayer(this.selectedPlayer)
-      .then(({ player }) => {
-        this.storages = player.storages || [];
-      });
+    this.$economyService.getPlayer(this.selectedPlayer).then(({ player }) => {
+      this.storages = player.storages || [];
+    });
   }
 }
 </script>

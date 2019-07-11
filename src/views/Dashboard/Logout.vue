@@ -3,12 +3,12 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue } from "vue-property-decorator";
 
 @Component
 export default class Logout extends Vue {
   public mounted(): void {
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
     window.location.href = window.location.origin;
   }
 }

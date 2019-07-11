@@ -1,20 +1,15 @@
 <template>
   <div>
-    <div style="background-color: #F2F5F7; border-top: 1px solid #eee; border-bottom: 1px solid #eee;">
+    <div
+      style="background-color: #F2F5F7; border-top: 1px solid #eee; border-bottom: 1px solid #eee;"
+    >
       <div style="padding-left: 20px; padding-top: 5px; padding-bottom: 10px;">
-        <input
-          class="gc-input"
-          type="text"
-          v-model="query"
-          placeholder="Search item"
-        >
+        <input class="gc-input" type="text" v-model="query" placeholder="Search item" />
         <button
           class="gc-button"
           style="padding: 5px; margin-left: 10px;"
           @click="handleClickSearch"
-        >
-          Search
-        </button>
+        >Search</button>
       </div>
       <table class="gc-table" v-if="items && items.length > 0">
         <thead>
@@ -26,12 +21,8 @@
         </thead>
         <tbody>
           <tr v-for="item in items" :key="item.id">
-            <td>
-              {{ item.id }}
-            </td>
-            <td style="text-align: left;">
-              {{ item.name }}
-            </td>
+            <td>{{ item.id }}</td>
+            <td style="text-align: left;">{{ item.name }}</td>
             <td>
               <input
                 v-if="item"
@@ -39,7 +30,7 @@
                 name="selectedPlayer"
                 :value="item.id"
                 v-model="selectedItem"
-              >
+              />
             </td>
           </tr>
         </tbody>
@@ -48,19 +39,10 @@
           <tr>
             <td style="padding-left: 20px; padding-bottom: 10px;">
               Amount:
-              <input
-                v-model="amount"
-                type="number"
-                class="gc-input"
-              >
+              <input v-model="amount" type="number" class="gc-input" />
             </td>
             <td style="padding-left: 20px; padding-bottom: 10px;">
-              <button
-                class="gc-button"
-                @click="handleClickGiveItem"
-              >
-                Select item
-              </button>
+              <button class="gc-button" @click="handleClickGiveItem">Select item</button>
             </td>
           </tr>
         </tfoot>
@@ -70,11 +52,11 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
+import { Component, Prop, Watch, Vue } from "vue-property-decorator";
 
 @Component
 export default class SearchItemAmount extends Vue {
-  public query: string = '';
+  public query: string = "";
   public amount: number = 1;
   public items = [];
   public selectedItem = null;
@@ -82,9 +64,10 @@ export default class SearchItemAmount extends Vue {
   public handleClickSearch() {
     this.reset();
 
-    this.$economyService.searchItem({
-      query: this.query,
-    })
+    this.$economyService
+      .searchItem({
+        query: this.query
+      })
       .then(({ items }) => {
         this.items = items;
       });
@@ -96,10 +79,10 @@ export default class SearchItemAmount extends Vue {
   }
 
   public handleClickGiveItem() {
-    this.$emit('input', {
+    this.$emit("input", {
       itemId: this.selectedItem,
-      item: this.items.find((x) => x.id === this.selectedItem),
-      amount: this.amount,
+      item: this.items.find(x => x.id === this.selectedItem),
+      amount: this.amount
     });
   }
 }

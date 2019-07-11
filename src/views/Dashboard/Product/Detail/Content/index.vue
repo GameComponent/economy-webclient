@@ -160,6 +160,7 @@ export default class ProductItemDetail extends Vue {
 
   public handleClickDetachCurrency({ id }) {
     // TODO: implement
+    // tslint:disable-next-line
     console.warn("not implemented yet");
   }
 

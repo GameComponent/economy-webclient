@@ -1,12 +1,7 @@
 <template>
   <div>
-    <div
-      v-for="product in products"
-      :key="product.id"
-    >
-      <div class="product-header mt-4">
-        {{ product.name }}
-      </div>
+    <div v-for="product in products" :key="product.id">
+      <div class="product-header mt-4">{{ product.name }}</div>
       <table class="gc-table gc-table--small-head text-left">
         <thead>
           <tr>
@@ -30,8 +25,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator';
-import { V1Product } from '@/../vendor/economy-client/api.ts';
+import { Component, Vue, Prop } from "vue-property-decorator";
+import { V1Product } from "@/../vendor/economy-client/api.ts";
 
 @Component
 export default class ProductTable extends Vue {

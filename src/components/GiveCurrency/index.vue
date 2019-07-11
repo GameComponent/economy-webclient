@@ -1,28 +1,27 @@
 <template>
   <div>
-    <select-currency-amount v-if="!currencyId || currencyId === ''" @input="handleInputCurrency"/>
+    <select-currency-amount v-if="!currencyId || currencyId === ''" @input="handleInputCurrency" />
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-import { V1GiveCurrencyRequest } from '@/../vendor/economy-client/api.ts';
-import SelectCurrencyAmount from '@/components/SelectCurrencyAmount/index.vue';
+import { Component, Prop, Vue } from "vue-property-decorator";
+import { V1GiveCurrencyRequest } from "@/../vendor/economy-client/api.ts";
+import SelectCurrencyAmount from "@/components/SelectCurrencyAmount/index.vue";
 
 @Component({
   components: {
-    SelectCurrencyAmount,
-  },
+    SelectCurrencyAmount
+  }
 })
 export default class GiveCurrency extends Vue {
-
   public request: V1GiveCurrencyRequest = {
-    currencyId: '',
-    storageId: '',
+    currencyId: "",
+    storageId: "",
     amount: {
-      minAmount: '0',
-      maxAmount: '0',
-    },
+      minAmount: "0",
+      maxAmount: "0"
+    }
   };
   @Prop() private currencyId: string;
   @Prop() private storageId: string;

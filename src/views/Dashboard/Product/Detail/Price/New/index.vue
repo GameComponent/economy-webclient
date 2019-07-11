@@ -115,7 +115,7 @@ export default class ProductPriceNew extends Vue {
       productId: this.$route.params.productId
     });
 
-    let promises = [];
+    const promises = [];
 
     // Create promise foreach currency amount
     this.currencyAmounts.forEach(currencyAmount => {

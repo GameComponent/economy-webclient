@@ -1,9 +1,9 @@
 <style>
-  .CodeMirror {
-    border: 1px solid #eee;
-    height: auto;
-    border-radius: 3px;
-  }
+.CodeMirror {
+  border: 1px solid #eee;
+  height: auto;
+  border-radius: 3px;
+}
 </style>
 
 <template>
@@ -29,9 +29,7 @@
           </td>
           <td>
             <span v-if="editedConfigs[config.key]">
-              <a href="#" @click="onClickUpdateConfig(config.key)">
-                Update
-              </a>
+              <a href="#" @click="onClickUpdateConfig(config.key)">Update</a>
             </span>
           </td>
         </tr>
@@ -44,24 +42,15 @@
 
       <table class="w-full mt-4">
         <tr>
+          <td>Key:</td>
           <td>
-            Key:
-          </td>
-          <td>
-            <input
-              v-model="key"
-              class="gc-input"
-              type="text"
-              placeholder="Key"
-            >
+            <input v-model="key" class="gc-input" type="text" placeholder="Key" />
           </td>
         </tr>
         <tr>
           <td>Value:</td>
           <td>
-            <codemirror
-              v-model="value"
-            ></codemirror>
+            <codemirror v-model="value"></codemirror>
           </td>
         </tr>
         <tr>
@@ -72,9 +61,7 @@
               :disabled="!valueObject"
               class="gc-button"
               :class="{ 'gc-button--disabled': !valueObject }"
-            >
-              Create
-            </button>
+            >Create</button>
           </td>
         </tr>
       </table>
@@ -83,28 +70,28 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch } from 'vue-property-decorator';
+import { Component, Vue, Watch } from "vue-property-decorator";
 
 @Component
 export default class Config extends Vue {
   public configs: any[] = [];
   public editedConfigs = {};
-  public key: string = '';
-  public value: string = '';
+  public key: string = "";
+  public value: string = "";
 
   public mounted() {
-    this.$economyService.listConfig()
-      .then(({ configs }) => {
-        this.configs = configs;
-      });
+    this.$economyService.listConfig().then(({ configs }) => {
+      this.configs = configs;
+    });
   }
 
   public onClickCreateConfig() {
-    this.$economyService.setConfig({
-      key: this.key,
-      value: this.valueObject,
-    })
-      .then((result) => {
+    this.$economyService
+      .setConfig({
+        key: this.key,
+        value: this.valueObject
+      })
+      .then(result => {
         this.$router.go(0);
       });
   }
@@ -131,16 +118,17 @@ export default class Config extends Vue {
 
     // Check if the object is valid
     if (!valueObject) {
-      alert('Invalid value');
+      alert("Invalid value");
       return;
     }
 
     // Set the new config and force a page refresh
-    this.$economyService.setConfig({
-      key: config.key,
-      value: valueObject,
-    })
-      .then((result) => {
+    this.$economyService
+      .setConfig({
+        key: config.key,
+        value: valueObject
+      })
+      .then(result => {
         this.$router.go(0);
       });
   }
