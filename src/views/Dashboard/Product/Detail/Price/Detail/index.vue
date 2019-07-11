@@ -1,6 +1,5 @@
 <template>
   <div>
-    <shop-header />
     <selected-product-header />
 
     <div class="p-16">wat</div>
@@ -10,12 +9,10 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { V1Product, V1Item } from "@/../vendor/economy-client/api.ts";
-import ShopHeader from "../../../../components/ShopHeader.vue";
 import SelectedProductHeader from "../../components/SelectedProductHeader.vue";
 
 @Component({
   components: {
-    ShopHeader,
     SelectedProductHeader
   }
 })

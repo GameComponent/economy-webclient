@@ -21,7 +21,7 @@
           <td>
             <router-link
               :to="{
-                name: 'dashboard-currency-detail',
+                name: 'currency-detail',
                 params: {
                   currencyId: currency.id,
                 },
@@ -34,7 +34,7 @@
 
     <div class="mt-4">
       <gc-button-link :to="{
-        name: 'dashboard-currency-new',
+        name: 'currency-new',
       }">Create new currency</gc-button-link>
     </div>
   </div>

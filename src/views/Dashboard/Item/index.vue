@@ -21,7 +21,7 @@
           <td>
             <router-link
               :to="{
-                name: 'dashboard-item-detail',
+                name: 'item-detail',
                 params: {
                   itemId: item.id,
                 },
@@ -34,7 +34,7 @@
 
     <div class="mt-4">
       <gc-button-link :to="{
-          name: 'dashboard-item-new',
+          name: 'item-new',
         }">Create new item</gc-button-link>
     </div>
   </div>

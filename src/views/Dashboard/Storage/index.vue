@@ -23,7 +23,7 @@
           <td>
             <router-link
               :to="{
-                name: 'dashboard-storage-detail',
+                name: 'storage-detail',
                 params: {
                   storageId: storage.id,
                 },
@@ -36,7 +36,7 @@
 
     <div class="mt-4">
       <gc-button-link :to="{
-          name: 'dashboard-storage-new',
+          name: 'storage-new',
         }">Create new storage</gc-button-link>
     </div>
   </div>

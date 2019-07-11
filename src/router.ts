@@ -27,22 +27,8 @@ const router = new Router({
             import(/* webpackChunkName: "home" */ "./views/Dashboard/Home.vue")
         },
         {
-          path: "home",
-          name: "dashboard-home",
-          component: () =>
-            import(/* webpackChunkName: "home" */ "./views/Dashboard/Home.vue")
-        },
-        {
-          path: "about",
-          name: "dashboard-about",
-          component: () =>
-            import(
-              /* webpackChunkName: "about" */ "./views/Dashboard/About.vue"
-            )
-        },
-        {
           path: "item",
-          name: "dashboard-item",
+          name: "item",
           component: () =>
             import(
               /* webpackChunkName: "item" */ "./views/Dashboard/Item/index.vue"
@@ -50,7 +36,7 @@ const router = new Router({
         },
         {
           path: "item/new",
-          name: "dashboard-item-new",
+          name: "item-new",
           component: () =>
             import(
               /* webpackChunkName: "item" */ "./views/Dashboard/Item/New/index.vue"
@@ -58,7 +44,7 @@ const router = new Router({
         },
         {
           path: "item/:itemId",
-          name: "dashboard-item-detail",
+          name: "item-detail",
           component: () =>
             import(
               /* webpackChunkName: "item" */ "./views/Dashboard/Item/Detail/index.vue"
@@ -66,7 +52,7 @@ const router = new Router({
         },
         {
           path: "currency",
-          name: "dashboard-currency",
+          name: "currency",
           component: () =>
             import(
               /* webpackChunkName: "currency" */ "./views/Dashboard/Currency/index.vue"
@@ -74,7 +60,7 @@ const router = new Router({
         },
         {
           path: "currency/new",
-          name: "dashboard-currency-new",
+          name: "currency-new",
           component: () =>
             import(
               /* webpackChunkName: "currency" */ "./views/Dashboard/Currency/New/index.vue"
@@ -82,7 +68,7 @@ const router = new Router({
         },
         {
           path: "currency/:currencyId",
-          name: "dashboard-currency-detail",
+          name: "currency-detail",
           component: () =>
             import(
               /* webpackChunkName: "currency" */ "./views/Dashboard/Currency/Detail/index.vue"
@@ -90,7 +76,7 @@ const router = new Router({
         },
         {
           path: "player",
-          name: "dashboard-player",
+          name: "player",
           component: () =>
             import(
               /* webpackChunkName: "player" */ "./views/Dashboard/Player/index.vue"
@@ -98,7 +84,7 @@ const router = new Router({
         },
         {
           path: "player/new",
-          name: "dashboard-player-new",
+          name: "player-new",
           component: () =>
             import(
               /* webpackChunkName: "player" */ "./views/Dashboard/Player/New/index.vue"
@@ -106,7 +92,7 @@ const router = new Router({
         },
         {
           path: "player/:playerId",
-          name: "dashboard-player-detail",
+          name: "player-detail",
           component: () =>
             import(
               /* webpackChunkName: "player" */ "./views/Dashboard/Player/Detail/index.vue"
@@ -114,7 +100,7 @@ const router = new Router({
         },
         {
           path: "storage",
-          name: "dashboard-storage",
+          name: "storage",
           component: () =>
             import(
               /* webpackChunkName: "storage" */ "./views/Dashboard/Storage/index.vue"
@@ -122,7 +108,7 @@ const router = new Router({
         },
         {
           path: "storage/new",
-          name: "dashboard-storage-new",
+          name: "storage-new",
           component: () =>
             import(
               /* webpackChunkName: "storage" */ "./views/Dashboard/Storage/New/index.vue"
@@ -130,7 +116,7 @@ const router = new Router({
         },
         {
           path: "storage/:storageId",
-          name: "dashboard-storage-detail",
+          name: "storage-detail",
           component: () =>
             import(
               /* webpackChunkName: "storage" */ "./views/Dashboard/Storage/Detail/index.vue"
@@ -138,99 +124,119 @@ const router = new Router({
         },
         {
           path: "shop",
-          name: "dashboard-shop",
+          name: "shop",
           component: () =>
             import(
-              /* webpackChunkName: "shop" */ "./views/Dashboard/Shop/index.vue"
-            )
+              /* webpackChunkName: "shop" */ "./layouts/ShopProduct/index.vue"
+            ),
+          children: [
+            {
+              path: "",
+              name: "shop-index",
+              component: () =>
+                import(
+                  /* webpackChunkName: "shop" */ "./views/Dashboard/Shop/index.vue"
+                )
+            },
+            {
+              path: "new",
+              name: "shop-new",
+              component: () =>
+                import(
+                  /* webpackChunkName: "shop" */ "./views/Dashboard/Shop/New/index.vue"
+                )
+            },
+            {
+              path: ":shopId",
+              name: "shop-detail",
+              component: () =>
+                import(
+                  /* webpackChunkName: "shop" */ "./views/Dashboard/Shop/Detail/index.vue"
+                )
+            },
+            {
+              path: ":shopId/product",
+              name: "shop-detail-product",
+              component: () =>
+                import(
+                  /* webpackChunkName: "shop" */ "./views/Dashboard/Shop/Detail/Product/index.vue"
+                )
+            }
+          ]
         },
         {
-          path: "shop/new",
-          name: "dashboard-shop-new",
+          path: "product",
+          name: "product",
           component: () =>
             import(
-              /* webpackChunkName: "shop" */ "./views/Dashboard/Shop/New/index.vue"
-            )
-        },
-        {
-          path: "shop/product",
-          name: "dashboard-shop-product",
-          component: () =>
-            import(
-              /* webpackChunkName: "shop" */ "./views/Dashboard/Shop/Product/index.vue"
-            )
-        },
-        {
-          path: "shop/product/new",
-          name: "dashboard-shop-product-new",
-          component: () =>
-            import(
-              /* webpackChunkName: "shop" */ "./views/Dashboard/Shop/Product/New/index.vue"
-            )
-        },
-        {
-          path: "shop/product/:productId",
-          name: "dashboard-shop-product-detail",
-          component: () =>
-            import(
-              /* webpackChunkName: "shop" */ "./views/Dashboard/Shop/Product/Detail/index.vue"
-            )
-        },
-        {
-          path: "shop/product/:productId/item",
-          name: "dashboard-shop-product-detail-item",
-          // tslint:disable-next-line
-          component: () =>
-            import(
-              /* webpackChunkName: "shop" */ "./views/Dashboard/Shop/Product/Detail/Item/index.vue"
-            )
-        },
-        {
-          path: "shop/product/:productId/price",
-          name: "dashboard-shop-product-detail-price",
-          // tslint:disable-next-line
-          component: () =>
-            import(
-              /* webpackChunkName: "shop" */ "./views/Dashboard/Shop/Product/Detail/Price/index.vue"
-            )
-        },
-        {
-          path: "shop/product/:productId/price/:priceId",
-          name: "dashboard-shop-product-detail-price-detail",
-          // tslint:disable-next-line
-          component: () =>
-            import(
-              /* webpackChunkName: "shop" */ "./views/Dashboard/Shop/Product/Detail/Price/Detail/index.vue"
-            )
-        },
-        {
-          path: "shop/product/:productId/price/new",
-          name: "dashboard-shop-product-detail-price-new",
-          // tslint:disable-next-line
-          component: () =>
-            import(
-              /* webpackChunkName: "shop" */ "./views/Dashboard/Shop/Product/Detail/Price/New/index.vue"
-            )
-        },
-        {
-          path: "shop/:shopId",
-          name: "dashboard-shop-detail",
-          component: () =>
-            import(
-              /* webpackChunkName: "shop" */ "./views/Dashboard/Shop/Detail/index.vue"
-            )
-        },
-        {
-          path: "shop/:shopId/product",
-          name: "dashboard-shop-detail-product",
-          component: () =>
-            import(
-              /* webpackChunkName: "shop" */ "./views/Dashboard/Shop/Detail/Product/index.vue"
-            )
+              /* webpackChunkName: "product" */ "./layouts/ShopProduct/index.vue"
+            ),
+          children: [
+            {
+              path: "",
+              name: "product-index",
+              component: () =>
+                import(
+                  /* webpackChunkName: "product" */ "./views/Dashboard/Product/index.vue"
+                )
+            },
+            {
+              path: "new",
+              name: "product-new",
+              component: () =>
+                import(
+                  /* webpackChunkName: "product" */ "./views/Dashboard/Product/New/index.vue"
+                )
+            },
+            {
+              path: ":productId",
+              name: "product-detail",
+              component: () =>
+                import(
+                  /* webpackChunkName: "product" */ "./views/Dashboard/Product/Detail/index.vue"
+                )
+            },
+            {
+              path: ":productId/content",
+              name: "product-detail-content",
+              // tslint:disable-next-line
+              component: () =>
+                import(
+                  /* webpackChunkName: "product" */ "./views/Dashboard/Product/Detail/Content/index.vue"
+                )
+            },
+            {
+              path: ":productId/price",
+              name: "product-detail-price",
+              // tslint:disable-next-line
+              component: () =>
+                import(
+                  /* webpackChunkName: "product" */ "./views/Dashboard/Product/Detail/Price/index.vue"
+                )
+            },
+            {
+              path: ":productId/price/new",
+              name: "product-detail-price-new",
+              // tslint:disable-next-line
+              component: () =>
+                import(
+                  /* webpackChunkName: "product" */ "./views/Dashboard/Product/Detail/Price/New/index.vue"
+                )
+            },
+            {
+              path: ":productId/price/:priceId",
+              name: "product-detail-price-detail",
+              // tslint:disable-next-line
+              component: () =>
+                import(
+                  /* webpackChunkName: "product" */ "./views/Dashboard/Product/Detail/Price/Detail/index.vue"
+                )
+            }
+          ]
         },
         {
           path: "iam",
-          name: "dashboard-iam",
+          name: "iam",
           component: () =>
             import(
               /* webpackChunkName: "iam" */ "./views/Dashboard/IAM/index.vue"
@@ -238,7 +244,7 @@ const router = new Router({
         },
         {
           path: "config",
-          name: "dashboard-config",
+          name: "config",
           component: () =>
             import(
               /* webpackChunkName: "config" */ "./views/Dashboard/Config/index.vue"
@@ -246,7 +252,7 @@ const router = new Router({
         },
         {
           path: "logout",
-          name: "dashboard-logout",
+          name: "logout",
           component: () =>
             import(
               /* webpackChunkName: "logout" */ "./views/Dashboard/Logout.vue"

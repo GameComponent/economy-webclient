@@ -1,7 +1,7 @@
 <style scoped>
 .extend {
   background-color: #f3f3f3;
-  border: 1px solid #e4e4e4
+  border: 1px solid #e4e4e4;
 }
 </style>
 
@@ -17,17 +17,12 @@
         class="gc-input ml-2"
         placeholder="Item name"
         name="name"
-      >
+      />
     </div>
 
     <div class="mt-4">
       <label for="stackable">Stackable</label>
-      <input
-        v-model="item.stackable"
-        type="checkbox"
-        class="gc-input ml-2"
-        name="stackable"
-      >
+      <input v-model="item.stackable" type="checkbox" class="gc-input ml-2" name="stackable" />
     </div>
 
     <div v-show="item.stackable" class="extend mt-4 p-4 rounded">
@@ -38,7 +33,7 @@
           type="number"
           class="gc-input ml-2"
           name="stackMaxAmount"
-        >
+        />
       </div>
 
       <div class="mt-4">
@@ -53,61 +48,55 @@
             v-for="stackBalancingMethod in stackBalancingMethods"
             :key="stackBalancingMethod"
             :value="stackBalancingMethod"
-          >
-            {{ stackBalancingMethod }}
-          </option>
+          >{{ stackBalancingMethod }}</option>
         </select>
       </div>
     </div>
 
     <div class="mt-4">
-      <button
-        class="gc-button"
-        @click="handleClickCreateItem"
-      >
-        Create
-      </button>
+      <button class="gc-button" @click="handleClickCreateItem">Create</button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue } from "vue-property-decorator";
 import {
   V1CreateItemRequest,
-  V1StackBalancingMethod,
-} from '@/../vendor/economy-client/api.ts';
+  V1StackBalancingMethod
+} from "@/../vendor/economy-client/api.ts";
 
 @Component
 export default class CreateItem extends Vue {
   public v1StackBalancingMethod = V1StackBalancingMethod;
 
-  public item: V1CreateItemRequest  = {
-    name: '',
+  public item: V1CreateItemRequest = {
+    name: "",
     stackable: false,
-    stackMaxAmount: '0',
-    stackBalancingMethod: V1StackBalancingMethod.DEFAULT,
+    stackMaxAmount: "0",
+    stackBalancingMethod: V1StackBalancingMethod.DEFAULT
   };
 
   public handleClickCreateItem(): void {
     if (this.item.name.length === 0) {
-      alert('Please enter an item name.');
+      alert("Please enter an item name.");
       return;
     }
 
-    this.$economyService.createItem({
-      ...this.item,
-    })
+    this.$economyService
+      .createItem({
+        ...this.item
+      })
       .then(() => {
         this.$router.push({
-          name: 'dashboard-item',
+          name: "item"
         });
       });
   }
 
   get stackBalancingMethods() {
     return Object.values(this.v1StackBalancingMethod)
-      .filter((method: string) => method.includes('_') || method === 'DEFAULT')
+      .filter((method: string) => method.includes("_") || method === "DEFAULT")
       .filter((v, i, s) => s.indexOf(v) === i);
   }
 }

@@ -32,7 +32,7 @@
             <td style="text-align: left;">{{ selectedCurrency.shortName }}</td>
             <td style="text-align: left;">{{ selectedCurrency.symbol }}</td>
             <td>
-              <input v-model="selectedMinAmount" type="number" class="gc-input">
+              <input v-model="selectedMinAmount" type="number" class="gc-input" />
             </td>
             <td>
               <input
@@ -40,7 +40,7 @@
                 type="number"
                 class="gc-input"
                 @focus="onFocusSelectedMaxAmount"
-              >
+              />
             </td>
           </tr>
         </tbody>
@@ -51,7 +51,7 @@
               <button
                 class="gc-button"
                 :class="{
-                  'gc-button--disabled': !selectedCurrency || !selectedAmount,
+                  'gc-button--disabled': !selectedCurrency,
                 }"
                 @click="onClickGiveCurrency"
               >Select currency</button>
@@ -64,7 +64,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
+import { Component, Prop, Watch, Vue } from "vue-property-decorator";
 
 @Component
 export default class SelectCurrencyAmount extends Vue {
@@ -81,15 +81,15 @@ export default class SelectCurrencyAmount extends Vue {
   }
 
   public onClickGiveCurrency() {
-    this.$emit('input', {
+    this.$emit("input", {
       currencyId: this.selectedCurrencyId,
-      currency: this.currencies.find((x) => x.id === this.selectedCurrencyId),
+      currency: this.currencies.find(x => x.id === this.selectedCurrencyId),
       minAmount: this.selectedMinAmount,
-      maxAmount: this.selectedMaxAmount,
+      maxAmount: this.selectedMaxAmount
     });
   }
 
-  @Watch('selectedMinAmount')
+  @Watch("selectedMinAmount")
   public onSelectedMinAmountChanged() {
     if (this.shouldAdjustMaxAmount) {
       this.selectedMaxAmount = this.selectedMinAmount;
@@ -106,7 +106,7 @@ export default class SelectCurrencyAmount extends Vue {
     }
 
     return this.currencies.find(
-      (currency) => currency.id === this.selectedCurrencyId,
+      currency => currency.id === this.selectedCurrencyId
     );
   }
 }

@@ -23,7 +23,7 @@
             <td>
               <router-link
                 :to="{
-                  name: 'dashboard-storage-detail',
+                  name: 'storage-detail',
                   params: {
                     storageId: storage.id,
                   },
@@ -37,7 +37,7 @@
       <div class="mt-4">
         <gc-button-link
           :to="{
-            name: 'dashboard-storage-new',
+            name: 'storage-new',
             query: {
               playerId: this.player.id,
             },

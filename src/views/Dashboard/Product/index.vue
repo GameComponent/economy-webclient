@@ -19,7 +19,7 @@
             <td>
               <router-link
                 :to="{
-                  name: 'dashboard-shop-product-detail',
+                  name: 'product-detail',
                   params: {
                     productId: product.id,
                   },
@@ -31,11 +31,9 @@
       </table>
 
       <div class="mt-4">
-        <gc-button-link
-          :to="{
-            name: 'dashboard-shop-product-new',
-          }"
-        >Create new product</gc-button-link>
+        <gc-button-link :to="{
+            name: 'product-new',
+          }">Create new product</gc-button-link>
       </div>
     </div>
   </div>
@@ -44,12 +42,9 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { V1Product } from "@/../vendor/economy-client/api.ts";
-import ShopHeader from "../components/ShopHeader.vue";
 
 @Component({
-  components: {
-    ShopHeader
-  }
+  components: {}
 })
 export default class Product extends Vue {
   public products: V1Product[] = [];

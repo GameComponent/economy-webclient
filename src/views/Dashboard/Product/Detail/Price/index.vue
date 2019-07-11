@@ -27,16 +27,17 @@
             >
               <router-link
                 :to="{
-                  name: 'dashboard-shop-product-detail-price-detail',
+                  name: 'product-detail-price-detail',
                   params: {
                     priceId: price.id,
                   },
                 }"
               >Edit</router-link>
             </span>
-            <span
-              class="ml-2 bg-red-500 p-2 rounded text-white text-sm cursor-pointer border-0 hover:bg-red-600"
-            >Detach price</span>
+            <button
+              class="font-medium ml-2 bg-red-500 p-2 rounded text-white text-sm uppercase cursor-pointer border-0 hover:bg-red-600"
+              @click="onClickDeletePrice(price)"
+            >Delete price</button>
           </div>
         </div>
         <table class="gc-table gc-table--small-head text-left">
@@ -59,20 +60,26 @@
               </td>
               <td>{{ priceCurrency.amount }}</td>
               <td>
-                <button class="gc-button" @click="onClickDetachPriceCurrency(priceCurrency)">Detach</button>
+                <button
+                  class="bg-red-500 hover:bg-red-600 p-2 gc-button"
+                  @click="onClickDetachPriceCurrency(priceCurrency)"
+                >Detach</button>
               </td>
             </tr>
 
             <tr v-for="priceItem in price.items" :key="priceItem.id">
               <td>{{ priceItem.id }}</td>
-              <td>Currency</td>
+              <td>Item</td>
               <td>
                 <div>{{ priceItem.item.name }}</div>
                 <div class="gc-table__description">({{ priceItem.item.id }})</div>
               </td>
               <td>{{ priceItem.amount }}</td>
               <td>
-                <button class="gc-button" @click="onClickDetachPriceItem(priceItem)">Detach</button>
+                <button
+                  class="bg-red-500 hover:bg-red-600 p-2 gc-button"
+                  @click="onClickDetachPriceItem(priceItem)"
+                >Detach</button>
               </td>
             </tr>
           </tbody>
@@ -82,7 +89,7 @@
       <div class="mt-4">
         <gc-button-link
           :to="{
-            name: 'dashboard-shop-product-detail-price-new',
+            name: 'product-detail-price-new',
           }"
         >Create new price</gc-button-link>
       </div>
@@ -92,13 +99,11 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import ShopHeader from "../../../components/ShopHeader.vue";
 import SelectedProductHeader from "../components/SelectedProductHeader.vue";
 import { V1Product, V1Item } from "@/../vendor/economy-client/api.ts";
 
 @Component({
   components: {
-    ShopHeader,
     SelectedProductHeader
   }
 })
@@ -114,13 +119,31 @@ export default class ProductDetailPrice extends Vue {
   }
 
   public onClickDetachPriceCurrency({ id }) {
+    if (!confirm("Are you sure?")) {
+      return;
+    }
+
     this.$economyService.detachPriceCurrency(id).then(() => {
       this.$router.go(this.$router.currentRoute as any);
     });
   }
 
   public onClickDetachPriceItem({ id }) {
+    if (!confirm("Are you sure?")) {
+      return;
+    }
+
     this.$economyService.detachPriceItem(id).then(() => {
+      this.$router.go(this.$router.currentRoute as any);
+    });
+  }
+
+  public onClickDeletePrice({ id }) {
+    if (!confirm("Are you sure?")) {
+      return;
+    }
+
+    this.$economyService.deletePrice(id).then(() => {
       this.$router.go(this.$router.currentRoute as any);
     });
   }

@@ -34,12 +34,9 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import ShopHeader from "../../components/ShopHeader.vue";
 
 @Component({
-  components: {
-    ShopHeader
-  }
+  components: {}
 })
 export default class ProductNew extends Vue {
   public product = {

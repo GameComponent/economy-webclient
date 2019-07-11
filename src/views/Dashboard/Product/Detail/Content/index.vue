@@ -4,8 +4,9 @@
     <selected-product-header />
 
     <div class="p-16" v-if="product">
-      <h1>Product items</h1>
+      <h1>Product contents</h1>
 
+      <!-- Items -->
       <div class="mt-8">
         <h2>Items</h2>
 
@@ -24,7 +25,7 @@
                 <router-link
                   style="margin-left: 0; margin-right: 0;"
                   :to="{
-                    name: 'dashboard-item-detail',
+                    name: 'item-detail',
                     params: {
                       itemId: productItem.item.id,
                     },
@@ -34,7 +35,7 @@
               <td>{{ productItem.item.name }}</td>
               <td>{{ productItem.amount }}</td>
               <td>
-                <button class="gc-button" @click="handleClickDetach(productItem)">Detach</button>
+                <button class="gc-button" @click="handleClickDetachItem(productItem)">Detach</button>
               </td>
             </tr>
           </tbody>
@@ -45,6 +46,48 @@
           class="mt-4 p-4 border rounded"
           style="background-color: #EEE;"
         >No items attached to this item</div>
+      </div>
+
+      <!-- Currencies -->
+      <div class="mt-8">
+        <h2>Currencies</h2>
+
+        <table class="gc-table text-left mt-4" v-if="product.currencies">
+          <thead>
+            <tr>
+              <th>Currency ID</th>
+              <th>Currency name</th>
+              <th>Amount</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="productCurrency in product.currencies" :key="productCurrency.id">
+              <td>
+                <router-link
+                  style="margin-left: 0; margin-right: 0;"
+                  :to="{
+                    name: 'currency-detail',
+                    params: {
+                      itemId: productCurrency.currency.id,
+                    },
+                  }"
+                >{{ productCurrency.currency.id }}</router-link>
+              </td>
+              <td>{{ productCurrency.currency.name }}</td>
+              <td>{{ productCurrency.amount }}</td>
+              <td>
+                <button class="gc-button" @click="handleClickDetachCurrency(productCurrency)">Detach</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div
+          v-if="!product.currencies"
+          class="mt-4 p-4 border rounded"
+          style="background-color: #EEE;"
+        >No currencies attached to this item</div>
       </div>
 
       <div class="mt-8" v-if="itemsWhichAreNotAttached && itemsWhichAreNotAttached.length > 0">
@@ -84,13 +127,11 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import ShopHeader from "../../../components/ShopHeader.vue";
 import SelectedProductHeader from "../components/SelectedProductHeader.vue";
 import { V1Product, V1Item } from "@/../vendor/economy-client/api.ts";
 
 @Component({
   components: {
-    ShopHeader,
     SelectedProductHeader
   }
 })
@@ -111,10 +152,15 @@ export default class ProductItemDetail extends Vue {
     });
   }
 
-  public handleClickDetach({ id }) {
+  public handleClickDetachItem({ id }) {
     this.$economyService.detachItem(id).then(() => {
       this.$router.go(this.$router.currentRoute as any);
     });
+  }
+
+  public handleClickDetachCurrency({ id }) {
+    // TODO: implement
+    console.warn("not implemented yet");
   }
 
   public handleClickAttachItem({ id }) {
