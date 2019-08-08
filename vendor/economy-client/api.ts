@@ -79,87 +79,6 @@ export class RequiredError extends Error {
 }
 
 /**
- * `ListValue` is a wrapper around a repeated field of values.  The JSON representation for `ListValue` is JSON array.
- * @export
- * @interface ProtobufListValue
- */
-export interface ProtobufListValue {
-    /**
-     * Repeated field of dynamically typed values.
-     * @type {Array<ProtobufValue>}
-     * @memberof ProtobufListValue
-     */
-    values?: Array<ProtobufValue>;
-}
-
-/**
- * `NullValue` is a singleton enumeration to represent the null value for the `Value` type union.   The JSON representation for `NullValue` is JSON `null`.   - NULL_VALUE: Null value.
- * @export
- * @enum {string}
- */
-export enum ProtobufNullValue {
-    NULLVALUE = <any> 'NULL_VALUE'
-}
-
-/**
- * `Struct` represents a structured data value, consisting of fields which map to dynamically typed values. In some languages, `Struct` might be supported by a native representation. For example, in scripting languages like JS a struct is represented as an object. The details of that representation are described together with the proto support for the language.  The JSON representation for `Struct` is JSON object.
- * @export
- * @interface ProtobufStruct
- */
-export interface ProtobufStruct {
-    /**
-     * Unordered map of dynamically typed values.
-     * @type {{ [key: string]: ProtobufValue; }}
-     * @memberof ProtobufStruct
-     */
-    fields?: { [key: string]: ProtobufValue; };
-}
-
-/**
- * `Value` represents a dynamically typed value which can be either null, a number, a string, a boolean, a recursive struct value, or a list of values. A producer of value is expected to set one of that variants, absence of any variant indicates an error.  The JSON representation for `Value` is JSON value.
- * @export
- * @interface ProtobufValue
- */
-export interface ProtobufValue {
-    /**
-     * Represents a null value.
-     * @type {ProtobufNullValue}
-     * @memberof ProtobufValue
-     */
-    nullValue?: ProtobufNullValue;
-    /**
-     * Represents a double value.
-     * @type {number}
-     * @memberof ProtobufValue
-     */
-    numberValue?: number;
-    /**
-     * Represents a string value.
-     * @type {string}
-     * @memberof ProtobufValue
-     */
-    stringValue?: string;
-    /**
-     * Represents a boolean value.
-     * @type {boolean}
-     * @memberof ProtobufValue
-     */
-    boolValue?: boolean;
-    /**
-     * Represents a structured value.
-     * @type {ProtobufStruct}
-     * @memberof ProtobufValue
-     */
-    structValue?: ProtobufStruct;
-    /**
-     * Represents a repeated `Value`.
-     * @type {ProtobufListValue}
-     * @memberof ProtobufValue
-     */
-    listValue?: ProtobufListValue;
-}
-
-/**
  * 
  * @export
  * @interface V1Amount
@@ -182,15 +101,49 @@ export interface V1Amount {
 /**
  * 
  * @export
- * @interface V1AttachItemRequest
+ * @interface V1AttachCurrencyRequest
  */
-export interface V1AttachItemRequest {
+export interface V1AttachCurrencyRequest {
     /**
      * 
      * @type {string}
-     * @memberof V1AttachItemRequest
+     * @memberof V1AttachCurrencyRequest
      */
-    api?: string;
+    productId?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1AttachCurrencyRequest
+     */
+    currencyId?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1AttachCurrencyRequest
+     */
+    amount?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1AttachCurrencyResponse
+ */
+export interface V1AttachCurrencyResponse {
+    /**
+     * 
+     * @type {V1Product}
+     * @memberof V1AttachCurrencyResponse
+     */
+    product?: V1Product;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1AttachItemRequest
+ */
+export interface V1AttachItemRequest {
     /**
      * 
      * @type {string}
@@ -219,12 +172,6 @@ export interface V1AttachItemRequest {
 export interface V1AttachItemResponse {
     /**
      * 
-     * @type {string}
-     * @memberof V1AttachItemResponse
-     */
-    api?: string;
-    /**
-     * 
      * @type {V1Product}
      * @memberof V1AttachItemResponse
      */
@@ -237,12 +184,6 @@ export interface V1AttachItemResponse {
  * @interface V1AttachPriceCurrencyRequest
  */
 export interface V1AttachPriceCurrencyRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof V1AttachPriceCurrencyRequest
-     */
-    api?: string;
     /**
      * 
      * @type {string}
@@ -271,12 +212,6 @@ export interface V1AttachPriceCurrencyRequest {
 export interface V1AttachPriceCurrencyResponse {
     /**
      * 
-     * @type {string}
-     * @memberof V1AttachPriceCurrencyResponse
-     */
-    api?: string;
-    /**
-     * 
      * @type {V1Price}
      * @memberof V1AttachPriceCurrencyResponse
      */
@@ -289,12 +224,6 @@ export interface V1AttachPriceCurrencyResponse {
  * @interface V1AttachPriceItemRequest
  */
 export interface V1AttachPriceItemRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof V1AttachPriceItemRequest
-     */
-    api?: string;
     /**
      * 
      * @type {string}
@@ -323,12 +252,6 @@ export interface V1AttachPriceItemRequest {
 export interface V1AttachPriceItemResponse {
     /**
      * 
-     * @type {string}
-     * @memberof V1AttachPriceItemResponse
-     */
-    api?: string;
-    /**
-     * 
      * @type {V1Price}
      * @memberof V1AttachPriceItemResponse
      */
@@ -341,12 +264,6 @@ export interface V1AttachPriceItemResponse {
  * @interface V1AttachProductRequest
  */
 export interface V1AttachProductRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof V1AttachProductRequest
-     */
-    api?: string;
     /**
      * 
      * @type {string}
@@ -369,12 +286,6 @@ export interface V1AttachProductRequest {
 export interface V1AttachProductResponse {
     /**
      * 
-     * @type {string}
-     * @memberof V1AttachProductResponse
-     */
-    api?: string;
-    /**
-     * 
      * @type {V1Shop}
      * @memberof V1AttachProductResponse
      */
@@ -387,12 +298,6 @@ export interface V1AttachProductResponse {
  * @interface V1AuthenticateRequest
  */
 export interface V1AuthenticateRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof V1AuthenticateRequest
-     */
-    api?: string;
     /**
      * 
      * @type {string}
@@ -418,12 +323,6 @@ export interface V1AuthenticateResponse {
      * @type {string}
      * @memberof V1AuthenticateResponse
      */
-    api?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof V1AuthenticateResponse
-     */
     token?: string;
 }
 
@@ -433,12 +332,6 @@ export interface V1AuthenticateResponse {
  * @interface V1BuyProductRequest
  */
 export interface V1BuyProductRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof V1BuyProductRequest
-     */
-    api?: string;
     /**
      * 
      * @type {string}
@@ -473,12 +366,6 @@ export interface V1BuyProductRequest {
 export interface V1BuyProductResponse {
     /**
      * 
-     * @type {string}
-     * @memberof V1BuyProductResponse
-     */
-    api?: string;
-    /**
-     * 
      * @type {V1Product}
      * @memberof V1BuyProductResponse
      */
@@ -499,10 +386,10 @@ export interface V1Config {
     key?: string;
     /**
      * 
-     * @type {ProtobufValue}
+     * @type {string}
      * @memberof V1Config
      */
-    value?: ProtobufValue;
+    value?: string;
 }
 
 /**
@@ -511,12 +398,6 @@ export interface V1Config {
  * @interface V1CreateCurrencyRequest
  */
 export interface V1CreateCurrencyRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof V1CreateCurrencyRequest
-     */
-    api?: string;
     /**
      * 
      * @type {string}
@@ -545,12 +426,6 @@ export interface V1CreateCurrencyRequest {
 export interface V1CreateCurrencyResponse {
     /**
      * 
-     * @type {string}
-     * @memberof V1CreateCurrencyResponse
-     */
-    api?: string;
-    /**
-     * 
      * @type {V1Currency}
      * @memberof V1CreateCurrencyResponse
      */
@@ -563,12 +438,6 @@ export interface V1CreateCurrencyResponse {
  * @interface V1CreateItemRequest
  */
 export interface V1CreateItemRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof V1CreateItemRequest
-     */
-    api?: string;
     /**
      * 
      * @type {string}
@@ -593,6 +462,12 @@ export interface V1CreateItemRequest {
      * @memberof V1CreateItemRequest
      */
     stackBalancingMethod?: V1StackBalancingMethod;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1CreateItemRequest
+     */
+    metadata?: string;
 }
 
 /**
@@ -601,12 +476,6 @@ export interface V1CreateItemRequest {
  * @interface V1CreateItemResponse
  */
 export interface V1CreateItemResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof V1CreateItemResponse
-     */
-    api?: string;
     /**
      * 
      * @type {V1Item}
@@ -626,19 +495,19 @@ export interface V1CreatePlayerRequest {
      * @type {string}
      * @memberof V1CreatePlayerRequest
      */
-    api?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof V1CreatePlayerRequest
-     */
-    id?: string;
+    playerId?: string;
     /**
      * 
      * @type {string}
      * @memberof V1CreatePlayerRequest
      */
     name?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1CreatePlayerRequest
+     */
+    metadata?: string;
 }
 
 /**
@@ -647,12 +516,6 @@ export interface V1CreatePlayerRequest {
  * @interface V1CreatePlayerResponse
  */
 export interface V1CreatePlayerResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof V1CreatePlayerResponse
-     */
-    api?: string;
     /**
      * 
      * @type {V1Player}
@@ -672,12 +535,6 @@ export interface V1CreatePriceRequest {
      * @type {string}
      * @memberof V1CreatePriceRequest
      */
-    api?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof V1CreatePriceRequest
-     */
     productId?: string;
 }
 
@@ -687,12 +544,6 @@ export interface V1CreatePriceRequest {
  * @interface V1CreatePriceResponse
  */
 export interface V1CreatePriceResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof V1CreatePriceResponse
-     */
-    api?: string;
     /**
      * 
      * @type {V1Price}
@@ -712,12 +563,6 @@ export interface V1CreateProductRequest {
      * @type {string}
      * @memberof V1CreateProductRequest
      */
-    api?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof V1CreateProductRequest
-     */
     name?: string;
 }
 
@@ -727,12 +572,6 @@ export interface V1CreateProductRequest {
  * @interface V1CreateProductResponse
  */
 export interface V1CreateProductResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof V1CreateProductResponse
-     */
-    api?: string;
     /**
      * 
      * @type {V1Product}
@@ -752,13 +591,13 @@ export interface V1CreateShopRequest {
      * @type {string}
      * @memberof V1CreateShopRequest
      */
-    api?: string;
+    name?: string;
     /**
      * 
      * @type {string}
      * @memberof V1CreateShopRequest
      */
-    name?: string;
+    metadata?: string;
 }
 
 /**
@@ -767,12 +606,6 @@ export interface V1CreateShopRequest {
  * @interface V1CreateShopResponse
  */
 export interface V1CreateShopResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof V1CreateShopResponse
-     */
-    api?: string;
     /**
      * 
      * @type {V1Shop}
@@ -792,12 +625,6 @@ export interface V1CreateStorageRequest {
      * @type {string}
      * @memberof V1CreateStorageRequest
      */
-    api?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof V1CreateStorageRequest
-     */
     playerId?: string;
     /**
      * 
@@ -805,6 +632,12 @@ export interface V1CreateStorageRequest {
      * @memberof V1CreateStorageRequest
      */
     name?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1CreateStorageRequest
+     */
+    metadata?: string;
 }
 
 /**
@@ -813,12 +646,6 @@ export interface V1CreateStorageRequest {
  * @interface V1CreateStorageResponse
  */
 export interface V1CreateStorageResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof V1CreateStorageResponse
-     */
-    api?: string;
     /**
      * 
      * @type {V1Storage}
@@ -879,12 +706,6 @@ export interface V1Currency {
 export interface V1DeletePriceResponse {
     /**
      * 
-     * @type {string}
-     * @memberof V1DeletePriceResponse
-     */
-    api?: string;
-    /**
-     * 
      * @type {boolean}
      * @memberof V1DeletePriceResponse
      */
@@ -894,15 +715,23 @@ export interface V1DeletePriceResponse {
 /**
  * 
  * @export
+ * @interface V1DetachCurrencyResponse
+ */
+export interface V1DetachCurrencyResponse {
+    /**
+     * 
+     * @type {V1Product}
+     * @memberof V1DetachCurrencyResponse
+     */
+    product?: V1Product;
+}
+
+/**
+ * 
+ * @export
  * @interface V1DetachItemResponse
  */
 export interface V1DetachItemResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof V1DetachItemResponse
-     */
-    api?: string;
     /**
      * 
      * @type {V1Product}
@@ -919,12 +748,6 @@ export interface V1DetachItemResponse {
 export interface V1DetachPriceCurrencyResponse {
     /**
      * 
-     * @type {string}
-     * @memberof V1DetachPriceCurrencyResponse
-     */
-    api?: string;
-    /**
-     * 
      * @type {V1Price}
      * @memberof V1DetachPriceCurrencyResponse
      */
@@ -937,12 +760,6 @@ export interface V1DetachPriceCurrencyResponse {
  * @interface V1DetachPriceItemResponse
  */
 export interface V1DetachPriceItemResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof V1DetachPriceItemResponse
-     */
-    api?: string;
     /**
      * 
      * @type {V1Price}
@@ -959,12 +776,6 @@ export interface V1DetachPriceItemResponse {
 export interface V1DetachProductResponse {
     /**
      * 
-     * @type {string}
-     * @memberof V1DetachProductResponse
-     */
-    api?: string;
-    /**
-     * 
      * @type {V1Shop}
      * @memberof V1DetachProductResponse
      */
@@ -977,12 +788,6 @@ export interface V1DetachProductResponse {
  * @interface V1GetConfigResponse
  */
 export interface V1GetConfigResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof V1GetConfigResponse
-     */
-    api?: string;
     /**
      * 
      * @type {V1Config}
@@ -999,12 +804,6 @@ export interface V1GetConfigResponse {
 export interface V1GetCurrencyResponse {
     /**
      * 
-     * @type {string}
-     * @memberof V1GetCurrencyResponse
-     */
-    api?: string;
-    /**
-     * 
      * @type {V1Currency}
      * @memberof V1GetCurrencyResponse
      */
@@ -1017,12 +816,6 @@ export interface V1GetCurrencyResponse {
  * @interface V1GetItemResponse
  */
 export interface V1GetItemResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof V1GetItemResponse
-     */
-    api?: string;
     /**
      * 
      * @type {V1Item}
@@ -1039,12 +832,6 @@ export interface V1GetItemResponse {
 export interface V1GetPlayerResponse {
     /**
      * 
-     * @type {string}
-     * @memberof V1GetPlayerResponse
-     */
-    api?: string;
-    /**
-     * 
      * @type {V1Player}
      * @memberof V1GetPlayerResponse
      */
@@ -1057,12 +844,6 @@ export interface V1GetPlayerResponse {
  * @interface V1GetPriceResponse
  */
 export interface V1GetPriceResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof V1GetPriceResponse
-     */
-    api?: string;
     /**
      * 
      * @type {V1Price}
@@ -1079,12 +860,6 @@ export interface V1GetPriceResponse {
 export interface V1GetProductResponse {
     /**
      * 
-     * @type {string}
-     * @memberof V1GetProductResponse
-     */
-    api?: string;
-    /**
-     * 
      * @type {V1Product}
      * @memberof V1GetProductResponse
      */
@@ -1097,12 +872,6 @@ export interface V1GetProductResponse {
  * @interface V1GetShopResponse
  */
 export interface V1GetShopResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof V1GetShopResponse
-     */
-    api?: string;
     /**
      * 
      * @type {V1Shop}
@@ -1119,12 +888,6 @@ export interface V1GetShopResponse {
 export interface V1GetStorageResponse {
     /**
      * 
-     * @type {string}
-     * @memberof V1GetStorageResponse
-     */
-    api?: string;
-    /**
-     * 
      * @type {V1Storage}
      * @memberof V1GetStorageResponse
      */
@@ -1137,12 +900,6 @@ export interface V1GetStorageResponse {
  * @interface V1GiveCurrencyRequest
  */
 export interface V1GiveCurrencyRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof V1GiveCurrencyRequest
-     */
-    api?: string;
     /**
      * 
      * @type {string}
@@ -1171,12 +928,6 @@ export interface V1GiveCurrencyRequest {
 export interface V1GiveCurrencyResponse {
     /**
      * 
-     * @type {string}
-     * @memberof V1GiveCurrencyResponse
-     */
-    api?: string;
-    /**
-     * 
      * @type {V1StorageCurrency}
      * @memberof V1GiveCurrencyResponse
      */
@@ -1189,12 +940,6 @@ export interface V1GiveCurrencyResponse {
  * @interface V1GiveItemRequest
  */
 export interface V1GiveItemRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof V1GiveItemRequest
-     */
-    api?: string;
     /**
      * 
      * @type {string}
@@ -1221,12 +966,6 @@ export interface V1GiveItemRequest {
  * @interface V1GiveItemResponse
  */
 export interface V1GiveItemResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof V1GiveItemResponse
-     */
-    api?: string;
     /**
      * 
      * @type {string}
@@ -1289,6 +1028,12 @@ export interface V1Item {
      * @memberof V1Item
      */
     stackBalancingMethod?: V1StackBalancingMethod;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1Item
+     */
+    metadata?: string;
 }
 
 /**
@@ -1297,12 +1042,6 @@ export interface V1Item {
  * @interface V1ListConfigResponse
  */
 export interface V1ListConfigResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof V1ListConfigResponse
-     */
-    api?: string;
     /**
      * 
      * @type {Array<V1Config>}
@@ -1331,12 +1070,6 @@ export interface V1ListConfigResponse {
 export interface V1ListCurrencyResponse {
     /**
      * 
-     * @type {string}
-     * @memberof V1ListCurrencyResponse
-     */
-    api?: string;
-    /**
-     * 
      * @type {Array<V1Currency>}
      * @memberof V1ListCurrencyResponse
      */
@@ -1361,12 +1094,6 @@ export interface V1ListCurrencyResponse {
  * @interface V1ListItemResponse
  */
 export interface V1ListItemResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof V1ListItemResponse
-     */
-    api?: string;
     /**
      * 
      * @type {Array<V1Item>}
@@ -1395,12 +1122,6 @@ export interface V1ListItemResponse {
 export interface V1ListPlayerResponse {
     /**
      * 
-     * @type {string}
-     * @memberof V1ListPlayerResponse
-     */
-    api?: string;
-    /**
-     * 
      * @type {Array<V1Player>}
      * @memberof V1ListPlayerResponse
      */
@@ -1427,12 +1148,6 @@ export interface V1ListPlayerResponse {
 export interface V1ListProductPriceResponse {
     /**
      * 
-     * @type {string}
-     * @memberof V1ListProductPriceResponse
-     */
-    api?: string;
-    /**
-     * 
      * @type {Array<V1Price>}
      * @memberof V1ListProductPriceResponse
      */
@@ -1445,12 +1160,6 @@ export interface V1ListProductPriceResponse {
  * @interface V1ListProductResponse
  */
 export interface V1ListProductResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof V1ListProductResponse
-     */
-    api?: string;
     /**
      * 
      * @type {Array<V1Product>}
@@ -1479,12 +1188,6 @@ export interface V1ListProductResponse {
 export interface V1ListShopResponse {
     /**
      * 
-     * @type {string}
-     * @memberof V1ListShopResponse
-     */
-    api?: string;
-    /**
-     * 
      * @type {Array<V1Shop>}
      * @memberof V1ListShopResponse
      */
@@ -1509,12 +1212,6 @@ export interface V1ListShopResponse {
  * @interface V1ListStorageResponse
  */
 export interface V1ListStorageResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof V1ListStorageResponse
-     */
-    api?: string;
     /**
      * 
      * @type {Array<V1Storage>}
@@ -1559,6 +1256,12 @@ export interface V1Player {
      * @memberof V1Player
      */
     storages?: Array<V1Storage>;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1Player
+     */
+    metadata?: string;
 }
 
 /**
@@ -1701,10 +1404,10 @@ export interface V1Product {
     prices?: Array<V1Price>;
     /**
      * 
-     * @type {ProtobufValue}
+     * @type {string}
      * @memberof V1Product
      */
-    metadata?: ProtobufValue;
+    metadata?: string;
 }
 
 /**
@@ -1770,12 +1473,6 @@ export interface V1RegisterRequest {
      * @type {string}
      * @memberof V1RegisterRequest
      */
-    api?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof V1RegisterRequest
-     */
     email?: string;
     /**
      * 
@@ -1796,12 +1493,6 @@ export interface V1RegisterResponse {
      * @type {string}
      * @memberof V1RegisterResponse
      */
-    api?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof V1RegisterResponse
-     */
     token?: string;
 }
 
@@ -1811,12 +1502,6 @@ export interface V1RegisterResponse {
  * @interface V1SearchItemRequest
  */
 export interface V1SearchItemRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof V1SearchItemRequest
-     */
-    api?: string;
     /**
      * 
      * @type {string}
@@ -1843,12 +1528,6 @@ export interface V1SearchItemRequest {
  * @interface V1SearchItemResponse
  */
 export interface V1SearchItemResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof V1SearchItemResponse
-     */
-    api?: string;
     /**
      * 
      * @type {Array<V1Item>}
@@ -1880,12 +1559,6 @@ export interface V1SearchPlayerRequest {
      * @type {string}
      * @memberof V1SearchPlayerRequest
      */
-    api?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof V1SearchPlayerRequest
-     */
     query?: string;
     /**
      * 
@@ -1907,12 +1580,6 @@ export interface V1SearchPlayerRequest {
  * @interface V1SearchPlayerResponse
  */
 export interface V1SearchPlayerResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof V1SearchPlayerResponse
-     */
-    api?: string;
     /**
      * 
      * @type {Array<V1Player>}
@@ -1944,19 +1611,13 @@ export interface V1SetConfigRequest {
      * @type {string}
      * @memberof V1SetConfigRequest
      */
-    api?: string;
+    key?: string;
     /**
      * 
      * @type {string}
      * @memberof V1SetConfigRequest
      */
-    key?: string;
-    /**
-     * 
-     * @type {ProtobufValue}
-     * @memberof V1SetConfigRequest
-     */
-    value?: ProtobufValue;
+    value?: string;
 }
 
 /**
@@ -1965,12 +1626,6 @@ export interface V1SetConfigRequest {
  * @interface V1SetConfigResponse
  */
 export interface V1SetConfigResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof V1SetConfigResponse
-     */
-    api?: string;
     /**
      * 
      * @type {V1Config}
@@ -2017,10 +1672,10 @@ export interface V1Shop {
     products?: Array<V1Product>;
     /**
      * 
-     * @type {ProtobufValue}
+     * @type {string}
      * @memberof V1Shop
      */
-    metadata?: ProtobufValue;
+    metadata?: string;
 }
 
 /**
@@ -2083,6 +1738,12 @@ export interface V1Storage {
      * @memberof V1Storage
      */
     currencies?: Array<V1StorageCurrency>;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1Storage
+     */
+    metadata?: string;
 }
 
 /**
@@ -2152,15 +1813,55 @@ export interface V1StorageItem {
 /**
  * 
  * @export
- * @interface V1UpdateItemRequest
+ * @interface V1UpdateCurrencyRequest
  */
-export interface V1UpdateItemRequest {
+export interface V1UpdateCurrencyRequest {
     /**
      * 
      * @type {string}
-     * @memberof V1UpdateItemRequest
+     * @memberof V1UpdateCurrencyRequest
      */
-    api?: string;
+    currencyId?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1UpdateCurrencyRequest
+     */
+    name?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1UpdateCurrencyRequest
+     */
+    shortName?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1UpdateCurrencyRequest
+     */
+    symbol?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1UpdateCurrencyResponse
+ */
+export interface V1UpdateCurrencyResponse {
+    /**
+     * 
+     * @type {V1Currency}
+     * @memberof V1UpdateCurrencyResponse
+     */
+    currency?: V1Currency;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1UpdateItemRequest
+ */
+export interface V1UpdateItemRequest {
     /**
      * 
      * @type {string}
@@ -2173,6 +1874,12 @@ export interface V1UpdateItemRequest {
      * @memberof V1UpdateItemRequest
      */
     name?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1UpdateItemRequest
+     */
+    metadata?: string;
 }
 
 /**
@@ -2183,16 +1890,164 @@ export interface V1UpdateItemRequest {
 export interface V1UpdateItemResponse {
     /**
      * 
-     * @type {string}
-     * @memberof V1UpdateItemResponse
-     */
-    api?: string;
-    /**
-     * 
      * @type {V1Item}
      * @memberof V1UpdateItemResponse
      */
     item?: V1Item;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1UpdatePlayerRequest
+ */
+export interface V1UpdatePlayerRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1UpdatePlayerRequest
+     */
+    playerId?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1UpdatePlayerRequest
+     */
+    name?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1UpdatePlayerRequest
+     */
+    metadata?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1UpdatePlayerResponse
+ */
+export interface V1UpdatePlayerResponse {
+    /**
+     * 
+     * @type {V1Player}
+     * @memberof V1UpdatePlayerResponse
+     */
+    player?: V1Player;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1UpdateProductRequest
+ */
+export interface V1UpdateProductRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1UpdateProductRequest
+     */
+    productId?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1UpdateProductRequest
+     */
+    name?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1UpdateProductResponse
+ */
+export interface V1UpdateProductResponse {
+    /**
+     * 
+     * @type {V1Product}
+     * @memberof V1UpdateProductResponse
+     */
+    product?: V1Product;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1UpdateShopRequest
+ */
+export interface V1UpdateShopRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1UpdateShopRequest
+     */
+    shopId?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1UpdateShopRequest
+     */
+    name?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1UpdateShopRequest
+     */
+    metadata?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1UpdateShopResponse
+ */
+export interface V1UpdateShopResponse {
+    /**
+     * 
+     * @type {V1Shop}
+     * @memberof V1UpdateShopResponse
+     */
+    shop?: V1Shop;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1UpdateStorageRequest
+ */
+export interface V1UpdateStorageRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1UpdateStorageRequest
+     */
+    storageId?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1UpdateStorageRequest
+     */
+    name?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1UpdateStorageRequest
+     */
+    metadata?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1UpdateStorageResponse
+ */
+export interface V1UpdateStorageResponse {
+    /**
+     * 
+     * @type {V1Storage}
+     * @memberof V1UpdateStorageResponse
+     */
+    storage?: V1Storage;
 }
 
 
@@ -2202,6 +2057,38 @@ export interface V1UpdateItemResponse {
  */
 export const EconomyServiceApiFetchParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * 
+         * @summary Attach currency to a product
+         * @param {V1AttachCurrencyRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        attachCurrency(body: V1AttachCurrencyRequest, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling attachCurrency.');
+            }
+            const localVarPath = `/v1/product/attach/currency`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"V1AttachCurrencyRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * 
          * @summary Attach item to a product
@@ -2622,11 +2509,10 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
          * 
          * @summary Delete a price
          * @param {string} priceId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deletePrice(priceId: string, api?: string, options: any = {}): FetchArgs {
+        deletePrice(priceId: string, options: any = {}): FetchArgs {
             // verify required parameter 'priceId' is not null or undefined
             if (priceId === null || priceId === undefined) {
                 throw new RequiredError('priceId','Required parameter priceId was null or undefined when calling deletePrice.');
@@ -2638,9 +2524,34 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            if (api !== undefined) {
-                localVarQueryParameter['api'] = api;
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Detach currency from a product
+         * @param {string} productCurrencyId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        detachCurrency(productCurrencyId: string, options: any = {}): FetchArgs {
+            // verify required parameter 'productCurrencyId' is not null or undefined
+            if (productCurrencyId === null || productCurrencyId === undefined) {
+                throw new RequiredError('productCurrencyId','Required parameter productCurrencyId was null or undefined when calling detachCurrency.');
             }
+            const localVarPath = `/v1/product/detach/currency/{product_currency_id}`
+                .replace(`{${"product_currency_id"}}`, encodeURIComponent(String(productCurrencyId)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -2656,11 +2567,10 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
          * 
          * @summary Detach item from a product
          * @param {string} productItemId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        detachItem(productItemId: string, api?: string, options: any = {}): FetchArgs {
+        detachItem(productItemId: string, options: any = {}): FetchArgs {
             // verify required parameter 'productItemId' is not null or undefined
             if (productItemId === null || productItemId === undefined) {
                 throw new RequiredError('productItemId','Required parameter productItemId was null or undefined when calling detachItem.');
@@ -2671,10 +2581,6 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             const localVarRequestOptions = Object.assign({ method: 'DELETE' }, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            if (api !== undefined) {
-                localVarQueryParameter['api'] = api;
-            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -2690,11 +2596,10 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
          * 
          * @summary Detach currency from a Price
          * @param {string} priceCurrencyId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        detachPriceCurrency(priceCurrencyId: string, api?: string, options: any = {}): FetchArgs {
+        detachPriceCurrency(priceCurrencyId: string, options: any = {}): FetchArgs {
             // verify required parameter 'priceCurrencyId' is not null or undefined
             if (priceCurrencyId === null || priceCurrencyId === undefined) {
                 throw new RequiredError('priceCurrencyId','Required parameter priceCurrencyId was null or undefined when calling detachPriceCurrency.');
@@ -2705,10 +2610,6 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             const localVarRequestOptions = Object.assign({ method: 'DELETE' }, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            if (api !== undefined) {
-                localVarQueryParameter['api'] = api;
-            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -2724,11 +2625,10 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
          * 
          * @summary Detach item to a Price
          * @param {string} priceItemId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        detachPriceItem(priceItemId: string, api?: string, options: any = {}): FetchArgs {
+        detachPriceItem(priceItemId: string, options: any = {}): FetchArgs {
             // verify required parameter 'priceItemId' is not null or undefined
             if (priceItemId === null || priceItemId === undefined) {
                 throw new RequiredError('priceItemId','Required parameter priceItemId was null or undefined when calling detachPriceItem.');
@@ -2739,10 +2639,6 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             const localVarRequestOptions = Object.assign({ method: 'DELETE' }, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            if (api !== undefined) {
-                localVarQueryParameter['api'] = api;
-            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -2758,11 +2654,10 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
          * 
          * @summary Detach product from a shop
          * @param {string} shopProductId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        detachProduct(shopProductId: string, api?: string, options: any = {}): FetchArgs {
+        detachProduct(shopProductId: string, options: any = {}): FetchArgs {
             // verify required parameter 'shopProductId' is not null or undefined
             if (shopProductId === null || shopProductId === undefined) {
                 throw new RequiredError('shopProductId','Required parameter shopProductId was null or undefined when calling detachProduct.');
@@ -2773,10 +2668,6 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             const localVarRequestOptions = Object.assign({ method: 'DELETE' }, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            if (api !== undefined) {
-                localVarQueryParameter['api'] = api;
-            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -2792,11 +2683,10 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
          * 
          * @summary Get a config
          * @param {string} key 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getConfig(key: string, api?: string, options: any = {}): FetchArgs {
+        getConfig(key: string, options: any = {}): FetchArgs {
             // verify required parameter 'key' is not null or undefined
             if (key === null || key === undefined) {
                 throw new RequiredError('key','Required parameter key was null or undefined when calling getConfig.');
@@ -2807,10 +2697,6 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            if (api !== undefined) {
-                localVarQueryParameter['api'] = api;
-            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -2826,11 +2712,10 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
          * 
          * @summary Get a currency
          * @param {string} currencyId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCurrency(currencyId: string, api?: string, options: any = {}): FetchArgs {
+        getCurrency(currencyId: string, options: any = {}): FetchArgs {
             // verify required parameter 'currencyId' is not null or undefined
             if (currencyId === null || currencyId === undefined) {
                 throw new RequiredError('currencyId','Required parameter currencyId was null or undefined when calling getCurrency.');
@@ -2841,10 +2726,6 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            if (api !== undefined) {
-                localVarQueryParameter['api'] = api;
-            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -2860,11 +2741,10 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
          * 
          * @summary Get an Item
          * @param {string} itemId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getItem(itemId: string, api?: string, options: any = {}): FetchArgs {
+        getItem(itemId: string, options: any = {}): FetchArgs {
             // verify required parameter 'itemId' is not null or undefined
             if (itemId === null || itemId === undefined) {
                 throw new RequiredError('itemId','Required parameter itemId was null or undefined when calling getItem.');
@@ -2875,10 +2755,6 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            if (api !== undefined) {
-                localVarQueryParameter['api'] = api;
-            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -2894,11 +2770,10 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
          * 
          * @summary To see what Storages belong to an User
          * @param {string} playerId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPlayer(playerId: string, api?: string, options: any = {}): FetchArgs {
+        getPlayer(playerId: string, options: any = {}): FetchArgs {
             // verify required parameter 'playerId' is not null or undefined
             if (playerId === null || playerId === undefined) {
                 throw new RequiredError('playerId','Required parameter playerId was null or undefined when calling getPlayer.');
@@ -2909,10 +2784,6 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            if (api !== undefined) {
-                localVarQueryParameter['api'] = api;
-            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -2928,11 +2799,10 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
          * 
          * @summary Get a Price
          * @param {string} priceId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPrice(priceId: string, api?: string, options: any = {}): FetchArgs {
+        getPrice(priceId: string, options: any = {}): FetchArgs {
             // verify required parameter 'priceId' is not null or undefined
             if (priceId === null || priceId === undefined) {
                 throw new RequiredError('priceId','Required parameter priceId was null or undefined when calling getPrice.');
@@ -2943,10 +2813,6 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            if (api !== undefined) {
-                localVarQueryParameter['api'] = api;
-            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -2962,11 +2828,10 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
          * 
          * @summary Get a product
          * @param {string} productId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getProduct(productId: string, api?: string, options: any = {}): FetchArgs {
+        getProduct(productId: string, options: any = {}): FetchArgs {
             // verify required parameter 'productId' is not null or undefined
             if (productId === null || productId === undefined) {
                 throw new RequiredError('productId','Required parameter productId was null or undefined when calling getProduct.');
@@ -2977,10 +2842,6 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            if (api !== undefined) {
-                localVarQueryParameter['api'] = api;
-            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -2996,11 +2857,10 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
          * 
          * @summary Get a shop
          * @param {string} shopId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getShop(shopId: string, api?: string, options: any = {}): FetchArgs {
+        getShop(shopId: string, options: any = {}): FetchArgs {
             // verify required parameter 'shopId' is not null or undefined
             if (shopId === null || shopId === undefined) {
                 throw new RequiredError('shopId','Required parameter shopId was null or undefined when calling getShop.');
@@ -3011,10 +2871,6 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            if (api !== undefined) {
-                localVarQueryParameter['api'] = api;
-            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -3030,11 +2886,10 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
          * 
          * @summary Get the contents of a storage
          * @param {string} storageId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStorage(storageId: string, api?: string, options: any = {}): FetchArgs {
+        getStorage(storageId: string, options: any = {}): FetchArgs {
             // verify required parameter 'storageId' is not null or undefined
             if (storageId === null || storageId === undefined) {
                 throw new RequiredError('storageId','Required parameter storageId was null or undefined when calling getStorage.');
@@ -3045,10 +2900,6 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            if (api !== undefined) {
-                localVarQueryParameter['api'] = api;
-            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -3127,22 +2978,17 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
         /**
          * 
          * @summary List all configs
-         * @param {string} [api] 
          * @param {number} [pageSize] 
          * @param {string} [pageToken] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listConfig(api?: string, pageSize?: number, pageToken?: string, options: any = {}): FetchArgs {
+        listConfig(pageSize?: number, pageToken?: string, options: any = {}): FetchArgs {
             const localVarPath = `/v1/config`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            if (api !== undefined) {
-                localVarQueryParameter['api'] = api;
-            }
 
             if (pageSize !== undefined) {
                 localVarQueryParameter['page_size'] = pageSize;
@@ -3165,22 +3011,17 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
         /**
          * 
          * @summary Shows all currencies
-         * @param {string} [api] 
          * @param {number} [pageSize] 
          * @param {string} [pageToken] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listCurrency(api?: string, pageSize?: number, pageToken?: string, options: any = {}): FetchArgs {
+        listCurrency(pageSize?: number, pageToken?: string, options: any = {}): FetchArgs {
             const localVarPath = `/v1/currency`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            if (api !== undefined) {
-                localVarQueryParameter['api'] = api;
-            }
 
             if (pageSize !== undefined) {
                 localVarQueryParameter['page_size'] = pageSize;
@@ -3203,22 +3044,17 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
         /**
          * 
          * @summary List all Items
-         * @param {string} [api] 
          * @param {number} [pageSize] 
          * @param {string} [pageToken] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listItem(api?: string, pageSize?: number, pageToken?: string, options: any = {}): FetchArgs {
+        listItem(pageSize?: number, pageToken?: string, options: any = {}): FetchArgs {
             const localVarPath = `/v1/item`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            if (api !== undefined) {
-                localVarQueryParameter['api'] = api;
-            }
 
             if (pageSize !== undefined) {
                 localVarQueryParameter['page_size'] = pageSize;
@@ -3241,22 +3077,17 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
         /**
          * 
          * @summary List all players
-         * @param {string} [api] 
          * @param {number} [pageSize] 
          * @param {string} [pageToken] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listPlayer(api?: string, pageSize?: number, pageToken?: string, options: any = {}): FetchArgs {
+        listPlayer(pageSize?: number, pageToken?: string, options: any = {}): FetchArgs {
             const localVarPath = `/v1/player`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            if (api !== undefined) {
-                localVarQueryParameter['api'] = api;
-            }
 
             if (pageSize !== undefined) {
                 localVarQueryParameter['page_size'] = pageSize;
@@ -3279,22 +3110,17 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
         /**
          * 
          * @summary List all product
-         * @param {string} [api] 
          * @param {number} [pageSize] 
          * @param {string} [pageToken] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listProduct(api?: string, pageSize?: number, pageToken?: string, options: any = {}): FetchArgs {
+        listProduct(pageSize?: number, pageToken?: string, options: any = {}): FetchArgs {
             const localVarPath = `/v1/product`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            if (api !== undefined) {
-                localVarQueryParameter['api'] = api;
-            }
 
             if (pageSize !== undefined) {
                 localVarQueryParameter['page_size'] = pageSize;
@@ -3318,11 +3144,10 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
          * 
          * @summary Create a price
          * @param {string} productId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listProductPrice(productId: string, api?: string, options: any = {}): FetchArgs {
+        listProductPrice(productId: string, options: any = {}): FetchArgs {
             // verify required parameter 'productId' is not null or undefined
             if (productId === null || productId === undefined) {
                 throw new RequiredError('productId','Required parameter productId was null or undefined when calling listProductPrice.');
@@ -3333,10 +3158,6 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            if (api !== undefined) {
-                localVarQueryParameter['api'] = api;
-            }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -3351,22 +3172,17 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
         /**
          * 
          * @summary List all shops
-         * @param {string} [api] 
          * @param {number} [pageSize] 
          * @param {string} [pageToken] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listShop(api?: string, pageSize?: number, pageToken?: string, options: any = {}): FetchArgs {
+        listShop(pageSize?: number, pageToken?: string, options: any = {}): FetchArgs {
             const localVarPath = `/v1/shop`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            if (api !== undefined) {
-                localVarQueryParameter['api'] = api;
-            }
 
             if (pageSize !== undefined) {
                 localVarQueryParameter['page_size'] = pageSize;
@@ -3389,22 +3205,17 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
         /**
          * 
          * @summary List all storages
-         * @param {string} [api] 
          * @param {number} [pageSize] 
          * @param {string} [pageToken] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listStorage(api?: string, pageSize?: number, pageToken?: string, options: any = {}): FetchArgs {
+        listStorage(pageSize?: number, pageToken?: string, options: any = {}): FetchArgs {
             const localVarPath = `/v1/storage`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            if (api !== undefined) {
-                localVarQueryParameter['api'] = api;
-            }
 
             if (pageSize !== undefined) {
                 localVarQueryParameter['page_size'] = pageSize;
@@ -3554,17 +3365,61 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
         },
         /**
          * 
+         * @summary Update a currency
+         * @param {string} currencyId 
+         * @param {V1UpdateCurrencyRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateCurrency(currencyId: string, body: V1UpdateCurrencyRequest, options: any = {}): FetchArgs {
+            // verify required parameter 'currencyId' is not null or undefined
+            if (currencyId === null || currencyId === undefined) {
+                throw new RequiredError('currencyId','Required parameter currencyId was null or undefined when calling updateCurrency.');
+            }
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling updateCurrency.');
+            }
+            const localVarPath = `/v1/currency/{currency_id}`
+                .replace(`{${"currency_id"}}`, encodeURIComponent(String(currencyId)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'PATCH' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"V1UpdateCurrencyRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Update an Item
+         * @param {string} itemId 
          * @param {V1UpdateItemRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateItem(body: V1UpdateItemRequest, options: any = {}): FetchArgs {
+        updateItem(itemId: string, body: V1UpdateItemRequest, options: any = {}): FetchArgs {
+            // verify required parameter 'itemId' is not null or undefined
+            if (itemId === null || itemId === undefined) {
+                throw new RequiredError('itemId','Required parameter itemId was null or undefined when calling updateItem.');
+            }
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling updateItem.');
             }
-            const localVarPath = `/v1/item`;
+            const localVarPath = `/v1/item/{item_id}`
+                .replace(`{${"item_id"}}`, encodeURIComponent(String(itemId)));
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'PATCH' }, options);
             const localVarHeaderParameter = {} as any;
@@ -3584,6 +3439,158 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @summary Update a player
+         * @param {string} playerId 
+         * @param {V1UpdatePlayerRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updatePlayer(playerId: string, body: V1UpdatePlayerRequest, options: any = {}): FetchArgs {
+            // verify required parameter 'playerId' is not null or undefined
+            if (playerId === null || playerId === undefined) {
+                throw new RequiredError('playerId','Required parameter playerId was null or undefined when calling updatePlayer.');
+            }
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling updatePlayer.');
+            }
+            const localVarPath = `/v1/player/{player_id}`
+                .replace(`{${"player_id"}}`, encodeURIComponent(String(playerId)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'PATCH' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"V1UpdatePlayerRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Update a product
+         * @param {string} productId 
+         * @param {V1UpdateProductRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateProduct(productId: string, body: V1UpdateProductRequest, options: any = {}): FetchArgs {
+            // verify required parameter 'productId' is not null or undefined
+            if (productId === null || productId === undefined) {
+                throw new RequiredError('productId','Required parameter productId was null or undefined when calling updateProduct.');
+            }
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling updateProduct.');
+            }
+            const localVarPath = `/v1/product/{product_id}`
+                .replace(`{${"product_id"}}`, encodeURIComponent(String(productId)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'PATCH' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"V1UpdateProductRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Update a shop
+         * @param {string} shopId 
+         * @param {V1UpdateShopRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateShop(shopId: string, body: V1UpdateShopRequest, options: any = {}): FetchArgs {
+            // verify required parameter 'shopId' is not null or undefined
+            if (shopId === null || shopId === undefined) {
+                throw new RequiredError('shopId','Required parameter shopId was null or undefined when calling updateShop.');
+            }
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling updateShop.');
+            }
+            const localVarPath = `/v1/shop/{shop_id}`
+                .replace(`{${"shop_id"}}`, encodeURIComponent(String(shopId)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'PATCH' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"V1UpdateShopRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Update Storage
+         * @param {string} storageId 
+         * @param {V1UpdateStorageRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateStorage(storageId: string, body: V1UpdateStorageRequest, options: any = {}): FetchArgs {
+            // verify required parameter 'storageId' is not null or undefined
+            if (storageId === null || storageId === undefined) {
+                throw new RequiredError('storageId','Required parameter storageId was null or undefined when calling updateStorage.');
+            }
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling updateStorage.');
+            }
+            const localVarPath = `/v1/storage/{storage_id}`
+                .replace(`{${"storage_id"}}`, encodeURIComponent(String(storageId)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'PATCH' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"V1UpdateStorageRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -3593,6 +3600,25 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
  */
 export const EconomyServiceApiFp = function(configuration?: Configuration) {
     return {
+        /**
+         * 
+         * @summary Attach currency to a product
+         * @param {V1AttachCurrencyRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        attachCurrency(body: V1AttachCurrencyRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1AttachCurrencyResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).attachCurrency(body, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
         /**
          * 
          * @summary Attach item to a product
@@ -3844,12 +3870,30 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
          * 
          * @summary Delete a price
          * @param {string} priceId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deletePrice(priceId: string, api?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1DeletePriceResponse> {
-            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).deletePrice(priceId, api, options);
+        deletePrice(priceId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1DeletePriceResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).deletePrice(priceId, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * 
+         * @summary Detach currency from a product
+         * @param {string} productCurrencyId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        detachCurrency(productCurrencyId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1DetachCurrencyResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).detachCurrency(productCurrencyId, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -3864,12 +3908,11 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
          * 
          * @summary Detach item from a product
          * @param {string} productItemId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        detachItem(productItemId: string, api?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1DetachItemResponse> {
-            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).detachItem(productItemId, api, options);
+        detachItem(productItemId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1DetachItemResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).detachItem(productItemId, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -3884,12 +3927,11 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
          * 
          * @summary Detach currency from a Price
          * @param {string} priceCurrencyId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        detachPriceCurrency(priceCurrencyId: string, api?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1DetachPriceCurrencyResponse> {
-            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).detachPriceCurrency(priceCurrencyId, api, options);
+        detachPriceCurrency(priceCurrencyId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1DetachPriceCurrencyResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).detachPriceCurrency(priceCurrencyId, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -3904,12 +3946,11 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
          * 
          * @summary Detach item to a Price
          * @param {string} priceItemId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        detachPriceItem(priceItemId: string, api?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1DetachPriceItemResponse> {
-            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).detachPriceItem(priceItemId, api, options);
+        detachPriceItem(priceItemId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1DetachPriceItemResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).detachPriceItem(priceItemId, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -3924,12 +3965,11 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
          * 
          * @summary Detach product from a shop
          * @param {string} shopProductId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        detachProduct(shopProductId: string, api?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1DetachProductResponse> {
-            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).detachProduct(shopProductId, api, options);
+        detachProduct(shopProductId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1DetachProductResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).detachProduct(shopProductId, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -3944,12 +3984,11 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get a config
          * @param {string} key 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getConfig(key: string, api?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1GetConfigResponse> {
-            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).getConfig(key, api, options);
+        getConfig(key: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1GetConfigResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).getConfig(key, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -3964,12 +4003,11 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get a currency
          * @param {string} currencyId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCurrency(currencyId: string, api?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1GetCurrencyResponse> {
-            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).getCurrency(currencyId, api, options);
+        getCurrency(currencyId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1GetCurrencyResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).getCurrency(currencyId, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -3984,12 +4022,11 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get an Item
          * @param {string} itemId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getItem(itemId: string, api?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1GetItemResponse> {
-            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).getItem(itemId, api, options);
+        getItem(itemId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1GetItemResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).getItem(itemId, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -4004,12 +4041,11 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
          * 
          * @summary To see what Storages belong to an User
          * @param {string} playerId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPlayer(playerId: string, api?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1GetPlayerResponse> {
-            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).getPlayer(playerId, api, options);
+        getPlayer(playerId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1GetPlayerResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).getPlayer(playerId, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -4024,12 +4060,11 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get a Price
          * @param {string} priceId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPrice(priceId: string, api?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1GetPriceResponse> {
-            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).getPrice(priceId, api, options);
+        getPrice(priceId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1GetPriceResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).getPrice(priceId, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -4044,12 +4079,11 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get a product
          * @param {string} productId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getProduct(productId: string, api?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1GetProductResponse> {
-            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).getProduct(productId, api, options);
+        getProduct(productId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1GetProductResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).getProduct(productId, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -4064,12 +4098,11 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get a shop
          * @param {string} shopId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getShop(shopId: string, api?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1GetShopResponse> {
-            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).getShop(shopId, api, options);
+        getShop(shopId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1GetShopResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).getShop(shopId, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -4084,12 +4117,11 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get the contents of a storage
          * @param {string} storageId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStorage(storageId: string, api?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1GetStorageResponse> {
-            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).getStorage(storageId, api, options);
+        getStorage(storageId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1GetStorageResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).getStorage(storageId, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -4141,14 +4173,13 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary List all configs
-         * @param {string} [api] 
          * @param {number} [pageSize] 
          * @param {string} [pageToken] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listConfig(api?: string, pageSize?: number, pageToken?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1ListConfigResponse> {
-            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).listConfig(api, pageSize, pageToken, options);
+        listConfig(pageSize?: number, pageToken?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1ListConfigResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).listConfig(pageSize, pageToken, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -4162,14 +4193,13 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Shows all currencies
-         * @param {string} [api] 
          * @param {number} [pageSize] 
          * @param {string} [pageToken] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listCurrency(api?: string, pageSize?: number, pageToken?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1ListCurrencyResponse> {
-            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).listCurrency(api, pageSize, pageToken, options);
+        listCurrency(pageSize?: number, pageToken?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1ListCurrencyResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).listCurrency(pageSize, pageToken, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -4183,14 +4213,13 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary List all Items
-         * @param {string} [api] 
          * @param {number} [pageSize] 
          * @param {string} [pageToken] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listItem(api?: string, pageSize?: number, pageToken?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1ListItemResponse> {
-            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).listItem(api, pageSize, pageToken, options);
+        listItem(pageSize?: number, pageToken?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1ListItemResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).listItem(pageSize, pageToken, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -4204,14 +4233,13 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary List all players
-         * @param {string} [api] 
          * @param {number} [pageSize] 
          * @param {string} [pageToken] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listPlayer(api?: string, pageSize?: number, pageToken?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1ListPlayerResponse> {
-            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).listPlayer(api, pageSize, pageToken, options);
+        listPlayer(pageSize?: number, pageToken?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1ListPlayerResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).listPlayer(pageSize, pageToken, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -4225,14 +4253,13 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary List all product
-         * @param {string} [api] 
          * @param {number} [pageSize] 
          * @param {string} [pageToken] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listProduct(api?: string, pageSize?: number, pageToken?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1ListProductResponse> {
-            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).listProduct(api, pageSize, pageToken, options);
+        listProduct(pageSize?: number, pageToken?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1ListProductResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).listProduct(pageSize, pageToken, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -4247,12 +4274,11 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
          * 
          * @summary Create a price
          * @param {string} productId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listProductPrice(productId: string, api?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1ListProductPriceResponse> {
-            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).listProductPrice(productId, api, options);
+        listProductPrice(productId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1ListProductPriceResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).listProductPrice(productId, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -4266,14 +4292,13 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary List all shops
-         * @param {string} [api] 
          * @param {number} [pageSize] 
          * @param {string} [pageToken] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listShop(api?: string, pageSize?: number, pageToken?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1ListShopResponse> {
-            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).listShop(api, pageSize, pageToken, options);
+        listShop(pageSize?: number, pageToken?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1ListShopResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).listShop(pageSize, pageToken, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -4287,14 +4312,13 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary List all storages
-         * @param {string} [api] 
          * @param {number} [pageSize] 
          * @param {string} [pageToken] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listStorage(api?: string, pageSize?: number, pageToken?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1ListStorageResponse> {
-            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).listStorage(api, pageSize, pageToken, options);
+        listStorage(pageSize?: number, pageToken?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1ListStorageResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).listStorage(pageSize, pageToken, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -4383,13 +4407,114 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Update a currency
+         * @param {string} currencyId 
+         * @param {V1UpdateCurrencyRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateCurrency(currencyId: string, body: V1UpdateCurrencyRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1UpdateCurrencyResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).updateCurrency(currencyId, body, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * 
          * @summary Update an Item
+         * @param {string} itemId 
          * @param {V1UpdateItemRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateItem(body: V1UpdateItemRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1UpdateItemResponse> {
-            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).updateItem(body, options);
+        updateItem(itemId: string, body: V1UpdateItemRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1UpdateItemResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).updateItem(itemId, body, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * 
+         * @summary Update a player
+         * @param {string} playerId 
+         * @param {V1UpdatePlayerRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updatePlayer(playerId: string, body: V1UpdatePlayerRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1UpdatePlayerResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).updatePlayer(playerId, body, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * 
+         * @summary Update a product
+         * @param {string} productId 
+         * @param {V1UpdateProductRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateProduct(productId: string, body: V1UpdateProductRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1UpdateProductResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).updateProduct(productId, body, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * 
+         * @summary Update a shop
+         * @param {string} shopId 
+         * @param {V1UpdateShopRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateShop(shopId: string, body: V1UpdateShopRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1UpdateShopResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).updateShop(shopId, body, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * 
+         * @summary Update Storage
+         * @param {string} storageId 
+         * @param {V1UpdateStorageRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateStorage(storageId: string, body: V1UpdateStorageRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1UpdateStorageResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).updateStorage(storageId, body, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -4409,6 +4534,16 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
  */
 export const EconomyServiceApiFactory = function (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) {
     return {
+        /**
+         * 
+         * @summary Attach currency to a product
+         * @param {V1AttachCurrencyRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        attachCurrency(body: V1AttachCurrencyRequest, options?: any) {
+            return EconomyServiceApiFp(configuration).attachCurrency(body, options)(fetch, basePath);
+        },
         /**
          * 
          * @summary Attach item to a product
@@ -4543,144 +4678,141 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
          * 
          * @summary Delete a price
          * @param {string} priceId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deletePrice(priceId: string, api?: string, options?: any) {
-            return EconomyServiceApiFp(configuration).deletePrice(priceId, api, options)(fetch, basePath);
+        deletePrice(priceId: string, options?: any) {
+            return EconomyServiceApiFp(configuration).deletePrice(priceId, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Detach currency from a product
+         * @param {string} productCurrencyId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        detachCurrency(productCurrencyId: string, options?: any) {
+            return EconomyServiceApiFp(configuration).detachCurrency(productCurrencyId, options)(fetch, basePath);
         },
         /**
          * 
          * @summary Detach item from a product
          * @param {string} productItemId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        detachItem(productItemId: string, api?: string, options?: any) {
-            return EconomyServiceApiFp(configuration).detachItem(productItemId, api, options)(fetch, basePath);
+        detachItem(productItemId: string, options?: any) {
+            return EconomyServiceApiFp(configuration).detachItem(productItemId, options)(fetch, basePath);
         },
         /**
          * 
          * @summary Detach currency from a Price
          * @param {string} priceCurrencyId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        detachPriceCurrency(priceCurrencyId: string, api?: string, options?: any) {
-            return EconomyServiceApiFp(configuration).detachPriceCurrency(priceCurrencyId, api, options)(fetch, basePath);
+        detachPriceCurrency(priceCurrencyId: string, options?: any) {
+            return EconomyServiceApiFp(configuration).detachPriceCurrency(priceCurrencyId, options)(fetch, basePath);
         },
         /**
          * 
          * @summary Detach item to a Price
          * @param {string} priceItemId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        detachPriceItem(priceItemId: string, api?: string, options?: any) {
-            return EconomyServiceApiFp(configuration).detachPriceItem(priceItemId, api, options)(fetch, basePath);
+        detachPriceItem(priceItemId: string, options?: any) {
+            return EconomyServiceApiFp(configuration).detachPriceItem(priceItemId, options)(fetch, basePath);
         },
         /**
          * 
          * @summary Detach product from a shop
          * @param {string} shopProductId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        detachProduct(shopProductId: string, api?: string, options?: any) {
-            return EconomyServiceApiFp(configuration).detachProduct(shopProductId, api, options)(fetch, basePath);
+        detachProduct(shopProductId: string, options?: any) {
+            return EconomyServiceApiFp(configuration).detachProduct(shopProductId, options)(fetch, basePath);
         },
         /**
          * 
          * @summary Get a config
          * @param {string} key 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getConfig(key: string, api?: string, options?: any) {
-            return EconomyServiceApiFp(configuration).getConfig(key, api, options)(fetch, basePath);
+        getConfig(key: string, options?: any) {
+            return EconomyServiceApiFp(configuration).getConfig(key, options)(fetch, basePath);
         },
         /**
          * 
          * @summary Get a currency
          * @param {string} currencyId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCurrency(currencyId: string, api?: string, options?: any) {
-            return EconomyServiceApiFp(configuration).getCurrency(currencyId, api, options)(fetch, basePath);
+        getCurrency(currencyId: string, options?: any) {
+            return EconomyServiceApiFp(configuration).getCurrency(currencyId, options)(fetch, basePath);
         },
         /**
          * 
          * @summary Get an Item
          * @param {string} itemId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getItem(itemId: string, api?: string, options?: any) {
-            return EconomyServiceApiFp(configuration).getItem(itemId, api, options)(fetch, basePath);
+        getItem(itemId: string, options?: any) {
+            return EconomyServiceApiFp(configuration).getItem(itemId, options)(fetch, basePath);
         },
         /**
          * 
          * @summary To see what Storages belong to an User
          * @param {string} playerId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPlayer(playerId: string, api?: string, options?: any) {
-            return EconomyServiceApiFp(configuration).getPlayer(playerId, api, options)(fetch, basePath);
+        getPlayer(playerId: string, options?: any) {
+            return EconomyServiceApiFp(configuration).getPlayer(playerId, options)(fetch, basePath);
         },
         /**
          * 
          * @summary Get a Price
          * @param {string} priceId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPrice(priceId: string, api?: string, options?: any) {
-            return EconomyServiceApiFp(configuration).getPrice(priceId, api, options)(fetch, basePath);
+        getPrice(priceId: string, options?: any) {
+            return EconomyServiceApiFp(configuration).getPrice(priceId, options)(fetch, basePath);
         },
         /**
          * 
          * @summary Get a product
          * @param {string} productId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getProduct(productId: string, api?: string, options?: any) {
-            return EconomyServiceApiFp(configuration).getProduct(productId, api, options)(fetch, basePath);
+        getProduct(productId: string, options?: any) {
+            return EconomyServiceApiFp(configuration).getProduct(productId, options)(fetch, basePath);
         },
         /**
          * 
          * @summary Get a shop
          * @param {string} shopId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getShop(shopId: string, api?: string, options?: any) {
-            return EconomyServiceApiFp(configuration).getShop(shopId, api, options)(fetch, basePath);
+        getShop(shopId: string, options?: any) {
+            return EconomyServiceApiFp(configuration).getShop(shopId, options)(fetch, basePath);
         },
         /**
          * 
          * @summary Get the contents of a storage
          * @param {string} storageId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStorage(storageId: string, api?: string, options?: any) {
-            return EconomyServiceApiFp(configuration).getStorage(storageId, api, options)(fetch, basePath);
+        getStorage(storageId: string, options?: any) {
+            return EconomyServiceApiFp(configuration).getStorage(storageId, options)(fetch, basePath);
         },
         /**
          * 
@@ -4705,97 +4837,89 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
         /**
          * 
          * @summary List all configs
-         * @param {string} [api] 
          * @param {number} [pageSize] 
          * @param {string} [pageToken] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listConfig(api?: string, pageSize?: number, pageToken?: string, options?: any) {
-            return EconomyServiceApiFp(configuration).listConfig(api, pageSize, pageToken, options)(fetch, basePath);
+        listConfig(pageSize?: number, pageToken?: string, options?: any) {
+            return EconomyServiceApiFp(configuration).listConfig(pageSize, pageToken, options)(fetch, basePath);
         },
         /**
          * 
          * @summary Shows all currencies
-         * @param {string} [api] 
          * @param {number} [pageSize] 
          * @param {string} [pageToken] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listCurrency(api?: string, pageSize?: number, pageToken?: string, options?: any) {
-            return EconomyServiceApiFp(configuration).listCurrency(api, pageSize, pageToken, options)(fetch, basePath);
+        listCurrency(pageSize?: number, pageToken?: string, options?: any) {
+            return EconomyServiceApiFp(configuration).listCurrency(pageSize, pageToken, options)(fetch, basePath);
         },
         /**
          * 
          * @summary List all Items
-         * @param {string} [api] 
          * @param {number} [pageSize] 
          * @param {string} [pageToken] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listItem(api?: string, pageSize?: number, pageToken?: string, options?: any) {
-            return EconomyServiceApiFp(configuration).listItem(api, pageSize, pageToken, options)(fetch, basePath);
+        listItem(pageSize?: number, pageToken?: string, options?: any) {
+            return EconomyServiceApiFp(configuration).listItem(pageSize, pageToken, options)(fetch, basePath);
         },
         /**
          * 
          * @summary List all players
-         * @param {string} [api] 
          * @param {number} [pageSize] 
          * @param {string} [pageToken] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listPlayer(api?: string, pageSize?: number, pageToken?: string, options?: any) {
-            return EconomyServiceApiFp(configuration).listPlayer(api, pageSize, pageToken, options)(fetch, basePath);
+        listPlayer(pageSize?: number, pageToken?: string, options?: any) {
+            return EconomyServiceApiFp(configuration).listPlayer(pageSize, pageToken, options)(fetch, basePath);
         },
         /**
          * 
          * @summary List all product
-         * @param {string} [api] 
          * @param {number} [pageSize] 
          * @param {string} [pageToken] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listProduct(api?: string, pageSize?: number, pageToken?: string, options?: any) {
-            return EconomyServiceApiFp(configuration).listProduct(api, pageSize, pageToken, options)(fetch, basePath);
+        listProduct(pageSize?: number, pageToken?: string, options?: any) {
+            return EconomyServiceApiFp(configuration).listProduct(pageSize, pageToken, options)(fetch, basePath);
         },
         /**
          * 
          * @summary Create a price
          * @param {string} productId 
-         * @param {string} [api] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listProductPrice(productId: string, api?: string, options?: any) {
-            return EconomyServiceApiFp(configuration).listProductPrice(productId, api, options)(fetch, basePath);
+        listProductPrice(productId: string, options?: any) {
+            return EconomyServiceApiFp(configuration).listProductPrice(productId, options)(fetch, basePath);
         },
         /**
          * 
          * @summary List all shops
-         * @param {string} [api] 
          * @param {number} [pageSize] 
          * @param {string} [pageToken] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listShop(api?: string, pageSize?: number, pageToken?: string, options?: any) {
-            return EconomyServiceApiFp(configuration).listShop(api, pageSize, pageToken, options)(fetch, basePath);
+        listShop(pageSize?: number, pageToken?: string, options?: any) {
+            return EconomyServiceApiFp(configuration).listShop(pageSize, pageToken, options)(fetch, basePath);
         },
         /**
          * 
          * @summary List all storages
-         * @param {string} [api] 
          * @param {number} [pageSize] 
          * @param {string} [pageToken] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listStorage(api?: string, pageSize?: number, pageToken?: string, options?: any) {
-            return EconomyServiceApiFp(configuration).listStorage(api, pageSize, pageToken, options)(fetch, basePath);
+        listStorage(pageSize?: number, pageToken?: string, options?: any) {
+            return EconomyServiceApiFp(configuration).listStorage(pageSize, pageToken, options)(fetch, basePath);
         },
         /**
          * 
@@ -4839,13 +4963,69 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
         },
         /**
          * 
+         * @summary Update a currency
+         * @param {string} currencyId 
+         * @param {V1UpdateCurrencyRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateCurrency(currencyId: string, body: V1UpdateCurrencyRequest, options?: any) {
+            return EconomyServiceApiFp(configuration).updateCurrency(currencyId, body, options)(fetch, basePath);
+        },
+        /**
+         * 
          * @summary Update an Item
+         * @param {string} itemId 
          * @param {V1UpdateItemRequest} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateItem(body: V1UpdateItemRequest, options?: any) {
-            return EconomyServiceApiFp(configuration).updateItem(body, options)(fetch, basePath);
+        updateItem(itemId: string, body: V1UpdateItemRequest, options?: any) {
+            return EconomyServiceApiFp(configuration).updateItem(itemId, body, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Update a player
+         * @param {string} playerId 
+         * @param {V1UpdatePlayerRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updatePlayer(playerId: string, body: V1UpdatePlayerRequest, options?: any) {
+            return EconomyServiceApiFp(configuration).updatePlayer(playerId, body, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Update a product
+         * @param {string} productId 
+         * @param {V1UpdateProductRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateProduct(productId: string, body: V1UpdateProductRequest, options?: any) {
+            return EconomyServiceApiFp(configuration).updateProduct(productId, body, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Update a shop
+         * @param {string} shopId 
+         * @param {V1UpdateShopRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateShop(shopId: string, body: V1UpdateShopRequest, options?: any) {
+            return EconomyServiceApiFp(configuration).updateShop(shopId, body, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Update Storage
+         * @param {string} storageId 
+         * @param {V1UpdateStorageRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateStorage(storageId: string, body: V1UpdateStorageRequest, options?: any) {
+            return EconomyServiceApiFp(configuration).updateStorage(storageId, body, options)(fetch, basePath);
         },
     };
 };
@@ -4857,6 +5037,18 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
  * @extends {BaseAPI}
  */
 export class EconomyServiceApi extends BaseAPI {
+    /**
+     * 
+     * @summary Attach currency to a product
+     * @param {V1AttachCurrencyRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EconomyServiceApi
+     */
+    public attachCurrency(body: V1AttachCurrencyRequest, options?: any) {
+        return EconomyServiceApiFp(this.configuration).attachCurrency(body, options)(this.fetch, this.basePath);
+    }
+
     /**
      * 
      * @summary Attach item to a product
@@ -5017,169 +5209,168 @@ export class EconomyServiceApi extends BaseAPI {
      * 
      * @summary Delete a price
      * @param {string} priceId 
-     * @param {string} [api] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
      */
-    public deletePrice(priceId: string, api?: string, options?: any) {
-        return EconomyServiceApiFp(this.configuration).deletePrice(priceId, api, options)(this.fetch, this.basePath);
+    public deletePrice(priceId: string, options?: any) {
+        return EconomyServiceApiFp(this.configuration).deletePrice(priceId, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Detach currency from a product
+     * @param {string} productCurrencyId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EconomyServiceApi
+     */
+    public detachCurrency(productCurrencyId: string, options?: any) {
+        return EconomyServiceApiFp(this.configuration).detachCurrency(productCurrencyId, options)(this.fetch, this.basePath);
     }
 
     /**
      * 
      * @summary Detach item from a product
      * @param {string} productItemId 
-     * @param {string} [api] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
      */
-    public detachItem(productItemId: string, api?: string, options?: any) {
-        return EconomyServiceApiFp(this.configuration).detachItem(productItemId, api, options)(this.fetch, this.basePath);
+    public detachItem(productItemId: string, options?: any) {
+        return EconomyServiceApiFp(this.configuration).detachItem(productItemId, options)(this.fetch, this.basePath);
     }
 
     /**
      * 
      * @summary Detach currency from a Price
      * @param {string} priceCurrencyId 
-     * @param {string} [api] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
      */
-    public detachPriceCurrency(priceCurrencyId: string, api?: string, options?: any) {
-        return EconomyServiceApiFp(this.configuration).detachPriceCurrency(priceCurrencyId, api, options)(this.fetch, this.basePath);
+    public detachPriceCurrency(priceCurrencyId: string, options?: any) {
+        return EconomyServiceApiFp(this.configuration).detachPriceCurrency(priceCurrencyId, options)(this.fetch, this.basePath);
     }
 
     /**
      * 
      * @summary Detach item to a Price
      * @param {string} priceItemId 
-     * @param {string} [api] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
      */
-    public detachPriceItem(priceItemId: string, api?: string, options?: any) {
-        return EconomyServiceApiFp(this.configuration).detachPriceItem(priceItemId, api, options)(this.fetch, this.basePath);
+    public detachPriceItem(priceItemId: string, options?: any) {
+        return EconomyServiceApiFp(this.configuration).detachPriceItem(priceItemId, options)(this.fetch, this.basePath);
     }
 
     /**
      * 
      * @summary Detach product from a shop
      * @param {string} shopProductId 
-     * @param {string} [api] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
      */
-    public detachProduct(shopProductId: string, api?: string, options?: any) {
-        return EconomyServiceApiFp(this.configuration).detachProduct(shopProductId, api, options)(this.fetch, this.basePath);
+    public detachProduct(shopProductId: string, options?: any) {
+        return EconomyServiceApiFp(this.configuration).detachProduct(shopProductId, options)(this.fetch, this.basePath);
     }
 
     /**
      * 
      * @summary Get a config
      * @param {string} key 
-     * @param {string} [api] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
      */
-    public getConfig(key: string, api?: string, options?: any) {
-        return EconomyServiceApiFp(this.configuration).getConfig(key, api, options)(this.fetch, this.basePath);
+    public getConfig(key: string, options?: any) {
+        return EconomyServiceApiFp(this.configuration).getConfig(key, options)(this.fetch, this.basePath);
     }
 
     /**
      * 
      * @summary Get a currency
      * @param {string} currencyId 
-     * @param {string} [api] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
      */
-    public getCurrency(currencyId: string, api?: string, options?: any) {
-        return EconomyServiceApiFp(this.configuration).getCurrency(currencyId, api, options)(this.fetch, this.basePath);
+    public getCurrency(currencyId: string, options?: any) {
+        return EconomyServiceApiFp(this.configuration).getCurrency(currencyId, options)(this.fetch, this.basePath);
     }
 
     /**
      * 
      * @summary Get an Item
      * @param {string} itemId 
-     * @param {string} [api] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
      */
-    public getItem(itemId: string, api?: string, options?: any) {
-        return EconomyServiceApiFp(this.configuration).getItem(itemId, api, options)(this.fetch, this.basePath);
+    public getItem(itemId: string, options?: any) {
+        return EconomyServiceApiFp(this.configuration).getItem(itemId, options)(this.fetch, this.basePath);
     }
 
     /**
      * 
      * @summary To see what Storages belong to an User
      * @param {string} playerId 
-     * @param {string} [api] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
      */
-    public getPlayer(playerId: string, api?: string, options?: any) {
-        return EconomyServiceApiFp(this.configuration).getPlayer(playerId, api, options)(this.fetch, this.basePath);
+    public getPlayer(playerId: string, options?: any) {
+        return EconomyServiceApiFp(this.configuration).getPlayer(playerId, options)(this.fetch, this.basePath);
     }
 
     /**
      * 
      * @summary Get a Price
      * @param {string} priceId 
-     * @param {string} [api] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
      */
-    public getPrice(priceId: string, api?: string, options?: any) {
-        return EconomyServiceApiFp(this.configuration).getPrice(priceId, api, options)(this.fetch, this.basePath);
+    public getPrice(priceId: string, options?: any) {
+        return EconomyServiceApiFp(this.configuration).getPrice(priceId, options)(this.fetch, this.basePath);
     }
 
     /**
      * 
      * @summary Get a product
      * @param {string} productId 
-     * @param {string} [api] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
      */
-    public getProduct(productId: string, api?: string, options?: any) {
-        return EconomyServiceApiFp(this.configuration).getProduct(productId, api, options)(this.fetch, this.basePath);
+    public getProduct(productId: string, options?: any) {
+        return EconomyServiceApiFp(this.configuration).getProduct(productId, options)(this.fetch, this.basePath);
     }
 
     /**
      * 
      * @summary Get a shop
      * @param {string} shopId 
-     * @param {string} [api] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
      */
-    public getShop(shopId: string, api?: string, options?: any) {
-        return EconomyServiceApiFp(this.configuration).getShop(shopId, api, options)(this.fetch, this.basePath);
+    public getShop(shopId: string, options?: any) {
+        return EconomyServiceApiFp(this.configuration).getShop(shopId, options)(this.fetch, this.basePath);
     }
 
     /**
      * 
      * @summary Get the contents of a storage
      * @param {string} storageId 
-     * @param {string} [api] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
      */
-    public getStorage(storageId: string, api?: string, options?: any) {
-        return EconomyServiceApiFp(this.configuration).getStorage(storageId, api, options)(this.fetch, this.basePath);
+    public getStorage(storageId: string, options?: any) {
+        return EconomyServiceApiFp(this.configuration).getStorage(storageId, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -5209,112 +5400,104 @@ export class EconomyServiceApi extends BaseAPI {
     /**
      * 
      * @summary List all configs
-     * @param {string} [api] 
      * @param {number} [pageSize] 
      * @param {string} [pageToken] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
      */
-    public listConfig(api?: string, pageSize?: number, pageToken?: string, options?: any) {
-        return EconomyServiceApiFp(this.configuration).listConfig(api, pageSize, pageToken, options)(this.fetch, this.basePath);
+    public listConfig(pageSize?: number, pageToken?: string, options?: any) {
+        return EconomyServiceApiFp(this.configuration).listConfig(pageSize, pageToken, options)(this.fetch, this.basePath);
     }
 
     /**
      * 
      * @summary Shows all currencies
-     * @param {string} [api] 
      * @param {number} [pageSize] 
      * @param {string} [pageToken] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
      */
-    public listCurrency(api?: string, pageSize?: number, pageToken?: string, options?: any) {
-        return EconomyServiceApiFp(this.configuration).listCurrency(api, pageSize, pageToken, options)(this.fetch, this.basePath);
+    public listCurrency(pageSize?: number, pageToken?: string, options?: any) {
+        return EconomyServiceApiFp(this.configuration).listCurrency(pageSize, pageToken, options)(this.fetch, this.basePath);
     }
 
     /**
      * 
      * @summary List all Items
-     * @param {string} [api] 
      * @param {number} [pageSize] 
      * @param {string} [pageToken] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
      */
-    public listItem(api?: string, pageSize?: number, pageToken?: string, options?: any) {
-        return EconomyServiceApiFp(this.configuration).listItem(api, pageSize, pageToken, options)(this.fetch, this.basePath);
+    public listItem(pageSize?: number, pageToken?: string, options?: any) {
+        return EconomyServiceApiFp(this.configuration).listItem(pageSize, pageToken, options)(this.fetch, this.basePath);
     }
 
     /**
      * 
      * @summary List all players
-     * @param {string} [api] 
      * @param {number} [pageSize] 
      * @param {string} [pageToken] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
      */
-    public listPlayer(api?: string, pageSize?: number, pageToken?: string, options?: any) {
-        return EconomyServiceApiFp(this.configuration).listPlayer(api, pageSize, pageToken, options)(this.fetch, this.basePath);
+    public listPlayer(pageSize?: number, pageToken?: string, options?: any) {
+        return EconomyServiceApiFp(this.configuration).listPlayer(pageSize, pageToken, options)(this.fetch, this.basePath);
     }
 
     /**
      * 
      * @summary List all product
-     * @param {string} [api] 
      * @param {number} [pageSize] 
      * @param {string} [pageToken] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
      */
-    public listProduct(api?: string, pageSize?: number, pageToken?: string, options?: any) {
-        return EconomyServiceApiFp(this.configuration).listProduct(api, pageSize, pageToken, options)(this.fetch, this.basePath);
+    public listProduct(pageSize?: number, pageToken?: string, options?: any) {
+        return EconomyServiceApiFp(this.configuration).listProduct(pageSize, pageToken, options)(this.fetch, this.basePath);
     }
 
     /**
      * 
      * @summary Create a price
      * @param {string} productId 
-     * @param {string} [api] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
      */
-    public listProductPrice(productId: string, api?: string, options?: any) {
-        return EconomyServiceApiFp(this.configuration).listProductPrice(productId, api, options)(this.fetch, this.basePath);
+    public listProductPrice(productId: string, options?: any) {
+        return EconomyServiceApiFp(this.configuration).listProductPrice(productId, options)(this.fetch, this.basePath);
     }
 
     /**
      * 
      * @summary List all shops
-     * @param {string} [api] 
      * @param {number} [pageSize] 
      * @param {string} [pageToken] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
      */
-    public listShop(api?: string, pageSize?: number, pageToken?: string, options?: any) {
-        return EconomyServiceApiFp(this.configuration).listShop(api, pageSize, pageToken, options)(this.fetch, this.basePath);
+    public listShop(pageSize?: number, pageToken?: string, options?: any) {
+        return EconomyServiceApiFp(this.configuration).listShop(pageSize, pageToken, options)(this.fetch, this.basePath);
     }
 
     /**
      * 
      * @summary List all storages
-     * @param {string} [api] 
      * @param {number} [pageSize] 
      * @param {string} [pageToken] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
      */
-    public listStorage(api?: string, pageSize?: number, pageToken?: string, options?: any) {
-        return EconomyServiceApiFp(this.configuration).listStorage(api, pageSize, pageToken, options)(this.fetch, this.basePath);
+    public listStorage(pageSize?: number, pageToken?: string, options?: any) {
+        return EconomyServiceApiFp(this.configuration).listStorage(pageSize, pageToken, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -5367,14 +5550,80 @@ export class EconomyServiceApi extends BaseAPI {
 
     /**
      * 
+     * @summary Update a currency
+     * @param {string} currencyId 
+     * @param {V1UpdateCurrencyRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EconomyServiceApi
+     */
+    public updateCurrency(currencyId: string, body: V1UpdateCurrencyRequest, options?: any) {
+        return EconomyServiceApiFp(this.configuration).updateCurrency(currencyId, body, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * 
      * @summary Update an Item
+     * @param {string} itemId 
      * @param {V1UpdateItemRequest} body 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EconomyServiceApi
      */
-    public updateItem(body: V1UpdateItemRequest, options?: any) {
-        return EconomyServiceApiFp(this.configuration).updateItem(body, options)(this.fetch, this.basePath);
+    public updateItem(itemId: string, body: V1UpdateItemRequest, options?: any) {
+        return EconomyServiceApiFp(this.configuration).updateItem(itemId, body, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Update a player
+     * @param {string} playerId 
+     * @param {V1UpdatePlayerRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EconomyServiceApi
+     */
+    public updatePlayer(playerId: string, body: V1UpdatePlayerRequest, options?: any) {
+        return EconomyServiceApiFp(this.configuration).updatePlayer(playerId, body, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Update a product
+     * @param {string} productId 
+     * @param {V1UpdateProductRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EconomyServiceApi
+     */
+    public updateProduct(productId: string, body: V1UpdateProductRequest, options?: any) {
+        return EconomyServiceApiFp(this.configuration).updateProduct(productId, body, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Update a shop
+     * @param {string} shopId 
+     * @param {V1UpdateShopRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EconomyServiceApi
+     */
+    public updateShop(shopId: string, body: V1UpdateShopRequest, options?: any) {
+        return EconomyServiceApiFp(this.configuration).updateShop(shopId, body, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Update Storage
+     * @param {string} storageId 
+     * @param {V1UpdateStorageRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EconomyServiceApi
+     */
+    public updateStorage(storageId: string, body: V1UpdateStorageRequest, options?: any) {
+        return EconomyServiceApiFp(this.configuration).updateStorage(storageId, body, options)(this.fetch, this.basePath);
     }
 
 }
