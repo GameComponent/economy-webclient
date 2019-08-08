@@ -1,11 +1,3 @@
-<style>
-.CodeMirror {
-  border: 1px solid #eee;
-  height: auto;
-  border-radius: 3px;
-}
-</style>
-
 <template>
   <div class="p-16">
     <h1>Config</h1>
