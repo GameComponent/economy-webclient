@@ -73,7 +73,10 @@ export default class Config extends Vue {
 
   public mounted() {
     this.$economyService.listConfig().then(({ configs }) => {
-      this.configs = configs;
+      this.configs = configs.map(config => ({
+        ...config,
+        value: JSON.parse(config.value)
+      }));
     });
   }
 
@@ -81,7 +84,7 @@ export default class Config extends Vue {
     this.$economyService
       .setConfig({
         key: this.key,
-        value: this.valueObject
+        value: JSON.stringify(this.valueObject)
       })
       .then(result => {
         this.$router.go(0);
@@ -118,7 +121,7 @@ export default class Config extends Vue {
     this.$economyService
       .setConfig({
         key: config.key,
-        value: valueObject
+        value: JSON.stringify(valueObject)
       })
       .then(result => {
         this.$router.go(0);
