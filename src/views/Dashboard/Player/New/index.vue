@@ -3,17 +3,23 @@
     <h1>Create new player</h1>
 
     <div class="mt-4">
-      <table>
+      <table class="w-full">
         <tr>
           <td>ID:</td>
           <td>
-            <input v-model="player.id" type="text" class="gc-input" />
+            <input v-model="player.playerId" type="text" class="gc-input" />
           </td>
         </tr>
         <tr>
           <td>Name:</td>
           <td>
             <input v-model="player.name" type="text" class="gc-input" />
+          </td>
+        </tr>
+        <tr>
+          <td>Metadata:</td>
+          <td>
+            <codemirror v-model="player.metadata"></codemirror>
           </td>
         </tr>
 
@@ -26,9 +32,16 @@
 
         <tr v-if="error">
           <td></td>
-          <td>
+          <td v-if="error.code === 10">
             <div class="bg-red-500 text-white rounded p-3">
               <span class="font-semibold">Error:</span> a player with a same ID already exists.
+            </div>
+          </td>
+          <td v-else>
+            <div class="bg-red-500 text-white rounded p-3">
+              <span class="font-semibold">Error:</span>
+              &nbsp;
+              <span>{{ error.message }}</span>
             </div>
           </td>
         </tr>
@@ -43,8 +56,9 @@ import { Component, Vue } from "vue-property-decorator";
 @Component
 export default class CreatePlayer extends Vue {
   public player = {
-    id: "",
-    name: ""
+    playerId: "",
+    name: "",
+    metadata: "{}"
   };
 
   public error = null;
@@ -55,8 +69,18 @@ export default class CreatePlayer extends Vue {
       return;
     }
 
-    if (this.player.id.length === 0) {
+    if (this.player.playerId.length === 0) {
       alert("Please enter a player_id.");
+      return;
+    }
+
+    // Check if the user entered correct metadata
+    try {
+      JSON.parse(this.player.metadata);
+    } catch (e) {
+      this.error = {
+        message: "Unable to parse metadata JSON object"
+      };
       return;
     }
 
@@ -71,7 +95,9 @@ export default class CreatePlayer extends Vue {
         });
       })
       .catch(error => {
-        this.error = error;
+        error.json().then(err => {
+          this.error = err;
+        });
       });
   }
 }
