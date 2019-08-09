@@ -54,7 +54,20 @@
     </div>
 
     <div class="mt-4">
+      <label for="stackable">Metadata</label>
+      <codemirror v-model="item.metadata"></codemirror>
+    </div>
+
+    <div class="mt-4">
       <button class="gc-button" @click="handleClickCreateItem">Create</button>
+    </div>
+
+    <div v-if="error" class="mt-4">
+      <div class="bg-red-500 text-white rounded p-3">
+        <span class="font-semibold">Error:</span>
+        &nbsp;
+        <span>{{ error.message }}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -74,13 +87,24 @@ export default class CreateItem extends Vue {
     name: "",
     stackable: false,
     stackMaxAmount: "0",
-    stackBalancingMethod: V1StackBalancingMethod.DEFAULT
+    stackBalancingMethod: V1StackBalancingMethod.DEFAULT,
+    metadata: "{}"
   };
+
+  public error = null;
 
   public handleClickCreateItem(): void {
     if (this.item.name.length === 0) {
       alert("Please enter an item name.");
       return;
+    }
+
+    try {
+      JSON.parse(this.item.metadata);
+    } catch (err) {
+      this.error = {
+        message: "Unable to parse metadata"
+      };
     }
 
     this.$economyService
@@ -90,6 +114,11 @@ export default class CreateItem extends Vue {
       .then(() => {
         this.$router.push({
           name: "item"
+        });
+      })
+      .catch(error => {
+        error.then(err => {
+          this.error = err;
         });
       });
   }
