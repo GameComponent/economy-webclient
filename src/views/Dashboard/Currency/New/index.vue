@@ -45,7 +45,6 @@ export default class CreateCurrency extends Vue {
 
     this.$economyService
       .createCurrency({
-        api: "v1",
         ...this.currency
       })
       .then(() => {
