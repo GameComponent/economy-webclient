@@ -53,7 +53,7 @@ export default class ProductNew extends Vue {
 
     this.$economyService.createProduct(this.product).then(({ product }) => {
       this.$router.push({
-        name: "dashboard-shop-product-detail",
+        name: "product-detail",
         params: {
           productId: product.id
         }

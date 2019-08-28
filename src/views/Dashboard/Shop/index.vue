@@ -16,7 +16,7 @@
           <td>
             <router-link
               :to="{
-                name: 'shop-detail',
+                name: 'shop-detail-index',
                 params: {
                   shopId: shop.id,
                 },

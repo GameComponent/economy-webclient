@@ -88,7 +88,7 @@ export default class CreatePlayer extends Vue {
       .createPlayer(this.player)
       .then(({ player }) => {
         this.$router.push({
-          name: "dashboard-player-detail",
+          name: "player-detail",
           params: {
             playerId: player.id
           }

@@ -145,7 +145,7 @@ export default class ProductPriceNew extends Vue {
 
     Promise.all(promises).then(() => {
       this.$router.push({
-        name: "dashboard-shop-product-detail-price"
+        name: "product-detail-price"
       });
     });
   }

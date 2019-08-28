@@ -157,16 +157,34 @@ const router = new Router({
               name: "shop-detail",
               component: () =>
                 import(
-                  /* webpackChunkName: "shop" */ "./views/Dashboard/Shop/Detail/index.vue"
-                )
-            },
-            {
-              path: ":shopId/product",
-              name: "shop-detail-product",
-              component: () =>
-                import(
-                  /* webpackChunkName: "shop" */ "./views/Dashboard/Shop/Detail/Product/index.vue"
-                )
+                  /* webpackChunkName: "shop" */ "./layouts/Shop/index.vue"
+                ),
+              children: [
+                {
+                  path: "",
+                  name: "shop-detail-index",
+                  component: () =>
+                    import(
+                      /* webpackChunkName: "shop" */ "./views/Dashboard/Shop/Detail/index.vue"
+                    )
+                },
+                {
+                  path: ":shopId/product",
+                  name: "shop-detail-product",
+                  component: () =>
+                    import(
+                      /* webpackChunkName: "shop" */ "./views/Dashboard/Shop/Detail/Product/index.vue"
+                    )
+                },
+                {
+                  path: ":shopId/product/new",
+                  name: "shop-detail-product-new",
+                  component: () =>
+                    import(
+                      /* webpackChunkName: "shop" */ "./views/Dashboard/Shop/Detail/Product/New/index.vue"
+                    )
+                }
+              ]
             }
           ]
         },

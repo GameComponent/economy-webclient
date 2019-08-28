@@ -1,14 +1,12 @@
 <template>
-  <div>
-    <div class="p-16">
-      <h1>New Shop</h1>
-      <div class="mt-4">
-        <input v-model="shop.name" type="text" class="gc-input" placeholder="Shop name" />
-      </div>
+  <div class="p-16">
+    <h1>New Shop</h1>
+    <div class="mt-4">
+      <input v-model="shop.name" type="text" class="gc-input" placeholder="Shop name" />
+    </div>
 
-      <div class="mt-4">
-        <button class="gc-button" @click="handleClickCreateShop">Create</button>
-      </div>
+    <div class="mt-4">
+      <button class="gc-button" @click="handleClickCreateShop">Create</button>
     </div>
   </div>
 </template>
@@ -31,7 +29,7 @@ export default class ShopNew extends Vue {
 
     this.$economyService.createShop(this.shop).then(() => {
       this.$router.push({
-        name: "dashboard-shop"
+        name: "shop-index"
       });
     });
   }

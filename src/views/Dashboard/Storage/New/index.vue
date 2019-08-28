@@ -58,7 +58,7 @@ export default class CreateStorage extends Vue {
 
     this.$economyService.createStorage(this.storage).then(() => {
       this.$router.push({
-        name: "dashboard-player-detail",
+        name: "player-detail",
         params: {
           playerId: this.storage.playerId
         }

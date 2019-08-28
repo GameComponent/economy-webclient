@@ -43,16 +43,11 @@ export default class CreateCurrency extends Vue {
       return;
     }
 
-    this.$economyService
-      .createCurrency({
-        api: "v1",
-        ...this.currency
-      })
-      .then(() => {
-        this.$router.push({
-          name: "currency"
-        });
+    this.$economyService.createCurrency(this.currency).then(() => {
+      this.$router.push({
+        name: "currency"
       });
+    });
   }
 }
 </script>

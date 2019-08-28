@@ -43,9 +43,7 @@
 <template>
   <div class="selected-shop-header">
     <router-link
-      :to="{
-        name: 'shop-detail',
-      }"
+      :to="{ name: 'shop-detail-index' }"
       class="selected-shop-header__item"
       active-class="selected-shop-header__item--active"
       exact

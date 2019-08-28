@@ -12,56 +12,56 @@
 </style>
 
 <template>
-  <div>
-    <selected-shop-header />
-    <div class="p-16">
-      <h1>Shop Product</h1>
+  <div class="p-16">
+    <h1>Shop Product</h1>
 
-      <div v-if="shop">
-        <div v-for="product in shop.products" :key="product.id">
-          <div class="product-header mt-4 clearfix overflow-hidden">
-            <div class="inline-block float-left">{{ product.name }}</div>
-            <div class="inline-block float-right">
-              <span
-                class="bg-red-500 p-2 rounded text-white text-sm cursor-pointer border-0 hover:bg-red-600"
-                @click="handleClickDetachProduct(product)"
-              >Detach product</span>
-            </div>
+    <div v-if="shop">
+      <div v-for="product in shop.products" :key="product.id">
+        <div class="product-header mt-4 clearfix overflow-hidden">
+          <div class="inline-block float-left">{{ product.name }}</div>
+          <div class="inline-block float-right">
+            <span
+              class="bg-red-500 p-2 rounded text-white text-sm cursor-pointer border-0 hover:bg-red-600"
+              @click="handleClickDetachProduct(product)"
+            >Detach product</span>
           </div>
-          <table class="gc-table gc-table--small-head text-left">
-            <thead>
-              <tr>
-                <th>Item ID</th>
-                <th>Name</th>
-                <th>Amount</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="productItem in product.items" :key="productItem.id">
-                <td>{{ productItem.item.id }}</td>
-                <td>{{ productItem.item.name }}</td>
-                <td>{{ productItem.amount }}</td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
         </div>
+        <table class="gc-table gc-table--small-head text-left">
+          <thead>
+            <tr>
+              <th>Item ID</th>
+              <th>Name</th>
+              <th>Amount</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="productItem in product.items" :key="productItem.id">
+              <td>{{ productItem.item.id }}</td>
+              <td>{{ productItem.item.name }}</td>
+              <td>{{ productItem.amount }}</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+    </div>
+
+    <div class="mt-4">
+      <gc-button-link
+        :to="{
+          name: 'shop-detail-product-new',
+        }"
+      >Attach new product to shop</gc-button-link>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import SelectedShopHeader from "../../components/SelectedShopHeader.vue";
 import { V1Shop } from "@/../vendor/economy-client/api.ts";
 
-@Component({
-  components: {
-    SelectedShopHeader
-  }
-})
+@Component({})
 export default class ShopProductDetail extends Vue {
   public shop: V1Shop = null;
 
