@@ -50,6 +50,11 @@ import DashboardMenuIcon from "./components/DashboardMenuIcon.vue";
 })
 export default class Dashboard extends Vue {
   public menuOpen = false;
+  public user = null;
+
+  public mounted() {
+    this.user = JSON.parse(atob(localStorage.getItem("token").split(".")[1]));
+  }
 
   public handleClickMenuIcon() {
     this.menuOpen = !this.menuOpen;

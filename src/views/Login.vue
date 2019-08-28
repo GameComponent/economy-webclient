@@ -22,6 +22,11 @@
       </div>
 
       <button @click="onClickLogin" class="gc-button mt-4">Login</button>
+      <span class="p-3 mx-1 text-xs font-medium text-gray-700">OR</span>
+      <router-link
+        :to="{ name: 'register' }"
+        class="p-3 pl-0 font-medium hover:text-green-500"
+      >Register</router-link>
 
       <div v-if="error && error.message && error.code">{{ error.message}} [{{ error.code }}]</div>
     </div>
@@ -58,15 +63,12 @@ export default class Login extends Vue {
 
   public onClickLogin(): void {
     this.$economyService
-      .authenticate({
-        api: "v1",
-        ...this.loginForm
-      })
+      .authenticate(this.loginForm)
       .then(({ token }) => {
         localStorage.setItem("token", token);
 
         this.$router.push({
-          name: "dashboard-home"
+          name: "dashboard-index"
         });
       })
       .catch(errorResponse => {
