@@ -214,7 +214,7 @@
 
     <!-- Technical navigation -->
     <ul class="sidenav__list sidenav__list--bottom">
-      <li class="sidenav__list-item sidebar__list-item--disabled">
+      <li class="sidenav__list-item">
         <router-link :to="{ name: 'iam' }">
           <icon-group />
           <span>IAM</span>

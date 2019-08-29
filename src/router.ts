@@ -249,6 +249,22 @@ const router = new Router({
             )
         },
         {
+          path: "iam/new",
+          name: "iam-new",
+          component: () =>
+            import(
+              /* webpackChunkName: "iam" */ "./views/Dashboard/IAM/New/index.vue"
+            )
+        },
+        {
+          path: "iam/:accountId",
+          name: "iam-detail",
+          component: () =>
+            import(
+              /* webpackChunkName: "iam" */ "./views/Dashboard/IAM/Detail/index.vue"
+            )
+        },
+        {
           path: "config",
           name: "config",
           component: () =>
