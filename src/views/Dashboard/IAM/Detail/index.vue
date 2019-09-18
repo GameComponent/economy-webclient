@@ -7,7 +7,7 @@
     <!-- Permission -->
     <div class="mt-4" v-if="permissions.length > 0">
       <h2>Permission</h2>
-      <table class="gc-table text-left mt-4" v>
+      <table class="gc-table text-left mt-4">
         <thead>
           <tr>
             <th>Permission</th>
