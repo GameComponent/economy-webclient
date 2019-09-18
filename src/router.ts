@@ -291,7 +291,7 @@ router.beforeEach((to, from, next) => {
     return;
   }
 
-  if (!localStorage.getItem("token")) {
+  if (!localStorage.getItem("access_token")) {
     next("/");
   }
 

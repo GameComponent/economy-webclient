@@ -53,7 +53,18 @@ export default class Dashboard extends Vue {
   public user = null;
 
   public mounted() {
-    this.user = JSON.parse(atob(localStorage.getItem("token").split(".")[1]));
+    const token = localStorage.getItem("access_token");
+
+    if (!token) {
+      return;
+    }
+
+    const splits = token.split(".");
+    if (splits.length < 2) {
+      return;
+    }
+
+    this.user = JSON.parse(atob(splits[1]));
   }
 
   public handleClickMenuIcon() {

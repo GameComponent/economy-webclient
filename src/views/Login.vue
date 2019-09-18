@@ -64,8 +64,9 @@ export default class Login extends Vue {
   public onClickLogin(): void {
     this.$economyService
       .authenticate(this.loginForm)
-      .then(({ token }) => {
-        localStorage.setItem("token", token);
+      .then(({ accessToken, refreshToken }) => {
+        localStorage.setItem("access_token", accessToken);
+        localStorage.setItem("refresh_token", refreshToken);
 
         this.$router.push({
           name: "dashboard-index"
