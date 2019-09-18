@@ -389,7 +389,25 @@ export interface V1AuthenticateResponse {
      * @type {string}
      * @memberof V1AuthenticateResponse
      */
-    token?: string;
+    accessToken?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1AuthenticateResponse
+     */
+    tokenType?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof V1AuthenticateResponse
+     */
+    expiresIn?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1AuthenticateResponse
+     */
+    refreshToken?: string;
 }
 
 /**
@@ -886,6 +904,34 @@ export interface V1DetachProductResponse {
      * @memberof V1DetachProductResponse
      */
     shop?: V1Shop;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1GenerateSecretRequest
+ */
+export interface V1GenerateSecretRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1GenerateSecretRequest
+     */
+    accountId?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1GenerateSecretResponse
+ */
+export interface V1GenerateSecretResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1GenerateSecretResponse
+     */
+    token?: string;
 }
 
 /**
@@ -1652,6 +1698,46 @@ export interface V1ProductItem {
      * @memberof V1ProductItem
      */
     amount?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1RefreshRequest
+ */
+export interface V1RefreshRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1RefreshRequest
+     */
+    token?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface V1RefreshResponse
+ */
+export interface V1RefreshResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof V1RefreshResponse
+     */
+    accessToken?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof V1RefreshResponse
+     */
+    tokenType?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof V1RefreshResponse
+     */
+    expiresIn?: number;
 }
 
 /**
@@ -3023,6 +3109,38 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
         },
         /**
          * 
+         * @summary GenerateSecret a long lived JWT
+         * @param {V1GenerateSecretRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        generateSecret(body: V1GenerateSecretRequest, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling generateSecret.');
+            }
+            const localVarPath = `/v1/secret`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"V1GenerateSecretRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Get an accounts
          * @param {string} accountId 
          * @param {*} [options] Override http request option.
@@ -3664,6 +3782,38 @@ export const EconomyServiceApiFetchParamCreator = function (configuration?: Conf
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>"V1MergeStackRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Refresh a token
+         * @param {V1RefreshRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        refresh(body: V1RefreshRequest, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling refresh.');
+            }
+            const localVarPath = `/v1/refresh`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"V1RefreshRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
 
             return {
@@ -4520,6 +4670,25 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary GenerateSecret a long lived JWT
+         * @param {V1GenerateSecretRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        generateSecret(body: V1GenerateSecretRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1GenerateSecretResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).generateSecret(body, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * 
          * @summary Get an accounts
          * @param {string} accountId 
          * @param {*} [options] Override http request option.
@@ -4915,6 +5084,25 @@ export const EconomyServiceApiFp = function(configuration?: Configuration) {
          */
         mergeStack(body: V1MergeStackRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1MergeStackResponse> {
             const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).mergeStack(body, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * 
+         * @summary Refresh a token
+         * @param {V1RefreshRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        refresh(body: V1RefreshRequest, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<V1RefreshResponse> {
+            const localVarFetchArgs = EconomyServiceApiFetchParamCreator(configuration).refresh(body, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -5390,6 +5578,16 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
         },
         /**
          * 
+         * @summary GenerateSecret a long lived JWT
+         * @param {V1GenerateSecretRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        generateSecret(body: V1GenerateSecretRequest, options?: any) {
+            return EconomyServiceApiFp(configuration).generateSecret(body, options)(fetch, basePath);
+        },
+        /**
+         * 
          * @summary Get an accounts
          * @param {string} accountId 
          * @param {*} [options] Override http request option.
@@ -5605,6 +5803,16 @@ export const EconomyServiceApiFactory = function (configuration?: Configuration,
          */
         mergeStack(body: V1MergeStackRequest, options?: any) {
             return EconomyServiceApiFp(configuration).mergeStack(body, options)(fetch, basePath);
+        },
+        /**
+         * 
+         * @summary Refresh a token
+         * @param {V1RefreshRequest} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        refresh(body: V1RefreshRequest, options?: any) {
+            return EconomyServiceApiFp(configuration).refresh(body, options)(fetch, basePath);
         },
         /**
          * 
@@ -6008,6 +6216,18 @@ export class EconomyServiceApi extends BaseAPI {
 
     /**
      * 
+     * @summary GenerateSecret a long lived JWT
+     * @param {V1GenerateSecretRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EconomyServiceApi
+     */
+    public generateSecret(body: V1GenerateSecretRequest, options?: any) {
+        return EconomyServiceApiFp(this.configuration).generateSecret(body, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * 
      * @summary Get an accounts
      * @param {string} accountId 
      * @param {*} [options] Override http request option.
@@ -6264,6 +6484,18 @@ export class EconomyServiceApi extends BaseAPI {
      */
     public mergeStack(body: V1MergeStackRequest, options?: any) {
         return EconomyServiceApiFp(this.configuration).mergeStack(body, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * 
+     * @summary Refresh a token
+     * @param {V1RefreshRequest} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EconomyServiceApi
+     */
+    public refresh(body: V1RefreshRequest, options?: any) {
+        return EconomyServiceApiFp(this.configuration).refresh(body, options)(this.fetch, this.basePath);
     }
 
     /**
